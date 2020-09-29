@@ -1,0 +1,212 @@
+﻿<!-- left-sidebar -->
+<div ng-include="'appTemplate/left-sidebar.html'"></div>
+<!-- page-header -->
+<div ng-include="'appTemplate/page-header.html'"></div>
+
+
+<div class="content">
+    <!-- content HEADER -->
+
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-user" aria-hidden="true"></i><a ui-sref="profile">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel">
+                    <div class="panel-content">
+                        <fieldset class="animated fadeIn">
+                            <legend style="width:28%; text-align:center">
+                                <label class="control-label">Update Email</label>
+                            </legend>
+                            <div class="webkitscroller col-lg-12" style="height:196px">
+                                <form name="AdminEmailForm" novalidate>
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless table-condensed">
+                                            <tbody>
+                                                <tr>
+                                                    <th style="width:49%">Existing Email</th>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <span class="input-with-icon">
+                                                                <input type="email" class="form-control" name="extEmail" placeholder="Existing Email"
+                                                                       ng-model="TemporaryAuthentication.extEmail"
+                                                                       ng-required="true"
+                                                                       ng-minlength="11"
+                                                                       ng-maxlength="30"
+                                                                       ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' />
+                                                                <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left"
+                                                                    ng-show="AdminEmailForm.extEmail.$dirty && AdminEmailForm.extEmail.$invalid">
+                                                                    <li class="pull-left" ng-show="AdminEmailForm.extEmail.$error.pattern">Not a valid extEmail Address</li>
+                                                                    <li><span class="pull-left" ng-show="AdminEmailForm.extEmail.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="!AdminEmailForm.extEmail.$error.pattern && AdminEmailForm.extEmail.$error.minlength">Minimum required length is 11</span></li>
+                                                                    <li><span class="pull-left" ng-show="!AdminEmailForm.extEmail.$error.pattern && AdminEmailForm.extEmail.$error.maxlength">Maximum required length is 30</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:49%">New Email</th>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <span class="input-with-icon">
+                                                                <input type="email" class="form-control" name="newEmail" placeholder="New Email"
+                                                                       ng-model="TemporaryAuthentication.newEmail"
+                                                                       ng-required="true"
+                                                                       ng-minlength="11"
+                                                                       ng-maxlength="30"
+                                                                       ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' />
+                                                                <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left"
+                                                                    ng-show="AdminEmailForm.newEmail.$dirty && AdminEmailForm.newEmail.$invalid">
+                                                                    <li class="pull-left" ng-show="AdminEmailForm.newEmail.$error.pattern">Not a valid newEmail Address</li>
+                                                                    <li><span class="pull-left" ng-show="AdminEmailForm.newEmail.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="!AdminEmailForm.newEmail.$error.pattern && AdminEmailForm.newEmail.$error.minlength">Minimum required length is 11</span></li>
+                                                                    <li><span class="pull-left" ng-show="!AdminEmailForm.newEmail.$error.pattern && AdminEmailForm.newEmail.$error.maxlength">Maximum required length is 30</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:49%"></th>
+                                                    <td>
+                                                        <br /><br />
+                                                        <div class="form-group">
+                                                            <button class="btn btn-primary pull-right"
+                                                                    ng-click="ChangeEmail();"
+                                                                    ng-disabled="AdminEmailForm.$invalid">
+                                                                Update Email
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel">
+                    <div class="panel-content">
+                        <fieldset class="animated fadeIn">
+                            <legend style="width:28%; text-align:center">
+                                <label class="control-label">Update Password</label>
+                            </legend>
+                            <div class="webkitscroller col-lg-12">
+                                <form name="AdminPasswordForm">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless table-condensed">
+                                            <tbody>
+                                                <tr>
+                                                    <th style="width:49%">Current Password</th>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <span class="input-with-icon">
+                                                                <input type="password" class="form-control" name="OldPassword" placeholder="Current Password"
+                                                                       ng-model="TemporaryAuthentication.extPassword"
+                                                                       ng-required="true"
+                                                                       ng-minlength="6"
+                                                                       ng-maxlength="50"
+                                                                       ng-pattern="/([a-zA-Z0-9 ])\w+/" />
+                                                                <i class="fa fa-key"></i>
+                                                            </span>
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left" ng-show="AdminPasswordForm.OldPassword.$dirty && AdminPasswordForm.OldPassword.$invalid">
+                                                                    <li><span class="pull-left" ng-show="AdminPasswordForm.OldPassword.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="AdminPasswordForm.OldPassword.$error.pattern">Not a valid Current Password</span></li>
+                                                                    <li><span class="pull-left" ng-show="!AdminPasswordForm.OldPassword.$error.pattern && AdminPasswordForm.OldPassword.$error.minlength">Minimum required length is 6</span></li>
+                                                                    <li><span class="pull-left" ng-show="!AdminPasswordForm.OldPassword.$error.pattern && AdminPasswordForm.OldPassword.$error.maxlength">Maximum required length is 50</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:49%">New Password</th>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <span class="input-with-icon">
+                                                                <input type="password" class="form-control" name="NewPassword" placeholder="New Password"
+                                                                       ng-model="TemporaryAuthentication.newPassword"
+                                                                       ng-required="true"
+                                                                       ng-minlength="6"
+                                                                       ng-maxlength="50"
+                                                                       ng-pattern="/([a-zA-Z0-9 ])\w+/" />
+                                                                <i class="fa fa-key"></i>
+                                                            </span>
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left" ng-show="AdminPasswordForm.NewPassword.$dirty && AdminPasswordForm.NewPassword.$invalid">
+                                                                    <li><span class="pull-left" ng-show="AdminPasswordForm.NewPassword.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="AdminPasswordForm.NewPassword.$error.pattern">Not a valid New Password</span></li>
+                                                                    <li><span class="pull-left" ng-show="!AdminPasswordForm.NewPassword.$error.pattern && AdminPasswordForm.NewPassword.$error.minlength">Minimum required length is 6</span></li>
+                                                                    <li><span class="pull-left" ng-show="!AdminPasswordForm.NewPassword.$error.pattern && AdminPasswordForm.NewPassword.$error.maxlength">Maximum required length is 50</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:49%">Re-Enter New Password</th>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <span class="input-with-icon">
+                                                                <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password"
+                                                                       ng-required="true"
+                                                                       ng-model="ConfirmPassword"
+                                                                       ng-pattern="TemporaryAuthentication.newPassword" />
+                                                                <i class="fa fa-key"></i>
+                                                            </span>
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled text-danger pull-left" ng-show="AdminPasswordForm.ConfirmPassword.$dirty && AdminPasswordForm.ConfirmPassword.$invalid">
+                                                                    <li><span class="pull-left" ng-show="AdminPasswordForm.ConfirmPassword.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="AdminPasswordForm.ConfirmPassword.$error.pattern">Password is not matched</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:49%"></th>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <button class="btn btn-primary pull-right"
+                                                                    ng-click="ChangePassword();"
+                                                                    ng-disabled="AdminPasswordForm.$invalid">
+                                                                Update Password
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+</div>
+
+<style>
+</style>

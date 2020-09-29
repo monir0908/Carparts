@@ -1,0 +1,6 @@
+        [Route("GetImageListByFloorId/{floorId}/{pageIndex:int}/{pageSize:int}")]
+        [HttpGet]
+        public IHttpActionResult GetImageListByFloorId(Guid? floorId, int pageIndex, int pageSize)
+        {
+            return Ok(_services.GetImageListByFloorId(floorId, pageIndex, pageSize).Data);
+        }

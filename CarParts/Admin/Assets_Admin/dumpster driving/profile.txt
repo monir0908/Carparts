@@ -1,0 +1,650 @@
+﻿THIS IS profile.html
+
+<!-- CONTENT -->
+<!-- ========================================================= -->
+<div class="content">
+    <!-- content HEADER -->
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <a href="#">My Account</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="animated fadeInUp">
+        <div class="panel-group" id="accordion">
+            <!--Company Information-->
+            <div class="panel panel-default">
+                <div class="panel-header">
+                    <h3 class="panel-title"><a id="FirstCollapserText" style="cursor:pointer" data-parent="#accordion" data-toggle="collapse" data-target="#a_ProfileFormSaveCompanySecondaryInfo_CompanyInformation">Company Information</a></h3>
+                    <div class="panel-actions">
+                        <ul>
+                            <li class="action" ng-show="isInEditModeCI==false">
+                                <a title="Edit" ng-click="UpdateCompanyInfoEdit()"><span class="glyphicon glyphicon-edit"></span></a>
+                            </li>
+                            <li class="action" ng-show="isInEditModeCI==true">
+                                <a title="Cancel Edit" ng-click="UpdateCompanyInfoCancelEdit()"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
+                            </li>
+                            <li class="action">
+                                <a id="FirstCollapser" style="cursor:pointer" data-parent="#accordion" data-toggle="collapse" data-target="#a_ProfileFormSaveCompanySecondaryInfo_CompanyInformation"><span id="FirstCollapserIcon" class="glyphicon glyphicon-plus"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-collapse" id="a_ProfileFormSaveCompanySecondaryInfo_CompanyInformation">
+                    <div class="panel-content">
+                        <form class="form-horizontal" name="ProfileFormSaveCompanySecondaryInfo_CompanyInformation" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 separator">
+                                    <div class="form-group">
+                                        <label for="CompanyName" class="col-md-4 control-label">Company Name</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <input type="text" class="form-control" placeholder="Your Company" name="CompanyName"
+                                                   ng-model="Profile.CompanyName"
+                                                   ng-disabled="true" />
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic">{{Profile.CompanyName}}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="CompanyType" class="col-md-4 control-label">Company Type</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <select class="form-control" name="CompanyTypeId"
+                                                    ng-model="Profile.CompanyTypeId"
+                                                    ng-required="true"
+                                                    ng-options="CompanyType.Id as CompanyType.CompanyTypeName for CompanyType in CompanyTypeList">
+                                                <option value="">Select</option>
+                                            </select>
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyTypeId.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyTypeId.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyTypeId.$error.required">*Required</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic">{{Profile.CompanyTypeName}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="CompanyPhone" class="col-md-4 control-label">Company Phone</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <input type="text" class="form-control" placeholder="Enter Phone Number" name="CompanyPhone"
+                                                   ng-model="Profile.CompanyPhone"
+                                                   ng-minlength="5"
+                                                   ng-maxlength="12"
+                                                   ng-required="Profile.CompanyMobile!=undefined? false:true"
+                                                   ng-pattern="/^(([0][23459])([0-9]{5,7})$)|(^(\+880)([23459])([0-9]{5,7})$)|(^([0-9]{5,7}))$/" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyPhone.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyPhone.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyPhone.$error.required">*Either Phone or Mobile Number is Required</span></li>
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyPhone.$error.pattern">Not a valid Phone Number</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyPhone.$error.pattern && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyPhone.$error.minlength">Minimum required length is 5</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyPhone.$error.pattern && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyPhone.$error.maxlength">Maximum required length is 12</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic">{{Profile.CompanyPhone}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="CompanyMobile" class="col-md-4 control-label">Company Mobile</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <input type="text" class="form-control" placeholder="Enter Mobile Number" name="CompanyMobile"
+                                                   ng-required="Profile.CompanyPhone!=undefined? false:true"
+                                                   ng-model="Profile.CompanyMobile"
+                                                   ng-minlength="11"
+                                                   ng-maxlength="14"
+                                                   ng-pattern="/^(([0][1])|(\+8801))([156789])([0-9]{8})$/">
+                                            <ul class="list-unstyled errormessage pull-left"
+                                                ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyMobile.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyMobile.$invalid">
+                                                <li class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyMobile.$error.required">*Either Phone or Mobile Number is Required</li>
+                                                <li class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyMobile.$error.pattern">Not a valid Mobile Number</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic">{{Profile.CompanyMobile}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="CompanyAddress" class="col-md-4 control-label">Address</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <textarea class="form-control" placeholder="Enter Address" name="CompanyAddress" style="resize:none; max-height:74px; height:74px;"
+                                                      ng-minlength="6"
+                                                      ng-maxlength="100"
+                                                      ng-model="Profile.CompanyAddress"
+                                                      ng-change="BindBillingAddress()"></textarea>
+                                            <ul class="list-unstyled errormessage pull-left"
+                                                ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyAddress.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyAddress.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyAddress.$error.pattern">Not a valid Address</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyAddress.$error.pattern && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyAddress.$error.minlength">Minimum required length is 6</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyAddress.$error.pattern && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyAddress.$error.maxlength">Maximum required length is 100</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic" style="text-align:left">{{Profile.CompanyAddress}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <div class="checkbox-custom checkbox-success">
+                                                <input type="checkbox" id="checkboxCustom3" ng-click="SameAsAddress()" ng-model="CheckSameAsAddress" ng-true-value="1" ng-false-value="0" ng-disabled="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyAddress.$invalid || Profile.CompanyAddress==undefined">
+                                                <label class="check" for="checkboxCustom3">Same as Address</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="CompanyBillingAddress" class="col-md-4 control-label">Billing Address</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <textarea class="form-control" placeholder="Enter Billing Address" name="CompanyBillingAddress" style="resize:none; max-height:74px; height:74px;"
+                                                      ng-minlength="6"
+                                                      ng-maxlength="100"
+                                                      ng-model="Profile.CompanyBillingAddress"
+                                                      ng-disabled="Profile.CompanyBillingAddress!=undefined && Profile.CompanyAddress==Profile.CompanyBillingAddress"></textarea>
+                                            <ul class="list-unstyled errormessage pull-left"
+                                                ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyAddress.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyBillingAddress.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyBillingAddress.$error.pattern">Not a valid Address</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyBillingAddress.$error.pattern && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyBillingAddress.$error.minlength">Minimum required length is 6</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyBillingAddress.$error.pattern && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyBillingAddress.$error.maxlength">Maximum required length is 100</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic" style="text-align:left">{{Profile.CompanyBillingAddress}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="CompanyWebsite" class="col-md-4 control-label">Website</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <input type="text" class="form-control" placeholder="Enter Company Website" name="CompanyWebsite"
+                                                   ng-model="Profile.CompanyWebsite"
+                                                   ng-minlength="8"
+                                                   ng-maxlength="40"
+                                                   ng-pattern="/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?(([www]){3}|[^w]{1}[a-zA-Z0-9]{1,64})([\.]{1}[a-zA-Z0-9-]{1,253})+\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyWebsite.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyWebsite.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyWebsite.$error.pattern">Not a valid Website</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyWebsite.$error.pattern && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyWebsite.$error.minlength">Minimum required length is 8</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyWebsite.$error.pattern && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CompanyWebsite.$error.maxlength">Maximum required length is 40</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic">{{Profile.CompanyWebsite}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="CompanyLogo" class="col-md-4 control-label">Company Logo</label>
+                                        <div class="col-md-7">
+                                            <div style="float:left">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput" style="margin-left:0%; width:150px; min-width:100%; max-width:160%">
+                                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="min-width: 150px; max-width:100%; height: 114px;"></div>
+                                                    <div ng-if="isInEditModeCI==true">
+                                                        <span ng-if="isInEditModeCI==true" class="btn btn-default btn-file btn-block"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                                                        <a ng-if="isInEditModeCI==true" href="#" class="btn btn-default fileinput-exists btn-block" data-dismiss="fileinput">Remove</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="CountryId" class="col-md-3 control-label">Country</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <select class="form-control" name="CountryId"
+                                                    ng-model="Profile.CountryId"
+                                                    ng-required="true"
+                                                    ng-change="PropagateDivisionListByCountryId(Profile.CountryId)"
+                                                    ng-options="Country.Id as Country.CountryName for Country in CountryList">
+                                                <option value="">Select</option>
+                                                <option ng-repeat="e in CountryList" ng-selected="Profile.CountryId==e.Id" value="{{e.Id}}" id="{{e.Id}}" ng-bind="e.CountryName"></option>
+                                            </select>
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CountryId.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CountryId.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.CountryId.$error.required">*Required</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic">{{Profile.CountryName}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DivisionId" class="col-md-3 control-label">Division</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <select class="form-control" name="DivisionId"
+                                                    ng-model="Profile.DivisionId"
+                                                    ng-required="true"
+                                                    ng-change="PropagateZoneListByDivisionId(Profile.DivisionId)"
+                                                    ng-disabled="Profile.CountryId==undefined || Profile.CountryId<1"
+                                                    ng-options="Division.Id as Division.DivisionName for Division in DivisionList">
+                                                <option value="">Select</option>
+                                            </select>
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.DivisionId.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.DivisionId.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.DivisionId.$error.required">*Required</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic">{{Profile.DivisionName}}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="ZoneId" class="col-md-3 control-label">Zone</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <select class="form-control" name="ZoneId"
+                                                    ng-model="Profile.ZoneId"
+                                                    ng-required="true"
+                                                    ng-change="PropagateAreaListByZoneId(Profile.ZoneId)"
+                                                    ng-disabled="Profile.DivisionId==undefined || Profile.DivisionId<1"
+                                                    ng-options="Zone.Id as Zone.ZoneName for Zone in ZoneList">
+                                                <option value="">Select</option>
+                                            </select>
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.ZoneId.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.ZoneId.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.ZoneId.$error.required">*Required</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic">{{Profile.ZoneName}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="AreaId" class="col-md-3 control-label">Area</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==true">
+                                            <select class="form-control" name="AreaId"
+                                                    ng-model="Profile.AreaId"
+                                                    ng-required="true"
+                                                    ng-disabled="Profile.ZoneId==undefined || Profile.ZoneId<1"
+                                                    ng-options="Area.Id as Area.AreaName for Area in AreaList">
+                                                <option value="">Select</option>
+                                            </select>
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.AreaId.$dirty && ProfileFormSaveCompanySecondaryInfo_CompanyInformation.AreaId.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.AreaId.$error.required">*Required</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCI==false">
+                                            <label class="control-label label-Italic">{{Profile.AreaName}}</label>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="form-group" style="margin-right:0px; margin-left:0px">
+                                            <div class="col-md-3">
+
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="text-center" style="border-style:solid; border-width:1px; border-color:#ccc #ccc #ccc #ccc">
+                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1290.7334989967765!2d90.40860944588168!3d23.792070436437672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c1483d269999%3A0x62d6d33daba5c05c!2sTekno+Pole!5e0!3m2!1sbn!2sbd!4v1524997753425" width="99%" height="240" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group" style="margin-right:0px; margin-left:0px" ng-if="isInEditModeCI==true">
+                                            <label for="SearchLocation" class="col-md-3 control-label">Search Location</label>
+                                            <div class="col-md-7">
+                                                <input type="text" class="form-control" placeholder="Enter Search Location" name="SearchLocation" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <br />
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-right:8.4%" ng-if="isInEditModeCI==true">
+                                <button type="submit" class="btn btn-default pull-right btn-addon" ng-disabled="ProfileFormSaveCompanySecondaryInfo_CompanyInformation.$invalid || ProfileFormSaveCompanySecondaryInfo_CompanyInformation.$pristine" ng-click="UpdateCompanyInfo()"><i class="glyphicon glyphicon-ok"></i>Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--Location-->
+            <!--<div class="panel panel-default">
+                <div class="panel-header">
+                    <h3 class="panel-title"><a style="cursor:pointer" data-parent="#accordion" data-toggle="collapse" data-target="#a_ProfileFormSaveCompanySecondaryInfo_Location">Location</a></h3>
+                    <div class="panel-actions">
+                        <ul>
+                            <li>
+                                <a style="cursor:pointer" data-toggle="collapse" data-parent="#accordion" data-target="#a_ProfileFormSaveCompanySecondaryInfo_Location"><span class="glyphicon glyphicon-plus"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="a_ProfileFormSaveCompanySecondaryInfo_Location">
+                    <div class="panel-content">
+                        <form class="form-horizontal" name="ProfileFormSaveCompanySecondaryInfo_Location" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 separator">
+                                    <div class="form-group">
+                                        <label for="CountryId" class="col-md-4 control-label">Country</label>
+                                        <div class="col-md-7">
+                                            <select class="form-control" name="CountryId"
+                                                    ng-model="Profile.CountryId"
+                                                    ng-required="true"
+                                                    ng-change="PropagateDivisionListByCountryId(Profile.CountryId)">
+                                                <option value="">Select</option>
+                                                <option ng-repeat="e in CountryList" ng-selected="Profile.CountryId==e.Id" value="{{e.Id}}" id="{{e.Id}}" ng-bind="e.CountryName"></option>
+                                            </select>
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_Location.CountryId.$dirty && ProfileFormSaveCompanySecondaryInfo_Location.CountryId.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_Location.CountryId.$error.required">*Required</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DivisionId" class="col-md-4 control-label">Division</label>
+                                        <div class="col-md-7">
+                                            <select class="form-control" name="DivisionId"
+                                                    ng-model="Profile.DivisionId"
+                                                    ng-required="true"
+                                                    ng-change="PropagateZoneListByDivisionId(Profile.DivisionId)"
+                                                    ng-disabled="Profile.CountryId==undefined || Profile.CountryId<1">
+                                                <option value="">Select</option>
+                                                <option ng-repeat="e in DivisionList" ng-selected="Profile.DivisionId==e.Id" value="{{e.Id}}" id="{{e.Id}}" ng-bind="e.DivisionName"></option>
+                                            </select>
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_Location.DivisionId.$dirty && ProfileFormSaveCompanySecondaryInfo_Location.DivisionId.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_Location.DivisionId.$error.required">*Required</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ZoneId" class="col-md-4 control-label">Zone</label>
+                                        <div class="col-md-7">
+                                            <select class="form-control" name="ZoneId"
+                                                    ng-model="Profile.ZoneId"
+                                                    ng-required="true"
+                                                    ng-change="PropagateAreaListByZoneId(Profile.ZoneId)"
+                                                    ng-disabled="Profile.DivisionId==undefined || Profile.DivisionId<1">
+                                                <option value="">Select</option>
+                                                <option ng-repeat="e in ZoneList" ng-selected="Profile.ZoneId==e.Id" value="{{e.Id}}" id="{{e.Id}}" ng-bind="e.ZoneName"></option>
+                                            </select>
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_Location.ZoneId.$dirty && ProfileFormSaveCompanySecondaryInfo_Location.ZoneId.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_Location.ZoneId.$error.required">*Required</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="AreaId" class="col-md-4 control-label">Area</label>
+                                        <div class="col-md-7">
+                                            <select class="form-control" name="AreaId"
+                                                    ng-model="Profile.AreaId"
+                                                    ng-required="true"
+                                                    ng-disabled="Profile.ZoneId==undefined || Profile.ZoneId<1">
+                                                <option value="">Select</option>
+                                                <option ng-repeat="e in AreaList" ng-selected="Profile.AreaId==e.Id" value="{{e.Id}}" id="{{e.Id}}" ng-bind="e.AreaName"></option>
+                                            </select>
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_Location.AreaId.$dirty && ProfileFormSaveCompanySecondaryInfo_Location.AreaId.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_Location.AreaId.$error.required">*Required</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="margin-right:9%">
+                                        <button type="submit" class="btn btn-primary pull-right" ng-disabled="ProfileFormSaveCompanySecondaryInfo_Location.$invalid" ng-click="SaveOrUpdateCredential()">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>-->
+            <!--Contact Person Information-->
+            <div class="panel panel-default">
+                <div class="panel-header">
+                    <h3 class="panel-title"><a id="SecondCollapserText" style="cursor:pointer" data-parent="#accordion" data-toggle="collapse" data-target="#a_ProfileFormSaveCompanySecondaryInfo_ContactInformation">Contact Person Information</a></h3>
+                    <div class="panel-actions">
+                        <ul>
+                            <li class="action" ng-show="isInEditModeCPI==false">
+                                <a title="Edit"><span class="glyphicon glyphicon-edit" ng-click="UpdateContactPersonInfoEdit()"></span></a>
+                            </li>
+                            <li class="action" ng-show="isInEditModeCPI==true">
+                                <a title="Cancel Edit" ng-click="UpdateContactPersonInfoCancelEdit()"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
+                            </li>
+                            <li class="action">
+                                <a id="SecondCollapser" style="cursor:pointer" data-toggle="collapse" data-parent="#accordion" data-target="#a_ProfileFormSaveCompanySecondaryInfo_ContactInformation"><span id="SecondCollapserIcon" class="glyphicon glyphicon-plus"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="a_ProfileFormSaveCompanySecondaryInfo_ContactInformation">
+                    <div class="panel-content">
+                        <form class="form-horizontal" name="ProfileFormSaveCompanySecondaryInfo_ContactInformation" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 separator">
+                                    <div class="form-group">
+                                        <label for="ContactPerson" class="col-md-4 control-label">Contact Person</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==true">
+                                            <input type="text" class="form-control" placeholder="Contact Person Name" name="ContactPerson"
+                                                   ng-model="Profile.ContactPerson"
+                                                   ng-minlength="4"
+                                                   ng-maxlength="20"
+                                                   ng-pattern="/^([A-Z])([a-z])+/"
+                                                   ng-required="true" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPerson.$dirty && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPerson.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPerson.$error.required">*Required</span></li>
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPerson.$error.pattern">Not a valid Person Name</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPerson.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPerson.$error.minlength">Minimum required length is 4</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPerson.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPerson.$error.maxlength">Maximum required length is 20</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==false">
+                                            <label class="control-label label-Italic">{{Profile.ContactPerson}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ContactPersonEmail" class="col-md-4 control-label">Email</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==true">
+                                            <input type="email" class="form-control" placeholder="Contact Person Email" name="ContactPersonEmail"
+                                                   ng-maxlength="30"
+                                                   ng-minlength="11"
+                                                   ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
+                                                   ng-model="Profile.ContactPersonEmail" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonEmail.$dirty && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonEmail.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonEmail.$error.pattern">Not a valid Email</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonEmail.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonEmail.$error.minlength">Minimum required length is 11</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonEmail.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonEmail.$error.maxlength">Maximum required length is 30</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==false">
+                                            <label class="control-label label-Italic">{{Profile.ContactPersonEmail}}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="ContactPersonPhone" class="col-md-4 control-label">Phone</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==true">
+                                            <input type="text" class="form-control" placeholder="e.g (+8802xxxxx)" name="ContactPersonPhone"
+                                                   ng-model="Profile.ContactPersonPhone"
+                                                   ng-minlength="5"
+                                                   ng-maxlength="12"
+                                                   ng-required="Profile.ContactPersonMobile!=undefined? false:true"
+                                                   ng-pattern="/^(([0][23459])([0-9]{5,7})$)|(^(\+880)([23459])([0-9]{5,7})$)|(^([0-9]{5,7}))$/" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonPhone.$dirty && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonPhone.$invalid">
+                                                <li class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonPhone.$error.required">*Either Phone or Mobile Number is Required</li>
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonPhone.$error.pattern">Not a valid Phone Number</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonPhone.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonPhone.$error.minlength">Minimum required length is 5</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonPhone.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonPhone.$error.maxlength">Maximum required length is 12</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==false">
+                                            <label class="control-label label-Italic">{{Profile.ContactPersonPhone}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ContactPersonMobile" class="col-md-4 control-label">Mobile</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==true">
+                                            <input type="text" class="form-control" placeholder="e.g (+8801xxxxxxxxx)" name="ContactPersonMobile"
+                                                   ng-model="Profile.ContactPersonMobile"
+                                                   ng-minlength="11"
+                                                   ng-maxlength="14"
+                                                   ng-required="Profile.ContactPersonPhone!=undefined? false:true"
+                                                   ng-pattern="/^(([0][1])|(\+8801))([156789])([0-9]{8})$/" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonMobile.$dirty && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonMobile.$invalid">
+                                                <li class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonMobile.$error.required">*Either Phone or Mobile Number is Required</li>
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonMobile.$error.pattern">Not a valid Mobile Number</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonMobile.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonMobile.$error.minlength">Minimum required length is 11</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonMobile.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonMobile.$error.maxlength">Maximum required length is 14</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==false">
+                                            <label class="control-label label-Italic">{{Profile.ContactPersonMobile}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ContactPersonDesignation" class="col-md-4 control-label">Designation</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==true">
+                                            <input type="text" class="form-control" placeholder="Enter Designation" name="ContactPersonDesignation"
+                                                   ng-model="Profile.ContactPersonDesignation"
+                                                   ng-minlength="4"
+                                                   ng-maxlength="20"
+                                                   ng-pattern="/^([A-Z])([a-z])+/"
+                                                   ng-required="true" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonDesignation.$dirty && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonDesignation.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonDesignation.$error.required">*Required</span></li>
+                                                <li><span class="pull-left" ng-show="ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonDesignation.$error.pattern">Not a valid Designation</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonDesignation.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonDesignation.$error.minlength">Minimum required length is 4</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonDesignation.$error.pattern && ProfileFormSaveCompanySecondaryInfo_ContactInformation.ContactPersonDesignation.$error.maxlength">Maximum required length is 20</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCPI==false">
+                                            <label class="control-label label-Italic">{{Profile.ContactPersonDesignation}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="margin-right:9%" ng-if="isInEditModeCPI==true">
+                                        <button type="submit" class="btn btn-default pull-right btn-addon" ng-disabled="ProfileFormSaveCompanySecondaryInfo_ContactInformation.$invalid || ProfileFormSaveCompanySecondaryInfo_ContactInformation.$pristine" ng-click="UpdateContactPersonInfo()"><i class="glyphicon glyphicon-ok"></i>Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--Change Credentials-->
+            <div class="panel panel-default">
+                <div class="panel-header">
+                    <h3 class="panel-title"><a id="ThirdCollapserText" style="cursor:pointer" data-parent="#accordion" data-toggle="collapse" data-target="#a_ProfileFormChangeCompanyCredentials">Change Login Credentials</a></h3>
+                    <div class="panel-actions">
+                        <ul>
+                            <li class="action" ng-show="isInEditModeCLC==false">
+                                <a title="Edit" ng-click="UpdateLoginCredentialsEdit()"><span class="glyphicon glyphicon-edit"></span></a>
+                            </li>
+                            <li class="action" ng-show="isInEditModeCLC==true">
+                                <a title="Cancel Edit" ng-click="UpdateLoginCredentialsCancelEdit()"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
+                            </li>
+                            <li class="action">
+                                <a id="ThirdCollapser" style="cursor:pointer" data-toggle="collapse" data-parent="#accordion" data-target="#a_ProfileFormChangeCompanyCredentials"><span id="ThirdCollapserIcon" class="glyphicon glyphicon-plus"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="a_ProfileFormChangeCompanyCredentials">
+                    <div class="panel-content">
+                        <form class="form-horizontal" name="ProfileFormChangeCompanyCredentials" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 separator">
+                                    <div class="form-group">
+                                        <label for="Email" class="col-md-4 control-label">Email</label>
+                                        <div class="col-md-7" ng-if="isInEditModeCLC==true">
+                                            <input type="email" class="form-control" placeholder="Enter Email" name="CompanyEmail"
+                                                   ng-required="true"
+                                                   ng-model="Profile.CompanyEmail"
+                                                   ng-minlength="11"
+                                                   ng-maxlength="30"
+                                                   ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' />
+                                            <ul class="list-unstyled errormessage pull-left"
+                                                ng-show="ProfileFormChangeCompanyCredentials.CompanyEmail.$dirty && ProfileFormChangeCompanyCredentials.CompanyEmail.$invalid">
+                                                <li class="pull-left" ng-show="ProfileFormChangeCompanyCredentials.CompanyEmail.$error.pattern">Not a valid Email Address</li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormChangeCompanyCredentials.CompanyEmail.$error.pattern && ProfileFormChangeCompanyCredentials.CompanyEmail.$error.minlength">Minimum required length is 11</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormChangeCompanyCredentials.CompanyEmail.$error.pattern && ProfileFormChangeCompanyCredentials.CompanyEmail.$error.maxlength">Maximum required length is 30</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-7" ng-if="isInEditModeCLC==false">
+                                            <label class="control-label label-Italic">{{Profile.CompanyEmail}}</label>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                    <div class="form-group" style="margin-right:8.6%; margin-top:1.8%" ng-if="isInEditModeCLC==true">
+                                        <button type="submit" class="btn btn-default pull-right btn-addon" ng-disabled="ProfileFormChangeCompanyCredentials.CompanyEmail.$invalid || CurrentEmail==Profile.CompanyEmail" ng-click="ChangeCompanyEmailForLogin()"><i class="glyphicon glyphicon-ok"></i>Update</button>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" ng-if="isInEditModeCLC==true">
+                                        <label for="Password" class="col-md-4 control-label">Existing Password</label>
+                                        <div class="col-md-7">
+                                            <input type="password" class="form-control" placeholder="Enter Your Existing Passowrd" name="ExistingPassword"
+                                                   ng-required="true"
+                                                   ng-model="Profile.ExistingPassword"
+                                                   ng-minlength="6"
+                                                   ng-maxlength="50"
+                                                   ng-pattern="/([a-zA-Z0-9 ])\w+/" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormChangeCompanyCredentials.ExistingPassword.$dirty && ProfileFormChangeCompanyCredentials.ExistingPassword.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormChangeCompanyCredentials.ExistingPassword.$error.required">*Required</span></li>
+                                                <li><span class="pull-left" ng-show="ProfileFormChangeCompanyCredentials.ExistingPassword.$error.pattern">Not a valid Password</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormChangeCompanyCredentials.ExistingPassword.$error.pattern && ProfileFormChangeCompanyCredentials.ExistingPassword.$error.minlength">Minimum required length is 6</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormChangeCompanyCredentials.ExistingPassword.$error.pattern && ProfileFormChangeCompanyCredentials.ExistingPassword.$error.maxlength">Maximum required length is 50</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" ng-if="isInEditModeCLC==true">
+                                        <label for="NewPassword" class="col-md-4 control-label">New Password</label>
+                                        <div class="col-md-7">
+                                            <input type="password" class="form-control" placeholder="Enter Your New Password" name="CompanyPassword"
+                                                   ng-required="true"
+                                                   ng-model="Profile.CompanyPassword"
+                                                   ng-minlength="6"
+                                                   ng-maxlength="50"
+                                                   ng-pattern="/([a-zA-Z0-9 ])\w+/"
+                                                   ng-change="MatchWithExistingPassword(ProfileFormChangeCompanyCredentials)" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormChangeCompanyCredentials.CompanyPassword.$dirty && ProfileFormChangeCompanyCredentials.CompanyPassword.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormChangeCompanyCredentials.CompanyPassword.$error.required">*Required</span></li>
+                                                <li><span class="pull-left" ng-show="ProfileFormChangeCompanyCredentials.CompanyPassword.$invalid">{{ProfileFormChangeCompanyCredentials.CompanyPassword.errorMessage}}</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormChangeCompanyCredentials.CompanyPassword.$error.pattern && ProfileFormChangeCompanyCredentials.CompanyPassword.$error.minlength">Minimum required length is 6</span></li>
+                                                <li><span class="pull-left" ng-show="!ProfileFormChangeCompanyCredentials.CompanyPassword.$error.pattern && ProfileFormChangeCompanyCredentials.CompanyPassword.$error.maxlength">Maximum required length is 50</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" ng-if="isInEditModeCLC==true">
+                                        <label for="ConfirmPassword" class="col-md-4 control-label">Confirm Password</label>
+                                        <div class="col-md-7">
+                                            <input type="password" class="form-control" placeholder="Retype NewPassword" name="ConfirmPassword"
+                                                   ng-required="true"
+                                                   ng-model="Profile.ConfirmPassword"
+                                                   ng-minlength="6"
+                                                   ng-maxlength="50"
+                                                   ng-pattern="Profile.CompanyPassword" />
+                                            <ul class="list-unstyled errormessage pull-left" ng-show="ProfileFormChangeCompanyCredentials.ConfirmPassword.$dirty && ProfileFormChangeCompanyCredentials.ConfirmPassword.$invalid">
+                                                <li><span class="pull-left" ng-show="ProfileFormChangeCompanyCredentials.ConfirmPassword.$error.required">*Required</span></li>
+                                                <li><span class="pull-left" ng-show="ProfileFormChangeCompanyCredentials.ConfirmPassword.$error.pattern">Password is not matched</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="margin-right:9%" ng-if="isInEditModeCLC==true">
+                                        <button type="submit" class="btn btn-default pull-right btn-addon" ng-disabled="ProfileFormChangeCompanyCredentials.$invalid" ng-click="ChangeCompanyPasswordForLogin()"><i class="glyphicon glyphicon-ok"></i>Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<style>
+    .label-Italic {
+        font-style: italic;
+        font-size: 15px;
+    }
+</style>

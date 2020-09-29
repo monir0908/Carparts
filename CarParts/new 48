@@ -1,0 +1,10 @@
+                                                                        Data = e.Select(a => new
+                                                                        {
+                                                                            a.CourseQuiz.Title,
+                                                                            a.CourseQuiz.Id,
+                                                                            a.CourseQuiz.QuestionCount,
+                                                                            a.CourseQuiz.QuizInstruction,
+                                                                            a.CourseQuiz.AddedOn,
+                                                                            a.CourseQuiz.CourseId,
+                                                                            QuestionCountInBank = a.CourseQuizQuestionBank.Count()
+                                                                        }).FirstOrDefault()

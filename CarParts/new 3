@@ -1,0 +1,2 @@
+<div ng-include="'appTemplate/left-sidebar.html'"></div>
+<div ng-include="'appTemplate/page-header.html'"></div>

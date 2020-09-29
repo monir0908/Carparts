@@ -1,0 +1,10 @@
+        public JsonResult GetImageListByFloorId(Guid? floorId, int pageIndex, int pageSize)
+        {
+            var skip = pageIndex == 1 ? 0 : pageIndex * pageSize;
+            var take = pageSize;
+            return new JsonResult
+            {
+                Data = _context.FloorImage.Where(x => x.FloorId == floorId).OrderByDescending(x => x.AddedOn).Select(x => x).Skip(skip).Take(take).ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }

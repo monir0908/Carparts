@@ -1,0 +1,12 @@
+                customServices.isValidCourse(toParams.courseId, toParams.employeeId).then(function (response) {
+                    if (response.data) {
+                        // Go go go
+                    }
+                    else {
+                        $timeout(function () {
+                            event.preventDefault();
+                            toastr.warning("Course Not Found");
+                            $window.location.href = "/#" + fromState.url;
+                        }, 1)
+                    }
+                })

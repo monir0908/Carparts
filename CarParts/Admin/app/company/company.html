@@ -1,0 +1,706 @@
+﻿<div ng-include="'appTemplate/left-sidebar.html'"></div>
+<div ng-include="'appTemplate/page-header.html'"></div>
+
+<div class="content">
+    <div class="content-header">
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-building-o" aria-hidden="true"></i><a href="#">General Settings</a></li>
+                <li><a>Company Profile</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="animated fadeInUp">
+        <div class="row">
+            <!--SEARCH-->
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel-header" ng-if="HasAccessToMasterCompany">
+                        <button type="button" class="btn btn-default btn-o pull-right btn-addon btn-o-addon" ng-click="openMasterCompanyModal()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            {{HasAnyMasterCompany?'Update Master Company':'Add Master Company'}}
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <form name="CompanyProfileForm" novalidate>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="panel panel-primary panel-bordered">
+                                                <div class="panel-header">
+                                                    <h3 class="panel-title">General information</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <!--Name-->
+                                                            <div class="form-group">
+                                                                <label for="CompanyName" class="control-label">Company Name<span class="required">*</span></label>
+                                                                <input type="text" class="form-control" name="CompanyName" placeholder="Enter Company Name"
+                                                                       ng-model="Company.CompanyName"
+                                                                       ng-minlength="4"
+                                                                       ng-maxlength="30"
+                                                                       ng-required="true" />
+                                                                <div class="row custom-row">
+                                                                    <ul class="list-unstyled errormessage pull-left" ng-show="CompanyProfileForm.CompanyName.$dirty && CompanyProfileForm.CompanyName.$invalid">
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.CompanyName.$error.required">*Required</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.CompanyName.$error.minlength">Minimum required length is 4</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.CompanyName.$error.maxlength">Maximum required length is 30</span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <!--Email-->
+                                                            <div class="form-group">
+                                                                <label for="CompanyEmail" class="control-label">Company Email<span class="required">*</span></label>
+                                                                <input type="email" class="form-control" name="CompanyEmail" placeholder="Enter Company Email"
+                                                                       ng-model="Company.CompanyEmail"
+                                                                       ng-required="true"
+                                                                       ng-minlength="11"
+                                                                       ng-maxlength="30"
+                                                                       ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' />
+                                                                <div class="row custom-row">
+                                                                    <ul class="list-unstyled errormessage pull-left" ng-show="CompanyProfileForm.CompanyEmail.$dirty && CompanyProfileForm.CompanyEmail.$invalid">
+                                                                        <li class="pull-left" ng-show="CompanyProfileForm.CompanyEmail.$error.pattern">Not a valid Email Address</li>
+                                                                        <li><span class="pull-left" ng-show="!CompanyProfileForm.CompanyEmail.$error.pattern && CompanyProfileForm.CompanyEmail.$error.minlength">Minimum required length is 11</span></li>
+                                                                        <li><span class="pull-left" ng-show="!CompanyProfileForm.CompanyEmail.$error.pattern && CompanyProfileForm.CompanyEmail.$error.maxlength">Maximum required length is 30</span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <!--Phone-->
+                                                            <div class="form-group">
+                                                                <label for="Phone_1" class="control-label">Phone (1)<span class="required">*</span></label>
+                                                                <input type="text" class="form-control" name="Phone_1" placeholder="Enter Company Phone"
+                                                                       ng-model="Company.Phone_1"
+                                                                       ng-minlength="4"
+                                                                       ng-maxlength="30"
+                                                                       ng-required="true" />
+                                                                <div class="row custom-row">
+                                                                    <ul class="list-unstyled errormessage pull-left" ng-show="CompanyProfileForm.Phone_1.$dirty && CompanyProfileForm.Phone_1.$invalid">
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Phone_1.$error.required">*Required</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Phone_1.$error.minlength">Minimum required length is 4</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Phone_1.$error.maxlength">Maximum required length is 30</span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--Phone-->
+                                                            <div class="form-group">
+                                                                <label for="Phone_2" class="control-label">Phone (2)<span class="required">*</span></label>
+                                                                <input type="text" class="form-control" name="Phone_2" placeholder="Enter Another Phone number"
+                                                                       ng-model="Company.Phone_2"
+                                                                       ng-minlength="4"
+                                                                       ng-maxlength="30" />
+                                                                <div class="row custom-row">
+                                                                    <ul class="list-unstyled errormessage pull-left" ng-show="CompanyProfileForm.Phone_2.$dirty && CompanyProfileForm.Phone_2.$invalid">
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Phone_2.$error.minlength">Minimum required length is 4</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Phone_2.$error.maxlength">Maximum required length is 30</span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="col-lg-6">
+                                                            <!--Mobile-->
+                                                            <div class="form-group">
+                                                                <label for="Mobile" class="control-label">Company Mobile<span class="required">*</span></label>
+                                                                <input type="text" class="form-control" name="Mobile" placeholder="Enter Company Mobile Number"
+                                                                       ng-model="Company.Mobile"
+                                                                       ng-minlength="11"
+                                                                       ng-maxlength="14"
+                                                                       ng-required="true" />
+                                                                <div class="row custom-row">
+                                                                    <ul class="list-unstyled errormessage pull-left" ng-show="CompanyProfileForm.Mobile.$dirty && CompanyProfileForm.Mobile.$invalid">
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Mobile.$error.required">*Required</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Mobile.$error.minlength">Minimum required length is 11</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Mobile.$error.maxlength">Maximum required length is 14</span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <!--Website-->
+                                                            <div class="form-group">
+                                                                <label for="CompanyWebsite" class="control-label">Company Website<span class="required">*</span></label>
+                                                                <input type="text" class="form-control" name="CompanyWebsite" placeholder="Enter Company Website"
+                                                                       ng-model="Company.CompanyWebsite"
+                                                                       ng-minlength="4"
+                                                                       ng-maxlength="30"
+                                                                       ng-required="true" />
+                                                                <div class="row custom-row">
+                                                                    <ul class="list-unstyled errormessage pull-left" ng-show="CompanyProfileForm.CompanyWebsite.$dirty && CompanyProfileForm.CompanyWebsite.$invalid">
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.CompanyWebsite.$error.required">*Required</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.CompanyWebsite.$error.minlength">Minimum required length is 4</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.CompanyWebsite.$error.maxlength">Maximum required length is 30</span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <!--Address-->
+                                                            <div class="form-group">
+                                                                <label for="address" class="control-label">Address<span class="required">*</span></label>
+                                                                <textarea type="text" class="form-control" name="Address" style="resize:none; height:112px; min-height:100%; max-height:112px" placeholder="Write Company Address Here"
+                                                                          ng-model="Company.Address"
+                                                                          ng-required="true"
+                                                                          ng-minlength="7"
+                                                                          ng-maxlength="100"
+                                                                          ng-disabled="Loading==true"></textarea>
+                                                                <div class="row custom-row">
+                                                                    <ul class="list-unstyled errormessage pull-left"
+                                                                        ng-show="CompanyProfileForm.Address.$dirty && CompanyProfileForm.Address.$invalid">
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Address.$error.minlength">Minimum required length is 7</span></li>
+                                                                        <li><span class="pull-left" ng-show="CompanyProfileForm.Address.$error.maxlength">Maximum required length is 100</span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-3">
+                                <form name="CompanyContactPersonForm">
+                                    <div class="row">
+                                        <div class="panel panel-primary panel-bordered">
+                                            <div class="panel-header">
+                                                <h3 class="panel-title">Contact Person information</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <!--ContactPersonName-->
+                                                        <div class="form-group">
+                                                            <label for="ContactPersonName" class="control-label">Contact Person Name<span class="required">*</span></label>
+                                                            <input type="text" class="form-control" name="ContactPersonName" placeholder="Enter Contact Person Name"
+                                                                   ng-model="Company.ContactPersonName"
+                                                                   ng-minlength="4"
+                                                                   ng-maxlength="30"
+                                                                   ng-required="true" />
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left" ng-show="CompanyContactPersonForm.ContactPersonName.$dirty && CompanyContactPersonForm.ContactPersonName.$invalid">
+                                                                    <li><span class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonName.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonName.$error.minlength">Minimum required length is 4</span></li>
+                                                                    <li><span class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonName.$error.maxlength">Maximum required length is 30</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <!--ContactPersonEmail-->
+                                                        <div class="form-group">
+                                                            <label for="ContactPersonEmail" class="control-label">Contact Person Email<span class="required">*</span></label>
+                                                            <input type="email" class="form-control" name="ContactPersonEmail" placeholder="Enter Contact Person Email"
+                                                                   ng-model="Company.ContactPersonEmail"
+                                                                   ng-required="true"
+                                                                   ng-minlength="11"
+                                                                   ng-maxlength="30"
+                                                                   ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' />
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left" ng-show="CompanyContactPersonForm.ContactPersonEmail.$dirty && CompanyContactPersonForm.ContactPersonEmail.$invalid">
+                                                                    <li class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonEmail.$error.pattern">Not a valid Email Address</li>
+                                                                    <li><span class="pull-left" ng-show="!CompanyContactPersonForm.ContactPersonEmail.$error.pattern && CompanyContactPersonForm.ContactPersonEmail.$error.minlength">Minimum required length is 11</span></li>
+                                                                    <li><span class="pull-left" ng-show="!CompanyContactPersonForm.ContactPersonEmail.$error.pattern && CompanyContactPersonForm.ContactPersonEmail.$error.maxlength">Maximum required length is 30</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <!--ContactPersonPhone-->
+                                                        <div class="form-group">
+                                                            <label for="ContactPersonPhone" class="control-label">Contact Person Phone<span class="required">*</span></label>
+                                                            <input type="text" class="form-control" name="ContactPersonPhone" placeholder="Enter Contact Person Phone"
+                                                                   ng-model="Company.ContactPersonPhone"
+                                                                   ng-minlength="4"
+                                                                   ng-maxlength="30"
+                                                                   ng-required="true" />
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left" ng-show="CompanyContactPersonForm.ContactPersonPhone.$dirty && CompanyContactPersonForm.ContactPersonPhone.$invalid">
+                                                                    <li><span class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonPhone.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonPhone.$error.minlength">Minimum required length is 4</span></li>
+                                                                    <li><span class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonPhone.$error.maxlength">Maximum required length is 30</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <!--ContactPersonDesignation-->
+                                                        <div class="form-group">
+                                                            <label for="ContactPersonDesignation" class="control-label">Contact Person Designation<span class="required">*</span></label>
+                                                            <input type="text" class="form-control" name="ContactPersonDesignation" placeholder="Enter Contact Person Designation"
+                                                                   ng-model="Company.ContactPersonDesignation"
+                                                                   ng-minlength="4"
+                                                                   ng-maxlength="30"
+                                                                   ng-required="true" />
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left" ng-show="CompanyContactPersonForm.ContactPersonDesignation.$dirty && CompanyContactPersonForm.ContactPersonDesignation.$invalid">
+                                                                    <li><span class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonDesignation.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonDesignation.$error.minlength">Minimum required length is 4</span></li>
+                                                                    <li><span class="pull-left" ng-show="CompanyContactPersonForm.ContactPersonDesignation.$error.maxlength">Maximum required length is 30</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="panel panel-default panel-bordered">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="hovereffect">
+                                                    <img ng-if="files.length==0 && errFiles.length==0" ng-src="{{Company.CompanyLogo!=null?Company.CompanyLogo:'../../../Images/Company_Images/load.gif'}}" class="img-responsive" style="object-fit:contain; width:100%; height:130px" />
+                                                    <ul class="list-unstyled" ng-if="files.length==1 || errFiles.length>=1">
+                                                        <li ng-repeat="f in files">
+                                                            <img ngf-thumbnail="f" class="img-responsive" style="object-fit:contain; width:100%; height:130px" />
+                                                        </li>
+                                                    </ul>
+                                                    <div class="overlay">
+                                                        <div ng-if="files.length==0">
+                                                            <button type="button"
+                                                                    class="info"
+                                                                    ng-disabled="files.length==1"
+                                                                    uib-tooltip="{{files.length==1?'Can not upload more that 1 photo as profile picture':'Choose Photo'}}"
+                                                                    role="button"
+                                                                    tooltip-placement="top"
+                                                                    ngf-select="addFilesIntoFileStack($files, $invalidFiles)"
+                                                                    ngf-keep="'distinct'"
+                                                                    ngf-multiple="false"
+                                                                    ngf-max-size="1MB"
+                                                                    accept="image/png,image/jpeg"
+                                                                    ngf-pattern="'image/png,image/jpeg'">
+                                                                <i class="fa fa-file-image-o"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12" style="margin-top:5px">
+                                                        <div class="webkitscroller" style="max-height:113px" ng-if="files.length==1 || errFiles.length>=1">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-bordered table-hover">
+                                                                    <tbody>
+                                                                        <tr ng-repeat="f in files">
+                                                                            <td width="10%">
+                                                                                <a class="close" ng-click="removeFile(f)" tooltip-placement="right" uib-tooltip="Remove" ng-show="progress==undefined || progress<=0">&times;</a>
+                                                                            </td>
+                                                                            <td colspan="2" class="text-left">{{f.name}}</td>
+                                                                        </tr>
+                                                                        <tr ng-repeat="f in errFiles" style="color:red" tooltip-placement="top" uib-tooltip="Unsupported file. Will not be uploaded">
+                                                                            <td width="10%">
+                                                                                <a class="close" ng-click="removeFile(f)" tooltip-placement="right" uib-tooltip="Remove" ng-show="progress==undefined || progress<=0">&times;</a>
+                                                                            </td>
+                                                                            <td>{{f.name}}</td>
+                                                                            <td>Unsupported</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div ng-if="files.length==1">
+                                                            <button type="button"
+                                                                    class="btn btn-primary btn-wide btn-block"
+                                                                    ng-click="UploadCompanyLogo()"
+                                                                    ng-disabled="files.length>1"
+                                                                    role="button"
+                                                                    uib-tooltip="{{files.length>1?'Can not upload more that 1 photo as profile picture':'Upload Photo'}}"
+                                                                    tooltip-placement="top">
+                                                                Upload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-upload fa-1x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="panel panel-default panel-bordered">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="hovereffect">
+                                                    <img ng-if="filesLogo.length==0 && errFilesLogo.length==0" ng-src="{{Company.CompanySignature!=null?Company.CompanySignature:'../../../Images/Company_Images/load.gif'}}" class="img-responsive" style="object-fit:contain; width:100%; height:70px" />
+                                                    <ul class="list-unstyled" ng-if="filesLogo.length==1 || errFilesLogo.length>=1">
+                                                        <li ng-repeat="fLogo in filesLogo">
+                                                            <img ngf-thumbnail="fLogo" class="img-responsive" style="object-fit:contain; width:100%; height:70px" />
+                                                        </li>
+                                                    </ul>
+                                                    <div class="overlay">
+                                                        <div ng-if="filesLogo.length==0">
+                                                            <button type="button"
+                                                                    style="margin:31px 0 0"
+                                                                    class="info"
+                                                                    ng-disabled="filesLogo.length==1"
+                                                                    uib-tooltip="{{filesLogo.length==1?'Can not upload more that 1 photo as profile picture':'Choose Photo'}}"
+                                                                    role="button"
+                                                                    tooltip-placement="top"
+                                                                    ngf-select="addFilesIntoFileStackLogo($files, $invalidFiles)"
+                                                                    ngf-keep="'distinct'"
+                                                                    ngf-multiple="false"
+                                                                    ngf-max-size="1MB"
+                                                                    accept="image/png,image/jpeg"
+                                                                    ngf-pattern="'image/png,image/jpeg'">
+                                                                <i class="fa fa-file-image-o"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12" style="margin-top:5px">
+                                                        <div class="webkitscroller" style="max-height:113px" ng-if="filesLogo.length==1 || errFilesLogo.length>=1">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-bordered table-hover">
+                                                                    <tbody>
+                                                                        <tr ng-repeat="fLogo in filesLogo">
+                                                                            <td width="10%">
+                                                                                <a class="close" ng-click="removeFileLogo(fLogo)" tooltip-placement="right" uib-tooltip="Remove" ng-show="progressLogo==undefined || progressLogo<=0">&times;</a>
+                                                                            </td>
+                                                                            <td colspan="2" class="text-left">{{fLogo.name}}</td>
+                                                                        </tr>
+                                                                        <tr ng-repeat="fLogo in errFilesLogo" style="color:red" tooltip-placement="top" uib-tooltip="Unsupported file. Will not be uploaded">
+                                                                            <td width="10%">
+                                                                                <a class="close" ng-click="removeFileLogo(fLogo)" tooltip-placement="right" uib-tooltip="Remove" ng-show="progressLogo==undefined || progressLogo<=0">&times;</a>
+                                                                            </td>
+                                                                            <td>{{fLogo.name}}</td>
+                                                                            <td>Unsupported</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" ng-if="ImageMessage">
+                                                    <div class="col-lg-12">
+                                                        <div class="alert" style="background: #cce5ff;border-color: #b8daff;color: #004085; font-size:12px; margin-bottom:5px; padding:0px 7px">
+                                                            <h5><b>Be Advised</b></h5>
+                                                            <span>{{ImageMessage}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div ng-if="filesLogo.length==1">
+                                                            <button type="button"
+                                                                    class="btn btn-primary btn-wide btn-block"
+                                                                    ng-click="UploadCompanySignature()"
+                                                                    ng-disabled="filesLogo.length>1"
+                                                                    role="button"
+                                                                    uib-tooltip="{{filesLogo.length>1?'Can not upload more that 1 photo as profile picture':'Upload Photo'}}"
+                                                                    tooltip-placement="top">
+                                                                Upload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-upload fa-1x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button"
+                                class="btn btn-wide btn-primary pull-right btn-right-border-radius"
+                                ng-if="!Company.Id"
+                                ng-disabled="CompanyProfileForm.$invalid || CompanyContactPersonForm.$invalid"
+                                ng-click="CreateCompany()">
+                            Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                        </button>
+                        <button type="button"
+                                class="btn btn-wide btn-primary pull-right btn-right-border-radius"
+                                ng-if="Company.Id"
+                                ng-disabled="CompanyProfileForm.$invalid || CompanyContactPersonForm.$invalid"
+                                ng-click="UpdateCompany()">
+                            Update &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="MasterCompanyModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document" style="width:65%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="custom-close" ng-click="cancelMasterCompanyModal()" style="margin-top:0px;" aria-label="Close" tooltip-placement="left" uib-tooltip="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="margin-top:1.6%">{{MasterCompany.Id?'Update MasterCompany':'Create MasterCompany'}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form name="MasterCompanyProfileForm" novalidate>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="panel panel-primary panel-bordered">
+                                        <div class="panel-header">
+                                            <h3 class="panel-title">General information</h3>
+                                            <div class="panel-actions">
+                                                <ul>
+                                                    <li class="action" tooltip-placement="left" uib-tooltip="{{MasterCompany.ShowOnReport=='Show'?'Master Company Details will be shown on report':'Master Company Details will be hidden on report'}}" ng-click="ToggleMasterSettingsApperance()"><span class="{{MasterCompany.ShowOnReport=='Show'?'fa fa-eye':'fa fa-eye-slash'}}"></span></></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <!--Name-->
+                                            <div class="form-group">
+                                                <label for="MasterCompanyName" class="control-label">Master Company Name<span class="required">*</span></label>
+                                                <input type="text" class="form-control" name="MasterCompanyName" placeholder="Enter Master Company Name"
+                                                       ng-model="MasterCompany.MasterCompanyName"
+                                                       ng-minlength="4"
+                                                       ng-maxlength="30"
+                                                       ng-required="true" />
+                                                <div class="row custom-row">
+                                                    <ul class="list-unstyled errormessage pull-left" ng-show="MasterCompanyProfileForm.MasterCompanyName.$dirty && MasterCompanyProfileForm.MasterCompanyName.$invalid">
+                                                        <li><span class="pull-left" ng-show="MasterCompanyProfileForm.MasterCompanyName.$error.required">*Required</span></li>
+                                                        <li><span class="pull-left" ng-show="MasterCompanyProfileForm.MasterCompanyName.$error.minlength">Minimum required length is 4</span></li>
+                                                        <li><span class="pull-left" ng-show="MasterCompanyProfileForm.MasterCompanyName.$error.maxlength">Maximum required length is 30</span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <button type="button"
+                                                    class="btn btn-wide btn-primary pull-right btn-right-border-radius"
+                                                    ng-if="!MasterCompany.Id"
+                                                    ng-disabled="MasterCompanyProfileForm.$invalid"
+                                                    ng-click="CreateMasterCompany()">
+                                                Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-wide btn-primary pull-right btn-right-border-radius"
+                                                    ng-if="MasterCompany.Id"
+                                                    ng-disabled="MasterCompanyProfileForm.$invalid"
+                                                    ng-click="UpdateMasterCompany()">
+                                                Update &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-default panel-bordered">
+                            <div class="panel-header">
+                                <h3 class="panel-title">Upload Logo</h3>
+                            </div>
+                            <div class="panel-content">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="hovereffect">
+                                            <img ng-if="filesMasterCompany.length==0 && errFilesMasterCompany.length==0" ng-src="{{MasterCompany.MasterCompanyLogo!=null?'../../../Images/MasterCompany_Images/'+MasterCompany.MasterCompanyLogo:'../../../Images/MasterCompany_Images/load.gif'}}" class="img-responsive" style="object-fit:contain; width:100%; height:116px" />
+                                            <ul class="list-unstyled" ng-if="filesMasterCompany.length==1 || errFilesMasterCompany.length>=1">
+                                                <li ng-repeat="fMasterCompany in filesMasterCompany">
+                                                    <img ngf-thumbnail="fMasterCompany" class="img-responsive" style="object-fit:contain; width:100%; height:116px" />
+                                                </li>
+                                            </ul>
+                                            <div class="overlay">
+                                                <div ng-if="filesMasterCompany.length==0">
+                                                    <button type="button"
+                                                            class="info"
+                                                            ng-disabled="filesMasterCompany.length==1"
+                                                            uib-tooltip="{{filesMasterCompany.length==1?'Can not upload more that 1 photo as profile picture':'Choose Photo'}}"
+                                                            role="button"
+                                                            tooltip-placement="top"
+                                                            ngf-select="addFilesIntoFileStackMasterCompany($files, $invalidFiles)"
+                                                            ngf-keep="'distinct'"
+                                                            ngf-multiple="false"
+                                                            ngf-max-size="1MB"
+                                                            accept="image/png,image/jpeg"
+                                                            ngf-pattern="'image/png,image/jpeg'">
+                                                        <i class="fa fa-file-image-o"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12" style="margin-top:5px">
+                                                <div class="webkitscroller" style="max-height:113px" ng-if="filesMasterCompany.length==1 || errFilesMasterCompany.length>=1">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover">
+                                                            <tbody>
+                                                                <tr ng-repeat="fMasterCompany in filesMasterCompany">
+                                                                    <td width="10%">
+                                                                        <a class="close" ng-click="removeFileMasterCompany(fMasterCompany)" tooltip-placement="right" uib-tooltip="Remove" ng-show="progressMasterCompany==undefined || progressMasterCompany<=0">&times;</a>
+                                                                    </td>
+                                                                    <td colspan="2" class="text-left">{{fMasterCompany.name}}</td>
+                                                                </tr>
+                                                                <tr ng-repeat="fMasterCompany in errFilesMasterCompany" style="color:red" tooltip-placement="top" uib-tooltip="Unsupported file. Will not be uploaded">
+                                                                    <td width="10%">
+                                                                        <a class="close" ng-click="removeFileMasterCompany(fMasterCompany)" tooltip-placement="right" uib-tooltip="Remove" ng-show="progressMasterCompany==undefined || progressMasterCompany<=0">&times;</a>
+                                                                    </td>
+                                                                    <td>{{fMasterCompany.name}}</td>
+                                                                    <td>Unsupported</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div ng-if="filesMasterCompany.length==1">
+                                                    <button type="button"
+                                                            class="btn btn-primary btn-wide btn-block"
+                                                            ng-click="UploadMasterCompanyLogo()"
+                                                            ng-disabled="filesMasterCompany.length>1"
+                                                            role="button"
+                                                            uib-tooltip="{{filesMasterCompany.length>1?'Can not upload more that 1 photo as logo':'Upload Photo'}}"
+                                                            tooltip-placement="top">
+                                                        Upload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-upload fa-1x"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Action Buttons-->
+            <div class="modal-footer">
+                <div class="row row-modal">
+                    <button type="button"
+                            class="btn  btn-default btn-wide pull-right"
+                            ng-click="cancelMasterCompanyModal()"
+                            role="button">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hovereffect {
+        /*border-radius: 150px;*/
+        width: 100%;
+        height: 100%;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: default;
+    }
+
+        .hovereffect .overlay {
+            /*border-radius: 150px;*/
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color: rgba(0,0,0,0.5);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out
+        }
+
+        .hovereffect img {
+            display: block;
+            position: relative;
+            -webkit-transition: all .1s linear;
+            transition: all .1s linear;
+        }
+
+        .hovereffect h2 {
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            background: rgba(0,0,0,0.6);
+            -webkit-transform: translatey(-100px);
+            -ms-transform: translatey(-100px);
+            transform: translatey(-100px);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            padding: 10px;
+        }
+
+        .hovereffect button.info {
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid #fff;
+            background-color: transparent;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            margin: 50px 0 0;
+            padding: 7px 14px;
+        }
+
+            .hovereffect button.info:hover {
+                box-shadow: 0 0 5px #fff;
+            }
+
+        .hovereffect:hover img {
+            -ms-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+        .hovereffect:hover .overlay {
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+        .hovereffect:hover h2, .hovereffect:hover button.info {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -ms-transform: translatey(0);
+            -webkit-transform: translatey(0);
+            transform: translatey(0);
+        }
+
+        .hovereffect:hover button.info {
+            -webkit-transition-delay: .1s;
+            transition-delay: .1s;
+        }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+</style>

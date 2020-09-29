@@ -1,0 +1,121 @@
+﻿
+<div ng-include="'Customer/appTemplate/header.html'"></div>
+
+<!--Shop By Category area start-->
+<section class="small_product_area mb-50 animated fadeIn">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" style="padding-top:20px">
+                <div class="section_title" style="margin-left:12px">
+                    <h2>
+                        <span> <strong>{{Hierarchy.MasterProductCategoryName?'Shop '+Hierarchy.MasterProductCategoryName:''}}</strong></span>
+                        <strong ng-if="TempVehicleFilter.Year">
+                            <span ng-if="Hierarchy.MasterProductCategoryName && TempVehicleFilter.Year">|</span>Your Selected Vehicle
+                            <span>
+                                <span style="background: black;color: white;">{{TempVehicleFilter.Year}} {{TempVehicleFilter.MakerName}} {{TempVehicleFilter.ModelName}} {{TempVehicleFilter.SubModelName}} {{TempVehicleFilter.EngineName}}</span>
+                            </span>
+                        </strong>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="text-center">
+                                    Additional Filter
+                                </h4>
+                            </div>
+                            <div class="card-body" style="height:100px">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row" ng-if="ProductList.length>0">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-4" ng-repeat="x in ProductList" style="padding-bottom:15px;padding-left:15px;padding-right:15px">
+                                        <div class="shadow-card">
+                                            <div class="card animated zoomIn">
+                                                <div class="card-body text-center">
+                                                    <a href="javascript:">
+                                                        <img ng-src="{{x.ProductHeaderBanner}}" />
+                                                    </a>
+                                                </div>
+                                                <div class="card-footer text-center" style="background-color: white;border-top: none;padding: 5px;">
+                                                    <p style="font-size: 22px;padding-left: 5px;" class="text-left"><strong>{{x.MasterProductBrandName}}</strong></p>
+                                                    <div class="webkitscroller-transparent" style="padding-right:0px">
+                                                        <table class="table table-borderless table-sm" style="margin-bottom:0px">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2" class="text-left">
+                                                                        {{x.Name.length>=83?x.Name.substr(0,83)+'...':x.Name}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left" colspan="2">Part Number : {{x.ProductSKU}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2" class="text-left">
+                                                                        <img style="width:35px;" src="/Customer/Assets_Customer/images/success.png" />&nbsp;&nbsp;
+                                                                        <strong>Guaranteed to Fit</strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left">
+                                                                        <p style="font-size:20px">
+                                                                            <strong>{{'৳'+x.Price}}</strong>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td  class="text-right">
+                                                                        <a href="javascript:">
+                                                                            View Details
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <button class="btn btn-warning btn-block">
+                                                                            Add to cart
+                                                                            <i class="fa fa-cart-plus">
+                                                                            </i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="ProductList.length<=0">
+                            <div class="col-lg-12">
+                                <div class="justify-content-center row">
+                                    <h3 class="text-secondary" style="padding:50px">
+                                        <strong>
+                                            No Item Found
+                                            <span ng-if="TempVehicleFilter.Year">
+                                                <span>for</span> <span style="background: black;color: white;">{{TempVehicleFilter.Year}} {{TempVehicleFilter.MakerName}} {{TempVehicleFilter.ModelName}} {{TempVehicleFilter.SubModelName}} {{TempVehicleFilter.EngineName}}</span>
+                                            </span>
+                                        </strong>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div ng-include="'Customer/appTemplate/footer.html'"></div>

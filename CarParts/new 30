@@ -1,0 +1,9 @@
+                            Image image = Image.FromFile(Generator.CompanyImagePath + newImageName);
+                            double magicNumber = image.Width / image.Height;
+                            if (magicNumber > 4.5 && magicNumber < 5.9)
+                            {
+                                companyToUploadImage.CompanyLogo = newImageName;
+                                _context.SaveChanges();
+                                Generator.IsReport = "Success";
+                                Generator.Message = "Company logo uploaded successfully.";
+                            }

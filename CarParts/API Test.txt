@@ -1,0 +1,275 @@
+Required For API Develpment
+
+	AdminId : a6641d15-7e8d-4a36-9273-92ca3211bf96
+	Token :   Admin-CarParts#eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJUb2tlbklkIjowLCJVc2VybmFtZSI6InNhamVlYjRAZ21haWwuY29tIiwiUmFuZG9tVmFsdWUiOiI5MzVkZTgyNS1iY2ZiLTQyYTQtYWJkYS0wNmUzODUxN2MwM2YifQ.nwObiAizOuMkxPBHRmhalD6rXycQqTf0ZOU9lly6O3g
+	baseURL : http://localhost:30312/Api
+	
+	
+public Admin Admin { get; set; }
+public Guid? AdminId { get; set; }
+public DateTime AddedOn { get; set; }
+
+	
+if (response.data.IsReport == "Success") {
+	toastr.success(response.data.Message, "Success!");
+}
+else if (response.data.IsReport == "Warning") {
+	toastr.warning(response.data.Message, "Warning!");
+}
+else if (response.data.IsReport == "Error") {
+	toastr.error(response.data.Message, "Error!");
+}	
+
+$scope.AddSubjectForm.$setPristine();
+$scope.AddSubjectForm.$setUntouched();
+
+
+dynamic jsonData = jObject;
+var JsonHall_DayRange = jsonData.HallDayRange;
+var hallDayRange = JsonHall_DayRange.ToObject<Hall_DayRange>();
+
+var JsonWeekDayModelList = jsonData.WeekDayModelList;
+var weekDayModelList = JsonWeekDayModelList.ToObject<List<WeekDayModel>>();
+
+
+Generator.IsReport = "Error";
+Generator.Message = "404 Not Found!";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$scope.Branch.AdminId = $rootScope.AdminId;
+Generator.VideoPath + subjectCode + "\\" + courseCode + "\\" + newFileName
+
+
+if (data.successList.length > 0) {
+	//for (let i = 0; i < data.successList.length; i++) {
+	//    toastr.success(data.successList[i], "Success!");
+	//}
+	toastr.success(data.successList.length.toString() + " videos uploaded successfully", "Success!");
+}
+
+if (data.errorList.length > 0) {
+	for (let i = 0; i < data.errorList.length; i++) {
+		toastr.error(data.errorList[i], "Error!");
+	}
+}
+if (data.warningList.length > 0) {
+	for (let i = 0; i < data.warningList.length; i++) {
+		toastr.warning(data.warningList[i], "Warning!");
+	}
+}
+
+return new JsonResult
+{
+	Data = new
+	{
+		Generator.IsReport,
+		Generator.Message
+	},
+	JsonRequestBehavior = JsonRequestBehavior.AllowGet
+};
+
+#189279
+
+public static string DictionaryToJson(Dictionary<string, string> dict)
+{
+    var entries = dict.Select(d =>
+        string.Format("{0}" + ":" + "{1}", d.Key, d.Value));
+    return string.Join(",", entries);
+}
+
+
+ProfilePictureForMobile = !String.IsNullOrEmpty(x.ProfilePicture) ? Generator.BaseURL() + "/Images/Applicant_Images/" + x.ProfilePicture : null,
+
+I may add video view graph on a video.
+Like how many view of a video has per date
+
+Same graph can be added to customer.
+Like his/her view count per date
+
+
+style="transition:all 0.5s cubic-bezier(0.44, -0.35, 0.54, 1.35) !important"
+
+ui-sref="coursedetails({courseId:x.Id})"
+
+tooltips tooltip-side="bottom" tooltip-template="Resolution"
+
+$scope.CustomerList[i].AddedOn = moment.utc($scope.CustomerList[i].AddedOn).local().format();
+
+<!--<div class="dropdown-menu">
+	<ul>
+		<li><a class="dropdown-item nav-link nav_item" href="index.html">Home Version 1</a></li>
+		<li><a class="dropdown-item nav-link nav_item" href="index-2.html">Home Version 2</a></li>
+		<li><a class="dropdown-item nav-link nav_item" href="index-3.html">Home Version 3</a></li>
+		<li><a class="dropdown-item nav-link nav_item active" href="index-4.html">Home Version 4</a></li>
+		<li><a class="dropdown-item nav-link nav_item" href="index-5.html">Home Version 5</a></li>
+		<li><a class="dropdown-item nav-link nav_item" href="index-6.html">Home Version 6</a></li>
+	</ul>
+</div>-->
+
+Very huge data to post
+[
+  {
+    "Model": true,
+    "Name": "Auto Body Parts & Mirrors",
+    "ParentId": "45fe3f1f-dc4d-4cf9-899a-a992645f960f",
+    "TempProductHierarchyList": [
+      {
+        "Model": false,
+        "Name": "Bumpers & Components",
+        "ParentId": "59f4e0a6-1640-4377-a105-8b220068ef01",
+        "TempProductHierarchyList": [
+          {
+            "Model": true,
+            "Name": "Bumper",
+            "ParentId": "6894ae11-cb03-4d05-88b1-e95716659682",
+            "TempProductHierarchyList": []
+          },
+          {
+            "Model": true,
+            "Name": "Bumper Cover",
+            "ParentId": "b0cf721f-dd20-4bd0-a99e-96b4fba28b44",
+            "TempProductHierarchyList": []
+          },
+          {
+            "Model": false,
+            "Name": "Step Bumper",
+            "ParentId": "e81f1ec9-2e51-4018-b2f6-697ad1ddde0f",
+            "TempProductHierarchyList": []
+          }
+        ]
+      },
+      {
+        "Model": true,
+        "Name": "Fenders & Components",
+        "ParentId": "7e5b2187-c3ad-4610-9f9a-e768f137ac02",
+        "TempProductHierarchyList": []
+      },
+      {
+        "Model": false,
+        "Name": "Mirrors & Components",
+        "ParentId": "b4312d37-e20b-42ea-9b36-be1ef513beae",
+        "TempProductHierarchyList": [
+          {
+            "Model": true,
+            "Name": "Bumper Reinforcement",
+            "ParentId": "d1e1cf01-ce3f-44d0-b915-78d9ecaf20b0",
+            "TempProductHierarchyList": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Model": true,
+    "Name": "Brakes, Suspension & Steering",
+    "ParentId": "621595f7-8d8f-45be-b4ad-b923864f930b",
+    "TempProductHierarchyList": []
+  },
+  {
+    "Model": true,
+    "Name": "Engine & Drivetrain",
+    "ParentId": "446542a9-c832-40f2-9dc3-cd3f4bb18268",
+    "TempProductHierarchyList": []
+  },
+  {
+    "Model": true,
+    "Name": "Exterior",
+    "ParentId": "c4a97eea-d3c3-4f62-8c2e-16964cb21f3c",
+    "TempProductHierarchyList": []
+  },
+  {
+    "Model": false,
+    "Name": "Headlights & Lighting",
+    "ParentId": "ff6f0919-6324-467d-92cc-45bc195b4838",
+    "TempProductHierarchyList": [
+      {
+        "Model": true,
+        "Name": "Headlights, Components & Accessories",
+        "ParentId": "6c35ef22-9c34-4cee-90d6-9d26ad143384",
+        "TempProductHierarchyList": []
+      },
+      {
+        "Model": true,
+        "Name": "Tail Lights, Back Up Lights & Accessories",
+        "ParentId": "54b03ffb-14a2-4938-802f-7b39a759a3a6",
+        "TempProductHierarchyList": []
+      }
+    ]
+  },
+  {
+    "Model": true,
+    "Name": "Interior",
+    "ParentId": "8a50b62f-2a55-4410-bd9e-d9ad6f0051cb",
+    "TempProductHierarchyList": []
+  },
+  {
+    "Model": true,
+    "Name": "Tools & Garage",
+    "ParentId": "7390cb00-bd7c-40f1-87d3-42c6ccb919a3",
+    "TempProductHierarchyList": []
+  },
+  {
+    "Model": true,
+    "Name": "Wheels & Tires",
+    "ParentId": "e8fabdd9-5a73-4350-85e2-65452d9a3a26",
+    "TempProductHierarchyList": []
+  }
+]
+
+
+
+BDT Logo : '৳'
+
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+While doing GroupBy in LINQ please add a .TolIst() before applying any GroupBy()
+
+
+ex.Message = "Thread was being aborted."
+
+If you use the Response.End, Response.Redirect, or
+Server.Transfer method, a ThreadAbortException exception occurs. You can use a try-catch statement to catch this exception.
+
+The Response.End method ends the page execution and shifts the execution to the Application_EndRequest event in the application's event pipeline. The line of code that follows Response.End is not executed.
+
+This problem occurs in the Response.Redirect and Server.Transfer methods because both methods call Response.End internally.

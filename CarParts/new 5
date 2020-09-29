@@ -1,0 +1,5 @@
+                                <h3 class="panel-title" ng-if="ImageList.length>0">
+                                    Total
+                                    <span class="badge x-primary">{{ImageList.length}}</span>
+                                    images uploaded
+                                </h3>

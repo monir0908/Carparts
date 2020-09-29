@@ -1,0 +1,4 @@
+﻿Asesome Box-Shadow:: 0px 0px 20px 4px #cccccc
+
+Mobile or Phone Number Dynamically Showing
+<td>{{ x.Mobile==null && x.Phone!=null?x.Phone:x.Mobile!=null && x.Phone==null?x.Mobile:x.Mobile!=null && x.Phone!=null?x.Mobile:x.Mobile==null && x.Phone==null?'N/A':''}}</td>

@@ -1,0 +1,32 @@
+<div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <a href="javascript:" ng-click="ShowRespectiveMegaMenuByIdOnSearchForm()"><i class="fa fa-2x fa-car" style="font-weight:900"></i>1993 Chevrolet C2500</a>
+                                <div class="mega_menu" id="hdufhufhefhd">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="webkitscroller-transparent" style="height: auto;max-height: 225px;min-height: 225px;overflow-x: hidden;">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <ul class="mega_menu_inner">
+                                                            <li>Test</li>
+                                                            <li>Test 002</li>
+                                                            <li>Test 003</li>
+                                                            <li>Test 004</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                            <div class="input-group-append">
+                                <button class="btn btn-block btn-outline-dark btn-sm"
+                                        ng-disabled="SearchByVehicleForm.$invalid"
+                                        ng-click="SearchByVehicle()">
+                                    <i class="fa fa-search fa-2x"></i>
+                                </button>
+                            </div>
+                        </div>

@@ -1,0 +1,47 @@
+﻿<div class="left-sidebar" ng-controller="appController">
+    <!-- left sidebar HEADER -->
+    <div class="left-sidebar-header">
+        <!--<div class="left-sidebar-title"><span class="menu-title"><img src="Assets_Admin/images/falcon.png"  width="50"/></span></div>-->
+        <div class="left-sidebar-title" style="padding:13px 10px"><span class="menu-title">Car Parts</span></div>
+        <div class="left-sidebar-toggle c-hamburger c-hamburger--htla hidden-xs" ng-click="HTMLCollapser()">
+            <span></span>
+        </div>
+    </div>
+    <!-- MENU -->
+    <div id="left-nav" class="nano">
+        <div class="nano-content">
+
+            <nav>
+                <ul class="nav nav-left-lines" id="main-nav">
+                    <!--Dahboard-->
+                    <li ui-sref-active="active-item"><a ui-sref="home" class="dashboard-color"><i class="fa fa-dashboard dashboard-color" aria-hidden="true"></i><span>Dashboard</span></a></li>
+                    <!--Company-->
+                    <li ui-sref-active="active-item"><a ui-sref="company" class="dashboard-color"><i class="fa fa-building dashboard-color" aria-hidden="true"></i><span>Company</span></a></li>
+                    <!--Master Main Category-->
+                    <li class="has-child-item close-item" ng-class="{'has-child-item open-item':$root.categoryOpen==true}">
+                        <a>
+                            <i class="fa fa-cogs dashboard-color" aria-hidden="true"></i>
+                            <span>Master Settings</span>
+                        </a>
+                        <ul class="nav child-nav level-1">
+                            <li ui-sref-active="active-item"><a ui-sref="mastermaincategory">Main Category</a></li>
+                            <li ui-sref-active="active-item"><a ui-sref="mastersubcategory">Sub Category</a></li>
+                            <li ui-sref-active="active-item"><a ui-sref="masterproductcategory">Product Category</a></li>
+                            <li ui-sref-active="active-item"><a ui-sref="masterproductbrand">Product Brand</a></li>
+                            <li ui-sref-active="active-item"><a ui-sref="masterproductspecificationlabel">Product Spec. Label</a></li>
+                        </ul>
+                    </li>
+                    <!--Vehicle Settings-->
+                    <li ui-sref-active="active-item"><a ui-sref="vehiclesettings" class="dashboard-color"><i class="fa fa-car dashboard-color" aria-hidden="true"></i><span>Vehicle Settings</span></a></li>
+
+                    <!--Manage Product-->
+                    <li ui-sref-active="active-item"><a ui-sref="manageproduct" class="dashboard-color"><i class="fa fa-shopping-basket dashboard-color" aria-hidden="true"></i><span>Manage Product</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!--TEMPLATE scripts-->
+<!-- ========================================================= -->
+<script src="Assets_Admin/javascripts/template-script.min.js"></script>
+<script src="Assets_Admin/javascripts/template-init.min.js"></script>

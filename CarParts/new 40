@@ -1,0 +1,9 @@
+
+                                            .SelectMany(x => x.VideoAttachment.DefaultIfEmpty(), (x, y) => new
+                                            {
+                                                x.RoleDetails,
+                                                x.Course,
+                                                x.CourseMaterial,
+                                                x.Subject,
+                                                VideoAttachment = y
+                                            })

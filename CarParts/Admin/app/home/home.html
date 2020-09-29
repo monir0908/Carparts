@@ -1,0 +1,143 @@
+﻿<!-- left-sidebar -->
+<div ng-include="'appTemplate/left-sidebar.html'"></div>
+<!-- page-header -->
+<div ng-include="'appTemplate/page-header.html'"></div>
+<!--<div class="container">
+    What is Lorem Ipsum?
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+     standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+    a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+    essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</div>-->
+<!-- CONTENT -->
+<!-- ========================================================= -->
+
+
+
+<div class="content">
+    <!-- content HEADER -->
+    <!-- ========================================================= -->
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-dashboard" aria-hidden="true"></i><a ui-sref="home">Dashboard</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="row animated fadeIn">
+        <div class="col-sm-12 col-lg-12">
+
+            <!--CUSTOMER, BRANCH, CATERING VENDOR-->
+
+            <div class="row">
+                <!--CUSTOMER-->
+                <div class="col-sm-12 col-md-4 block2s">
+                    <div class="panel widgetbox wbox-2 animated zoomIn" style="background-color:white">
+                        <div class="panel-content" style="height: 134px;">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <span class="icon fa fa-group color-darker-1" style="font-size:40px">
+
+                                    </span>
+                                </div>
+                                <div class="col-xs-9">
+                                    <h4 class="title color-primary">Customer</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless">
+                                            <tr>
+                                                <td style="padding:2px">
+                                                    <span class="pull-right color-primary">
+                                                        Total Customer (s)
+                                                        <span class="badge x-success b-straight" style="padding:2px 5px; margin-bottom:3px">{{TotalCustomerCount}}</span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--BRANCH-->
+                <div class="col-sm-12 col-md-4 block2s">
+                    <div class="panel widgetbox wbox-2 animated zoomIn" style="background-color:white">
+                        <div class="panel-content" style="height: 134px;">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <span class="icon glyphicon glyphicon-home color-darker-1" style="font-size:40px">
+
+                                    </span>
+                                </div>
+                                <div class="col-xs-9">
+                                    <h4 class="title color-primary">Branch</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless">
+                                            <tr>
+                                                <td style="padding:2px">
+                                                    <span class="pull-right color-primary">
+                                                        Total Branch (s)
+                                                        <span class="badge x-success b-straight" style="padding:2px 5px; margin-bottom:3px">{{AllBranchCount}}</span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--CATERING VENDOR-->
+                <div class="col-sm-12 col-md-4 block2s">
+                    <div class="panel widgetbox wbox-2 animated zoomIn" style="background-color:white">
+                        <div class="panel-content" style="height: 134px;">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <span class="icon fa fa-cutlery color-darker-1" style="font-size:40px">
+
+                                    </span>
+                                </div>
+                                <div class="col-xs-9">
+                                    <h4 class="title color-primary">Catering Vendor</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless">
+                                            <tr>
+                                                <td style="padding:2px">
+                                                    <span class="pull-right color-primary">
+                                                        Total Catering Vendor (s)
+                                                        <span class="badge x-success b-straight" style="padding:2px 5px; margin-bottom:3px">{{AllCateringVendorCount}}</span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+</div>
+
+<style>
+</style>

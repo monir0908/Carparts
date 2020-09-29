@@ -1,0 +1,242 @@
+﻿<div class="row">
+                                    <div class="col-lg-8">
+                                        <!--A Row-->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="row" style="padding-left:20px; padding-right:20px;">
+                                                    <div class="col-lg-6">
+                                                        <div class="panel panel-primary panel-bordered">
+                                                            <div class="panel-body">
+                                                                <div class="form-group-sm">
+                                                                    <label for="FirstName" class="control-label">First Name<span class="required">*</span></label>
+                                                                    <input type="text" class="form-control" name="FirstName" placeholder="Enter First Name"
+                                                                           ng-model="Customer.FirstName"
+                                                                           ng-minlength="4"
+                                                                           ng-maxlength="20"
+                                                                           ng-pattern="/^([A-Z])([a-z])+/"
+                                                                           ng-required="true" />
+                                                                    <div class="row custom-row">
+                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="CustomerForm.FirstName.$dirty && CustomerForm.FirstName.$invalid">
+                                                                            <li><span class="pull-left" ng-show="CustomerForm.FirstName.$error.required">*Required</span></li>
+                                                                            <li><span class="pull-left" ng-show="CustomerForm.FirstName.$error.pattern">Not a valid first name. Must be start with capital letter.</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.FirstName.$error.pattern && CustomerForm.FirstName.$error.minlength">Minimum required length is 4</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.FirstName.$error.pattern && CustomerForm.FirstName.$error.maxlength">Maximum required length is 20</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group-sm">
+                                                                    <label for="LastName" class="control-label">Last Name<span class="required">*</span></label>
+                                                                    <input type="text" class="form-control" name="LastName" placeholder="Enter Last Name"
+                                                                           ng-model="Customer.LastName"
+                                                                           ng-minlength="3"
+                                                                           ng-maxlength="20"
+                                                                           ng-pattern="/^([A-Z])([a-z])+/"
+                                                                           ng-required="true">
+                                                                    <div class="row custom-row">
+                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="CustomerForm.LastName.$dirty && CustomerForm.LastName.$invalid">
+                                                                            <li><span class="pull-left" ng-show="CustomerForm.LastName.$error.required">*Required</span></li>
+                                                                            <li><span class="pull-left" ng-show="CustomerForm.LastName.$error.pattern">Not a valid last name. Must be start with capital letter.</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.LastName.$error.pattern && CustomerForm.LastName.$error.minlength">Minimum required length is 4</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.LastName.$error.pattern && CustomerForm.LastName.$error.maxlength">Maximum required length is 20</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group-sm">
+                                                                    <label for="BirthDate" class="control-label">Birth Date</label>
+                                                                    <datepicker date-format="dd/MM/yyyy" date-max-limit="{{MaxDate | date}}" date-min-limit="{{MinDate | date}}">
+                                                                        <input type="text" class="form-control custom-form-control" style="cursor:pointer" placeholder="Select Birth Date" name="BirthDate"
+                                                                               ng-model="Customer.BirthDate"
+                                                                               ng-readonly="true" />
+                                                                    </datepicker>
+                                                                    <div class="row custom-row">
+                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="CustomerForm.BirthDate.$dirty && CustomerForm.BirthDate.$invalid">
+                                                                            <li><span class="pull-left" ng-show="CustomerForm.BirthDate.$error.pattern">This is not a valid date. Use datepicker to pick a valid date</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group-sm">
+                                                                    <label for="Username" class="control-label">Username<span class="required">*</span></label>
+                                                                    <input type="text" class="form-control" name="Username" placeholder="Enter Your Username"
+                                                                           ng-model="Customer.Username"
+                                                                           ng-required="true"
+                                                                           ng-minlength="4"
+                                                                           ng-maxlength="20"
+                                                                           ng-pattern="/^[A-Za-z]+([0-9])*(?:[._-][A-Za-z0-9]+)*$/" />
+                                                                    <div class="row custom-row">
+                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="CustomerForm.Username.$dirty && CustomerForm.Username.$invalid">
+                                                                            <li><span class="pull-left" ng-show="CustomerForm.Username.$error.required">*Required</span></li>
+                                                                            <li><span class="pull-left" ng-show="CustomerForm.Username.$error.pattern">Not a valid username</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.Username.$error.pattern && CustomerForm.Username.$error.minlength">Minimum required length is 4</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.Username.$error.pattern && CustomerForm.Username.$error.maxlength">Maximum required length is 20</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="panel panel-primary panel-bordered">
+                                                            <div class="panel-body" style="height:265px; min-height:100%; max-height:265px">
+                                                                <div class="text-center">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput" style="margin-left:0px;">
+                                                                        <div class="fileinput-preview thumbnail img img-responsive" data-trigger="fileinput" style="width: 100%; height: 119px;"></div>
+                                                                        <div class="btn-group" role="group" aria-label="group button">
+                                                                            <div class="btn-group" role="group">
+                                                                                <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" id="file1" name="file" multiple></span>
+                                                                            </div>
+                                                                            <div class="btn-group" role="group">
+                                                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--Another Row-->
+                                        <div class="row" style="padding-left:20px; padding-right:20px;">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="panel panel-primary panel-bordered">
+                                                            <div class="panel-body" style="height:auto">
+                                                                <div class="form-group-sm">
+                                                                    <label for="gender" class="control-label">Gender<span class="required">*</span></label>
+                                                                    <select class="form-control" name="Gender"
+                                                                            ng-model="Customer.Gender"
+                                                                            ng-required="true">
+                                                                        <option value="" selected>Select</option>
+                                                                        <option value="Male">Male</option>
+                                                                        <option value="Female">Female</option>
+                                                                    </select>
+                                                                    <div class="row custom-row">
+                                                                        <span class="errormessage pull-left"
+                                                                              ng-show="CustomerForm.Gender.$dirty && CustomerForm.Gender.$invalid">
+                                                                            <span ng-show="CustomerForm.Gender.$error.required">*Required</span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group-sm">
+                                                                    <label for="Mobile" class="control-label">Mobile<span class="required">*</span></label>
+                                                                    <input type="text" class="form-control" name="Mobile" placeholder="+8801xxxxxxxxx"
+                                                                           ng-required="true"
+                                                                           ng-model="Customer.Mobile"
+                                                                           ng-minlength="11"
+                                                                           ng-maxlength="14"
+                                                                           ng-pattern="/^(([0][1])|(\+8801))([156789])([0-9]{8})$/">
+                                                                    <div class="row custom-row">
+                                                                        <ul class="list-unstyled errormessage pull-left"
+                                                                            ng-show="CustomerForm.Mobile.$dirty && CustomerForm.Mobile.$invalid">
+                                                                            <li class="pull-left" ng-show="CustomerForm.Mobile.$error.required">*Required</li>
+                                                                            <li class="pull-left" ng-show="CustomerForm.Mobile.$error.pattern">Not a valid mobile number</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group-sm">
+                                                                    <label for="email" class="control-label">Email</label>
+                                                                    <input type="email" class="form-control" name="Email" placeholder="Enter Your Email"
+                                                                           ng-model="Customer.Email"
+                                                                           ng-minlength="11"
+                                                                           ng-maxlength="30"
+                                                                           ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' />
+                                                                    <div class="row custom-row">
+                                                                        <ul class="list-unstyled errormessage pull-left"
+                                                                            ng-show="CustomerForm.Email.$dirty && CustomerForm.Email.$invalid">
+                                                                            <li class="pull-left" ng-show="CustomerForm.Email.$error.pattern">Not a valid email address</li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.Email.$error.pattern && CustomerForm.Email.$error.minlength">Minimum required length is 11</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.Email.$error.pattern && CustomerForm.Email.$error.maxlength">Maximum required length is 30</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group-sm">
+                                                                    <label for="Designation" class="control-label">Designation<span class="required">*</span></label>
+                                                                    <input type="text" class="form-control" name="Designation" placeholder="Enter Designation"
+                                                                           ng-model="Customer.Designation"
+                                                                           ng-minlength="4"
+                                                                           ng-maxlength="20"
+                                                                           ng-pattern="/^([A-Z])([a-z])+/"
+                                                                           ng-required="true" />
+                                                                    <div class="row custom-row">
+                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="CustomerForm.Designation.$dirty && CustomerForm.Designation.$invalid">
+                                                                            <li><span class="pull-left" ng-show="CustomerForm.Designation.$error.required">*Required</span></li>
+                                                                            <li><span class="pull-left" ng-show="CustomerForm.Designation.$error.pattern">Not a valid designation. Must be start with capital letter.</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.Designation.$error.pattern && CustomerForm.Designation.$error.minlength">Minimum required length is 4</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.Designation.$error.pattern && CustomerForm.Designation.$error.maxlength">Maximum required length is 20</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="panel panel-primary panel-bordered">
+                                                            <div class="panel-body">
+                                                                <div class="form-group-sm">
+                                                                    <label for="IsActive" class="control-label">Status<span class="required">*</span></label>
+                                                                    <div class="form-group-sm">
+                                                                        <div class="radio radio-custom radio-inline radio-primary">
+                                                                            <input type="radio" id="radioCustom1" name="IsActive" value="1"
+                                                                                   ng-model="Customer.IsActive">
+                                                                            <label for="radioCustom1">Active</label>
+                                                                        </div>
+                                                                        <div class="radio radio-custom radio-inline radio-danger">
+                                                                            <input type="radio" id="radioCustom2" name="IsActive" value="0"
+                                                                                   ng-model="Customer.IsActive">
+                                                                            <label for="radioCustom2">In-Active</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group-sm">
+                                                                    <label for="AccessType" class="control-label">Access Type<span class="required">*</span></label>
+                                                                    <select class="form-control" name="AccessTypeId"
+                                                                            ng-model="Customer.AccessTypeId"
+                                                                            ng-required="true"
+                                                                            ng-options="AccessType.Id as AccessType.AccessTypeName for AccessType in AccessTypeList">
+                                                                        <option value="" selected>Select</option>
+                                                                    </select>
+                                                                    <div class="row custom-row">
+                                                                        <span class="errormessage pull-left"
+                                                                              ng-show="CustomerForm.AccessTypeId.$dirty && CustomerForm.AccessTypeId.$invalid">
+                                                                            <span ng-show="CustomerForm.AccessTypeId.$error.required">*Required</span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group-sm">
+                                                                    <label for="address" class="control-label">Address<span class="required">*</span></label>
+                                                                    <textarea type="text" class="form-control" name="Address" style="resize:none; height:90px" placeholder="Write Your Address Here"
+                                                                              ng-model="Customer.Address"
+                                                                              ng-required="true"
+                                                                              ng-minlength="7"
+                                                                              ng-maxlength="100"></textarea>
+                                                                    <div class="row custom-row">
+                                                                        <ul class="list-unstyled errormessage pull-left"
+                                                                            ng-show="CustomerForm.Address.$dirty && CustomerForm.Address.$invalid">
+                                                                            <li class="pull-left" ng-show="CustomerForm.Address.$error.pattern">Not a valid address</li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.Address.$error.pattern && CustomerForm.Address.$error.minlength">Minimum required length is 7</span></li>
+                                                                            <li><span class="pull-left" ng-show="!CustomerForm.Address.$error.pattern && CustomerForm.Address.$error.maxlength">Maximum required length is 100</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4" style="padding-left:0px;margin-left:-2px">
+                                        <div class="row" style="padding-right:20px;">
+                                            <div class="col-lg-12">
+                                                <div class="panel panel-primary panel-bordered">
+                                                    <div class="panel-body">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>

@@ -1,0 +1,11 @@
+<ul class="list_none content_meta">
+                                    <li ng-if="x.MaterialCount>0"><a href="javascript:"><i class="ti-files"></i>{{x.MaterialCount}} Material (s)</a></li>
+                                    <li ng-if="x.MaterialCount<=0"><i class="ti-files"></i>No Material</li>
+                                </ul>
+								
+								
+								<span ng-if="!x.MaterialCount" class="badge badge-success ng-scope" style="
+    padding: 3px;
+    font-size: 11px;
+    font-weight: 400;
+">No Attachment</span>

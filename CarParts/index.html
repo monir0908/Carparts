@@ -1,0 +1,208 @@
+﻿<!doctype html>
+<html lang="en" ng-app="CarPartsApp">
+
+
+<!-- Mirrored from demo.hasthemes.com/autima-preview/autima/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Oct 2019 06:27:26 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CarPartsBD</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- CSS
+    ========================= -->
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="Customer/assets/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link href="Customer/assets/css/style.css" rel="stylesheet" />
+
+    <!--BASIC css-->
+    <!-- ========================================================= -->
+    <link rel="stylesheet" href="Customer/Assets_Customer/vendor/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="Customer/Assets_Customer/vendor/animate.css/animate.css">
+
+
+    <!--AngularJS toastr-->
+    <link href="Customer/Assets_Customer/vendor/toastr/angular-toastr.css" rel="stylesheet" />
+    <!--Magnific popup-->
+    <link rel="stylesheet" href="Customer/Assets_Customer/vendor/magnific-popup/magnific-popup.css">
+
+    <!--Custom CSS-->
+    <link href="Customer/Assets_Customer/custom-css/custom.css" rel="stylesheet" />
+
+    <!--Jasny Bootstrap CSS-->
+    <link href="Customer/Assets_Customer/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
+
+    <!--AngularJS DataTable CSS-->
+    <link href="Customer/Assets_Customer/angularjs-datatable/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <!--AngularJS DatePicker CSS-->
+    <link href="Customer/Assets_Customer/angular-datepicker/angular-datepicker.css" rel="stylesheet" />
+
+    <!--Sweetalert CSS-->
+    <link href="Customer/Assets_Customer/vendor/sweetalert/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <!--AngularJS Weekday Selector CSS-->
+    <link href="Customer/Assets_Customer/angular-weekday/ngWeekdaySelector.css" rel="stylesheet" />
+
+    <!--Angular Loading BAR-->
+    <link href="Customer/Assets_Customer/angular-loading-bar/src/loading-bar.css" rel="stylesheet" />
+
+    <!--720kb angular tooltip CSS-->
+    <link href="Customer/Assets_Customer/angular-tooltip/angular-tooltips.css" rel="stylesheet" />
+
+    <link href="Customer/Assets_Customer/angular-xeditable/dist/css/xeditable.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div ui-view>
+
+    </div>
+    <!-- JS
+    ============================================ -->
+    <!-- Plugins JS -->
+    <script src="Customer/assets/js/plugins.js"></script>
+
+    <script type="text/javascript">
+        $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 300) {
+            $(".sticky-header").addClass("sticky");
+        }
+        else {
+            $(".sticky-header").removeClass("sticky");
+        }
+    });
+    </script>
+
+    <script src="Customer/assets/js/stick-slider.js"></script>
+
+    <script src="Customer/Assets_Customer/angularjs/angular.js"></script>
+    <script src="Customer/Assets_Customer/angular-message/angular-messages.js"></script>
+    <script src="Customer/Assets_Customer/angular-animate/angular-animate.min.js"></script>
+    <script src="Customer/Assets_Customer/angular-touch/angular-touch.js"></script>
+    <script src="Customer/Assets_Customer/angular-ui-route/angular-ui-router.min.js"></script>
+    <script src="Customer/Assets_Customer/angular-sanitize/angular-sanitize.js"></script>
+    <script src="Customer/Assets_Customer/vendor/nano-scroller/nano-scroller.js"></script>
+    <script src="Customer/Assets_Customer/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Angular JS DataTable -->
+    <script src="Customer/Assets_Customer/angularjs-datatable/angular-datatables.js"></script>
+    <script src="Customer/Assets_Customer/angularjs-datatable/jquery.dataTables.min.js"></script>
+    <script src="Customer/Assets_Customer/angularjs-datatable/dataTables.bootstrap.min.js"></script>
+
+    <!--AngularJS Toastar-->
+    <script src="Customer/Assets_Customer/vendor/toastr/angular-toastr.tpls.min.js"></script>
+
+    <!--Sweetalert JS-->
+    <script src="Customer/Assets_Customer/vendor/sweetalert/sweetalert/sweetalert.js"></script>
+
+    <!--Angular Loading BAR-->
+    <script src="Customer/Assets_Customer/angular-loading-bar/src/loading-bar.js"></script>
+
+
+    <!--AngularJS app-->
+    <script src="app.js"></script>
+    <script src="appServices.js"></script>
+    <script src="appController.js"></script>
+    <script src="Customer/CustomServices_Customer/customServices.js"></script>
+    <script src="Customer/CustomDirectives_Customer/customDirectives.js"></script>
+
+
+
+    <!--Angualrjs cookies-->
+    <script src="Customer/Assets_Customer/angular-cookies/angular-cookies.min.js"></script>
+
+    <!--Angualrjs base64-->
+    <script src="Customer/Assets_Customer/angular-base64/angular-base64.min.js"></script>
+
+
+    <!--AngularJS Autocomplete-->
+    <script src="Customer/Assets_Customer/moment-js/moment.js"></script>
+    <script src="Customer/Assets_Customer/angular-tooltip/angular-tooltips.js"></script>
+    <script src="Customer/Assets_Customer/ang-file-upload/ng-file-upload-shim.js"></script>
+    <script src="Customer/Assets_Customer/ang-file-upload/ng-file-upload.js"></script>
+
+    <!--download.js-->
+    <script src="Customer/Assets_Customer/download-js/download.js"></script>
+
+    <!--AngularJS ChartJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-chart.js/1.1.1/angular-chart.min.js"></script>
+
+    <script src="Customer/Assets_Customer/ng-infinite-scroll/build/ng-infinite-scroll.js"></script>
+
+    <script src="Customer/Assets_Customer/angular-weekday/ngWeekdaySelector.js"></script>
+
+    <script src="Customer/Assets_Customer/humanize-duration/humanize-duration.js"></script>
+    <script src="Customer/Assets_Customer/angular-timer/angular-timer.js"></script>
+
+    <script src="Customer/Assets_Customer/angular-xeditable/dist/js/xeditable.js"></script>
+
+
+
+
+    <!--controller and services-->
+    <!--<script src="app/logIn/logInController.js"></script>
+    <script src="app/logIn/logInServices.js"></script>-->
+
+    <script src="Customer/app/index/indexController.js"></script>
+    <script src="Customer/app/index/indexServices.js"></script>
+
+    <script src="Customer/app/aboutus/aboutusController.js"></script>
+    <script src="Customer/app/aboutus/aboutusServices.js"></script>
+
+    <script src="Customer/app/contactus/contactusController.js"></script>
+    <script src="Customer/app/contactus/contactusServices.js"></script>
+
+    <script src="Customer/app/subcategorylist/subcategorylistController.js"></script>
+    <script src="Customer/app/subcategorylist/subcategorylistServices.js"></script>
+
+    <script src="Customer/app/productcategorylist/productcategorylistController.js"></script>
+    <script src="Customer/app/productcategorylist/productcategorylistServices.js"></script>
+
+    <script src="Customer/app/404/404Controller.js"></script>
+    <script src="Customer/app/404/404Services.js"></script>
+
+    <script src="Customer/app/product/productController.js"></script>
+    <script src="Customer/app/product/productServices.js"></script>
+
+    <!--<script src="app/profile/profileController.js"></script>
+    <script src="app/profile/profileServices.js"></script>
+
+    <script src="app/mastermaincategory/mastermaincategoryController.js"></script>
+    <script src="app/mastermaincategory/mastermaincategoryServices.js"></script>
+
+    <script src="app/mastersubcategory/mastersubcategoryController.js"></script>
+    <script src="app/mastersubcategory/mastersubcategoryServices.js"></script>
+
+    <script src="app/masterproductcategory/masterproductcategoryController.js"></script>
+    <script src="app/masterproductcategory/masterproductcategoryServices.js"></script>
+
+    <script src="app/masterproductbrand/masterproductbrandController.js"></script>
+    <script src="app/masterproductbrand/masterproductbrandServices.js"></script>
+
+    <script src="app/vehiclesettings/vehiclesettingsController.js"></script>
+    <script src="app/vehiclesettings/vehiclesettingsServices.js"></script>
+
+    <script src="app/masterproductspecificationlabel/masterproductspecificationlabelController.js"></script>
+    <script src="app/masterproductspecificationlabel/masterproductspecificationlabelServices.js"></script>
+
+    <script src="app/manageproduct/manageproductController.js"></script>
+    <script src="app/manageproduct/manageproductServices.js"></script>-->
+    <!--<script src="../Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="../signalr/hubs"></script>
+    <script src="SignalRController.js"></script>-->
+    <!--<script src="../scripts/jquery-3.1.1.min.js"></script>-->
+
+
+</body>
+
+
+<!-- Mirrored from demo.hasthemes.com/autima-preview/autima/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Oct 2019 06:27:54 GMT -->
+</html>

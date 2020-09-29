@@ -1,0 +1,34 @@
+
+                                            .GroupJoin(_context.CourseQuiz.Where(x => x.CourseId == courseId),
+                                            x => x.Course.Id,
+                                            y => y.CourseId,
+                                            (x, y) => new
+                                            {
+                                                x.Course,
+                                                x.RoleDetails,
+                                                x.CourseMaterial,
+                                                CourseQuiz = y
+                                            })
+                                            .GroupJoin(_context.CourseQuizSet,
+                                            x => x.CourseQuiz.Select(e => e.Id).FirstOrDefault(),
+                                            y => y.CourseQuizId,
+                                            (x, y) => new
+                                            {
+                                                x.Course,
+                                                x.RoleDetails,
+                                                x.CourseMaterial,
+                                                x.CourseQuiz,
+                                                CourseQuizSet = y
+                                            })
+                                            .GroupJoin(_context.CourseQuizQuestionBank,
+                                            x => x.CourseQuizSet.Select(e => e.Id).FirstOrDefault(),
+                                            y => y.CourseQuizSetId,
+                                            (x, y) => new
+                                            {
+                                                x.Course,
+                                                x.RoleDetails,
+                                                x.CourseMaterial,
+                                                x.CourseQuiz,
+                                                x.CourseQuizSet,
+                                                CourseQuizQuestionBank = y
+                                            })

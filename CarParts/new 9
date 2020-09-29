@@ -1,0 +1,32 @@
+<div class="item">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="vendor-thumbnail">
+                                    <!-- Vendor thumbnail -->
+                                    <div class="vendor-img zoomimg">
+                                        <!-- Vendor img -->
+                                        <a href="#"><img src="{{'../../../Images/Web_Thumbnail/'+x.WebThumbnailName}}" alt="" class="img-fluid"></a>
+                                        <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                                    </div>
+                                    <!-- /.Vendor img -->
+                                    <div class="vendor-content">
+                                        <!-- Vendor Content -->
+                                        <h2 class="vendor-title"><a href="#" class="title">{{x.FloorName}}, {{x.ConventionHallName}}</a></h2>
+                                        <p class="vendor-address">{{x.ConventionHallAddress}}</p>
+                                    </div>
+                                    <!-- /.Vendor Content -->
+                                    <div class="vendor-meta">
+                                        <div class="vendor-meta-item vendor-meta-item-bordered">
+                                        </div>
+                                        <div class="vendor-meta-item vendor-meta-item-bordered">
+                                            <span class="vendor-guest">
+                                                {{x.Allocation}}
+                                            </span>
+                                            <span class="vendor-text">Guest</span>
+                                        </div>
+                                        <div class="vendor-meta-item vendor-meta-item-bordered">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.Vendor thumbnail -->
+                            </div>
+                        </div>

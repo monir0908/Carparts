@@ -1,0 +1,24 @@
+﻿            function geocodeLatLng(geocoder) {
+                $scope.inputModel = $scope.Profile.CompanyLat + "," + $scope.Profile.CompanyLong;
+                $scope.latlngStr = $scope.inputModel.split(',', 2);
+                $scope.latlng = { lat: parseFloat($scope.latlngStr[0]), lng: parseFloat($scope.latlngStr[1]) };
+                geocoder.geocode({ 'location': $scope.latlng }, function (results, status) {
+                    if (status === 'OK') {
+                        if (results[0]) {
+                            $scope.SearchedPlace = results[0].formatted_address;
+                            if ($scope.SearchedPlace.includes($scope.Profile.DivisionName)) {
+                                toastr.success($scope.SearchedPlace, 'Success!');
+
+                            }
+                            else {
+                                toastr.error('Invalid Lat and Long', 'Error!');
+                            }
+
+                        } else {
+                            toastr.error('No result found', 'Error!');
+                        }
+                    } else {
+                        toastr.error('Geocoder failed due to: ' + status);
+                    }
+                });
+            }

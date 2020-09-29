@@ -1,0 +1,48 @@
+<div class="venue-thumbnail-carousel">
+            <data-owl-carousel class="owl-carousel owl-theme owl-venue-thumb-second">
+                <div class="item" owl-carousel-item="" ng-repeat="item in ::WebImageList">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="vendor-thumbnail">
+                            <!-- Vendor thumbnail -->
+                            <div class="vendor-img zoomimg">
+                                <!-- Vendor img -->
+                                <a href="#"><img src="{{'../../../Images/Web_Thumbnail/'+item.WebThumbnailName}}" alt="" class="img-fluid"></a>
+                                <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                            </div>
+                            <!-- /.Vendor img -->
+                            <div class="vendor-content">
+                                <!-- Vendor Content -->
+                                <h2 class="vendor-title"><a href="#" class="title">Wedding Venue Title Name</a></h2>
+                                <p class="vendor-address">Ahmedabad, Gujarat.</p>
+                            </div>
+                            <!-- /.Vendor Content -->
+                            <div class="vendor-meta">
+                                <div class="vendor-meta-item vendor-meta-item-bordered">
+                                    <span class="vendor-price">
+                                        $150
+                                    </span>
+                                    <span class="vendor-text">Start From</span>
+                                </div>
+                                <div class="vendor-meta-item vendor-meta-item-bordered">
+                                    <span class="vendor-guest">
+                                        120+
+                                    </span>
+                                    <span class="vendor-text">Guest</span>
+                                </div>
+                                <div class="vendor-meta-item vendor-meta-item-bordered">
+                                    <span class="rating-star">
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                    <span class="rating-count vendor-text">(20)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.Vendor thumbnail -->
+                    </div>
+                </div>
+            </data-owl-carousel>
+        </div>

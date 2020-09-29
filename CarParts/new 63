@@ -1,0 +1,14 @@
+<div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <img ng-src="{{e.Banner}}" />
+                                                    </td>
+                                                    <td>
+                                                        <strong>{{e.Name}}</strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>

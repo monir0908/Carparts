@@ -1,0 +1,124 @@
+﻿<div class="panel panel-default panel-bordered" style="box-shadow:0px 0px 7px 0px #cccccc">
+    <div class="panel-header">
+        <h3 class="panel-title">Details of {{datas.PckgName}} package</h3>
+    </div>
+    <div class="panel-body" style="padding-bottom:0px">
+        <div class="row">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <fieldset>
+                            <legend style="width:100%; height:35px">
+                                <span class="pull-left">
+                                    <label class="control-label" style="font-style:italic">Package Name: &nbsp;</label>
+                                    <label class="control-label" style="font-style:italic">{{datas.PckgName}}</label>
+                                </span>
+                                <span class="pull-right">
+                                    <label class="control-label" style="font-style:italic">Package Status: &nbsp;</label>
+                                    <label class="control-label" style="font-style:italic"><span class="{{datas.ConcurrentStatus=='Previous'?'badge x-info':datas.ConcurrentStatus=='Current'?'badge x-success':datas.ConcurrentStatus=='Cancelled'?'badge x-warning':datas.ConcurrentStatus=='Suspended'?'badge x-danger':'badge x-darker'}}">{{datas.ConcurrentStatus}}</span></label>
+                                </span>
+                            </legend>
+                            <!--More Details-->
+                            <div class="panel panel-default panel-bordered">
+                                <div class="panel-header" style="height:auto; padding:0px 12px">
+                                    <h3 class="panel-title">More details on {{datas.PckgName}} package</h3>
+                                </div>
+                                <div class="panel-body" style="padding-bottom:0px">
+                                    <div class="row">
+                                        <div class="col-lg-12" ng-repeat="e in datas.MoreDetails">
+                                            <div class="table-responsive">
+                                                <table class="table table-condensed table-bordered table-striped table-hover">
+                                                    <tbody>
+                                                        <tr ng-if="e.SessionStartDate!=null">
+                                                            <td><label class="control-label">Session Started</label></td>
+                                                            <td><label class="control-label">{{e.SessionStartDate | date: "fullDate"}} {{e.SessionStartDate | date: "shortTime"}}</label></td>
+                                                        </tr>
+                                                        <tr ng-if="e.SessionEndDate!=null">
+                                                            <td><label class="control-label">Session Ended</label></td>
+                                                            <td><label class="control-label">{{e.SessionEndDate | date: "fullDate"}} {{e.SessionEndDate | date: "shortTime"}}</label></td>
+                                                        </tr>
+                                                        <tr ng-if="e.PckgPrice!=null">
+                                                            <td><label class="control-label">Package Price</label></td>
+                                                            <td><label class="control-label">{{e.PckgPrice}} BDT</label></td>
+                                                        </tr>
+                                                        <tr ng-if="e.AdujustedPckgPrice!=0">
+                                                            <td><label class="control-label">Adjusted Package Price</label></td>
+                                                            <td><label class="control-label">{{e.AdujustedPckgPrice}} BDT</label></td>
+                                                        </tr>
+                                                        <tr ng-if="datas.ConcurrentStatus=='Cancelled'">
+                                                            <td><label class="control-label">Cancellation Fee</label></td>
+                                                            <td><label class="control-label">{{e.CancellationFee}} BDT</label></td>
+                                                        </tr>
+                                                        <tr ng-if="e.PayableAmount!=null">
+                                                            <td><label class="control-label">Payable Amount</label></td>
+                                                            <td><label class="control-label">{{e.PayableAmount}} BDT</label></td>
+                                                        </tr>
+                                                        <tr ng-if="e.PaidAmount!=null">
+                                                            <td><label class="control-label">Paid Amount</label></td>
+                                                            <td><label class="control-label">{{e.PaidAmount}} BDT</label></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!--<div class="col-lg-12">
+                        <div class="panel panel-default panel-bordered">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <div class="col-lg-5 separator">
+                                            <table class="table table-condensed table-hover table-striped">
+                                                <tbody>
+                                                    <tr ng-if="datas.PckgName!=null">
+                                                        <td><label class="control-label">Package Name</label></td>
+                                                        <td><label class="control-label">{{datas.PckgName}}</label></td>
+                                                    </tr>
+                                                    <tr ng-if="datas.ConcurrentStatus!=null">
+                                                        <td><label class="control-label">Current Status</label></td>
+                                                        <td><label class="control-label"><span class="{{datas.ConcurrentStatus=='Previous'?'badge x-info':datas.ConcurrentStatus=='Current'?'badge x-success':datas.ConcurrentStatus=='Cancelled'?'badge x-warning':datas.ConcurrentStatus=='Suspended'?'badge x-danger':'badge x-darker'}}">{{datas.ConcurrentStatus}}</span></label></td>
+                                                    </tr>
+                                                    <tr ng-if="datas.PckgType!=null">
+                                                        <td><label class="control-label">Package Type</label></td>
+                                                        <td><label class="control-label">{{datas.PckgType}}</label></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <table class="table table-condensed table-hover table-striped">
+                                                <tbody>
+                                                    <tr ng-if="datas.ComPckgRequestDate!=null">
+                                                        <td><label class="control-label">Requested On</label></td>
+                                                        <td><label class="control-label">{{datas.ComPckgRequestDate | date: "fullDate"}}</label></td>
+                                                    </tr>
+                                                    <tr ng-if="datas.ComPckgApprovalDate!=null">
+                                                        <td><label class="control-label">Approved On</label></td>
+                                                        <td><label class="control-label">{{datas.ComPckgApprovalDate | date: "fullDate"}}</label></td>
+                                                    </tr>
+                                                    <tr ng-if="datas.ComPckgEndDate!=null">
+                                                        <td><label class="control-label">Ended On</label></td>
+                                                        <td><label class="control-label">{{datas.ComPckgEndDate | date: "fullDate"}}</label></td>
+                                                    </tr>
+                                                    <tr ng-if="datas.ComPckgCancellationDate!=null">
+                                                        <td><label class="control-label">Cancelled On</label></td>
+                                                        <td><label class="control-label">{{datas.ComPckgCancellationDate | date: "fullDate"}} {{datas.ComPckgCancellationDate | date: "shortTime"}}</label></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

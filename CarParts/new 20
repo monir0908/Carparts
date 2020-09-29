@@ -1,0 +1,29 @@
+                Data = _context.Hall_Booking.Join(_context.Hall_BookingDetails,
+                                            x => x.Id,
+                                            y => y.Hall_BookingId,
+                                            (x, y) => new
+                                            {
+                                                Hall_Booking = x,
+                                                Hall_BookingDetails = y
+                                            })
+                                            .Where(x => x.Hall_BookingDetails.BookingDate > DateTime.Now)
+                                            .GroupBy(x => x.Hall_BookingDetails.Hall_BookingId)
+                                            .Select(x => new
+                                            {
+
+                                                Hall_BookingId = x.Key,
+                                                CustomerId = x.Select(e => e.Hall_Booking.CustomerId).FirstOrDefault(),
+                                                AddedOn = x.Select(e => e.Hall_Booking.AddedOn).FirstOrDefault(),
+                                                TotalAmount = x.Select(e => e.Hall_Booking.TotalAmount).FirstOrDefault(),
+                                                BookingCode = x.Select(e => e.Hall_Booking.BookingCode).FirstOrDefault(),
+
+
+                                                Hall_BookingDetailsId = x.Select(e => e.Hall_BookingDetails.Id).FirstOrDefault(),
+
+
+                                                FloorDetailsId = x.Select(e => e.Hall_BookingDetails.FloorDetailsId).FirstOrDefault(),
+                                                BookingDate = x.Select(e => e.Hall_BookingDetails.BookingDate).Min(),
+                                                BookedOn = x.Select(e => e.Hall_BookingDetails.BookedOn).FirstOrDefault(),
+                                                Price = x.Select(e => e.Hall_BookingDetails.Price).FirstOrDefault()
+                                            })
+                                            .ToList()

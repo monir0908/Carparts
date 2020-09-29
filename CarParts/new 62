@@ -1,0 +1,1 @@
+Message = "The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_dbo.ProductImages_dbo.Admins_AdminId\". The conflict occurred in database \"CarPartsDB\", table \"dbo.Admins\", column 'Id'.\r\nThe statement has been terminated."

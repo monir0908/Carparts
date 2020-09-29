@@ -1,0 +1,35 @@
+                else {
+                    coursematerialquizServices.GetCourseMaterialQuizAndRespectiveSetListByCourseMaterialId($scope.CourseMaterialId).then(function (response) {
+                        $scope.CourseMaterialQuizList = response.data;
+                        for (var i = 0; i < $scope.CourseMaterialQuizList.length; i++) {
+                            $scope.CourseMaterialQuizList[i].AddedOn = moment.utc($scope.CourseMaterialQuizList[i].AddedOn).local().format();
+                        }
+                    })
+                    .then(function () {
+                        $scope.childInfo = function (CourseMaterialQuizSetList, event) {
+
+                            var scope = $scope.$new(true);
+                            scope.CourseMaterialQuizSetList = CourseMaterialQuizSetList;
+
+                            var link = angular.element(event.currentTarget),
+                                icon = link.find('.glyphicon'),
+                                tr = link.parent().parent(),
+                                table = $scope.vm.dtInstance.DataTable,
+                                row = table.row(tr);
+                            //
+                            if (row.child.isShown()) {
+                                icon.removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
+                                row.child.hide();
+                                tr.removeClass('shown');
+                            }
+                            else {
+                                icon.removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
+                                row.child($compile('<div tmplcoursematerial class="clearfix"></div>')(scope)).show();
+                                tr.addClass('shown');
+                            }
+                        }
+                    })
+                    .then(function () {
+                        $scope.cancelCourseMaterialQuizModal();
+                    })
+                }

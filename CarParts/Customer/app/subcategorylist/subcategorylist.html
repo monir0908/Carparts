@@ -1,0 +1,52 @@
+﻿
+<div ng-include="'Customer/appTemplate/header.html'"></div>
+
+<!--Shop By Category area start-->
+<section class="small_product_area mb-50 animated fadeIn">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" style="padding-top:20px">
+                <div class="section_title"style="margin-left: 12px;">
+                    <h2><span> <strong>{{SubCategoryList.MasterMainCategoryName}}</strong></span></h2>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img style="height: 154.38px;width: 275.38px;object-fit: cover;" ng-src="{{SubCategoryList.MasterMainCategoryLogo}}" />
+                        </div>
+                        <div class="col-lg-8" ng-if="SubCategoryList.SubCategoryList.length>0">
+                            <div class="row">
+                                <div class="col-lg-3" ng-repeat="x in SubCategoryList.SubCategoryList" style="padding-bottom:15px;padding-left:15px;padding-right:15px">
+                                    <a class="shadow-box" href="javascript:" ui-sref="productcategorylist({subCategoryId:x.Id})">
+                                        <div class="card shadow-card animated zoomIn">
+                                            <div class="card-body text-center">
+                                                <img ng-src="{{x.MasterSubCategoryLogo}}" />
+                                            </div>
+                                            <div class="card-footer text-center" style="background-color:white; border-top:none; min-height:96px; max-height:96px">
+                                                <p style="font-weight:600">{{x.MasterSubCategoryName}}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8" ng-if="SubCategoryList.SubCategoryList.length<=0">
+                            <div class="justify-content-center row">
+                                <h3 class="text-secondary" style="padding:50px">
+                                    <strong>
+                                        No Item Found
+                                        <span ng-if="TempVehicleFilter.Year">
+                                            <span>for</span> <span style="background: black;color: white;">{{TempVehicleFilter.Year}} {{TempVehicleFilter.MakerName}} {{TempVehicleFilter.ModelName}} {{TempVehicleFilter.SubModelName}} {{TempVehicleFilter.EngineName}}</span>
+                                        </span>
+                                    </strong>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div ng-include="'Customer/appTemplate/footer.html'"></div>

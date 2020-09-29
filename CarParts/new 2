@@ -1,0 +1,40 @@
+if (applicantId != null && adminId != null)
+            {
+                // Upload Files
+                string trimmedEmail = _context.Applicant.Where(x => x.ID == applicantId).Select(x => x.Email).FirstOrDefault().Replace(".", "_");
+                trimmedEmail = trimmedEmail.Replace("@", "_");
+                string trimmedAdminEmail = _context.Admin.Where(x => x.ID == adminId).Select(x => x.Email).FirstOrDefault().Replace(".", "_");
+                trimmedAdminEmail = trimmedAdminEmail.Replace("@", "_");
+                string randomString = Guid.NewGuid().ToString();
+                var newFileNameWithoutExtension = trimmedAdminEmail + "_" + trimmedEmail + "_" + randomString;
+
+                Byte[] bytes = Convert.FromBase64String(base64File);
+                System.IO.FileStream stream = new FileStream(Generator.ChatFilePath + newFileNameWithoutExtension + extension, FileMode.CreateNew);
+                System.IO.BinaryWriter writer = new BinaryWriter(stream);
+                writer.Write(bytes, 0, bytes.Length);
+                writer.Close();
+
+
+                // Save Details into DB
+                Query query = new Query
+                {
+                    ApplicantId = applicantId,
+                    AdminId = adminId,
+                    Message = Generator.ChatFilePath + newFileNameWithoutExtension + extension,
+                    QueryType = EnumObjects.QueryType.File.ToString(),
+                    AddedOn = DateTime.UtcNow,
+                    AdminSeen = null,
+                    ApplicantSeen = false
+                };
+                _context.Query.Add(query);
+                // Send E-mail Task
+                var applicantToSendMail = _context.Applicant.Where(x => x.ID == query.ApplicantId).Select(x => x).FirstOrDefault();
+                if (!String.IsNullOrEmpty(applicantToSendMail.Email))
+                {
+                    var mail = _context.MailSettings.Where(x => x.IsActive == 1).Select(x => x).FirstOrDefault();
+                    Generator.SendEmail(mail.HostAddress, 587, mail.Email, mail.Password, "Addiction Care-Team", applicantToSendMail.Email, "Response form Addiction Care Team", "New attachment sent from Addiction Care Team");
+                }
+                _context.SaveChanges();
+                Generator.IsReport = "Success";
+                Generator.Message = "File sent successfully";
+            }

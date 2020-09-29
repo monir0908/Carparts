@@ -1,0 +1,55 @@
+                                            <!--Password-->
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                                <div class="form-group">
+                                                    <label class="control-label sr-only" for="Password">Password</label>
+                                                    <input name="Password" class="form-control" type="password" placeholder="Password"
+                                                           ng-model="Customer.Password"
+                                                           ng-required="true"
+                                                           ng-minlength="6"
+                                                           ng-maxlength="20">
+                                                    <div style="padding:5px">
+                                                        <ul class="list-unstyled errormessage pull-left"
+                                                            ng-show="RegistrationForm.Password.$dirty && RegistrationForm.Password.$invalid">
+                                                            <li><span class="pull-left" ng-show="RegistrationForm.Password.$error.required">*Required</span></li>
+                                                            <li class="pull-left" ng-show="RegistrationForm.Password.$error.pattern">Not a valid Password Address</li>
+                                                            <li><span class="pull-left" ng-show="RegistrationForm.Password.$error.minlength">Minimum required length is 6</span></li>
+                                                            <li><span class="pull-left" ng-show="RegistrationForm.Password.$error.maxlength">Maximum required length is 20</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Password-->
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                                <div class="form-group">
+                                                    <label class="control-label sr-only" for="Password">Password</label>
+                                                    <input name="Password" class="form-control" type="password" placeholder="Password"
+                                                           ng-model="Customer.Password"
+                                                           ng-required="true"
+                                                           ng-minlength="6"
+                                                           ng-maxlength="20">
+                                                    <div style="padding:5px">
+                                                        <ul class="list-unstyled errormessage pull-left"
+                                                            ng-show="RegistrationForm.Password.$dirty && RegistrationForm.Password.$invalid">
+                                                            <li><span class="pull-left" ng-show="RegistrationForm.Password.$error.required">*Required</span></li>
+                                                            <li class="pull-left" ng-show="RegistrationForm.Password.$error.pattern">Not a valid Password Address</li>
+                                                            <li><span class="pull-left" ng-show="RegistrationForm.Password.$error.minlength">Minimum required length is 6</span></li>
+                                                            <li><span class="pull-left" ng-show="RegistrationForm.Password.$error.maxlength">Maximum required length is 20</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Confirm Password-->
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password"
+                                                           ng-required="true"
+                                                           ng-model="ConfirmPassword"
+                                                           ng-pattern="Customer.Password" />
+                                                    <div style="padding:5px">
+                                                        <ul class="list-unstyled text-danger pull-left" ng-show="RegistrationForm.ConfirmPassword.$dirty && RegistrationForm.ConfirmPassword.$invalid">
+                                                            <li><span class="pull-left" ng-show="RegistrationForm.ConfirmPassword.$error.required">*Required</span></li>
+                                                            <li><span class="pull-left" ng-show="RegistrationForm.ConfirmPassword.$error.pattern">Password is not matched</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>

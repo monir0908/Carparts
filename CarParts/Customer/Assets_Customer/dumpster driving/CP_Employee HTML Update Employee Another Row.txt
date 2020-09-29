@@ -1,0 +1,135 @@
+﻿<div class="modal-panel panel panel-default ">
+                                        <div class="panel-header" style="{{ShowTrackingInformation==false?'border-radius: 4px 4px 4px 4px;':''}}">
+                                            <h3 class="panel-title"><a id="TrackingInformationText" data-toggle="collapse" data-target="#a_TrackingInformation" data-parent="#accordion" style="cursor:pointer" ng-click="AccordionTracking()">Tracking Information</a></h3>
+                                            <div class="panel-actions">
+                                                <ul>
+                                                    <li class="action">
+                                                        <a id="TrackingInformation" style="cursor:pointer" data-toggle="collapse" data-target="#a_TrackingInformation" data-parent="#accordion" ng-click="AccordionTracking()"><span class="{{ShowCustomerInformation==false && ShowTrackingInformation==true?'glyphicon glyphicon-minus':'glyphicon glyphicon-plus'}}" id="TrackingInformationIcon"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="a_TrackingInformation">
+                                            <div class="panel-content">
+                                                <div class="row" style="padding-left:20px; padding-right:20px;">
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="panel panel-primary panel-bordered">
+                                                                    <div class="{{DoNotTrackSelector.DoNotTrackSelectorMultiple=='DoNotTrackSelectorMultiple'?'panel-body date-range-height':'panel-body normal-height'}}">
+                                                                        <div class="row">
+                                                                            <!--TrackingStartTime TrackingEndTime TrackingtInterval-->
+                                                                            <div class="col-lg-4 separator">
+                                                                                <div class="form-group-sm">
+                                                                                    <label class="control-label">Tracking Start Time<span class="required">*</span></label>
+                                                                                    <div uib-timepicker ng-model="$parent.TrackingStartTime" ng-change="Change()" max="$parent.TrackingEndTime" hour-step="hstep" readonly-input="true" minute-step="mstep" show-meridian="ismeridian" ng-required="true"></div>
+                                                                                </div>
+                                                                                <br />
+                                                                                <div class="form-group-sm">
+                                                                                    <label class="control-label">Tracking End Time<span class="required">*</span></label>
+                                                                                    <div uib-timepicker ng-model="$parent.TrackingEndTime" ng-change="Change()" min="$parent.TrackingStratTime" hour-step="hstep" readonly-input="true" minute-step="mstep" show-meridian="ismeridian" ng-required="true"></div>
+                                                                                </div>
+                                                                                <br />
+                                                                                <div class="form-group-sm">
+                                                                                    <label for="TrackingInterval" class="control-label">Tracking Interval<span class="required">*</span></label>
+                                                                                    <div class="input-group">
+                                                                                        <input type="number" min="15" max="60" class="form-control" name="TrackingInterval"
+                                                                                               ng-required="true"
+                                                                                               ng-model="Customer.TrackingInterval"
+                                                                                               ng-minlength="2"
+                                                                                               ng-maxlength="2"
+                                                                                               ng-pattern="/^[1-9]\d*$/">
+                                                                                        <span class="input-group-addon">
+                                                                                            Sec
+                                                                                        </span>
+                                                                                    </div>
+
+                                                                                    <div class="row custom-row">
+                                                                                        <ul class="list-unstyled errormessage pull-left"
+                                                                                            ng-show="CustomerForm.TrackingInterval.$dirty && CustomerForm.TrackingInterval.$invalid">
+                                                                                            <li class="pull-left" ng-show="CustomerForm.TrackingInterval.$error.required">*Required</li>
+                                                                                            <li class="pull-left" ng-show="CustomerForm.TrackingInterval.$error.pattern">Not a valid Tracking Interval</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <!--WorkingDays CanPause TrackingHistor-->
+                                                                            <div class="col-lg-4 separator" style="height:337px">
+                                                                                <div class="form-group-sm">
+                                                                                    <label class="control-label">Working Day (s)<span class="required">*</span></label>
+                                                                                    <ng-weekday-selector ng-model="$parent.TrackingDaysPreProcessed" ng-change="WeekDayChange()" ng-disabled="Loading==true"></ng-weekday-selector>
+                                                                                </div>
+
+
+                                                                                <div class="form-group-sm">
+                                                                                    <label class="control-label">Can Pause</label>
+                                                                                    <div class="row" style="float:right; margin-right:0px">
+                                                                                        <label class="switch">
+                                                                                            <input type="checkbox" ng-model="Customer.CanPause" ng-true-value="'Yes'" ng-false-value="'No'" name="CanPause" />
+                                                                                            <span class="slider round"></span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <br />
+                                                                                <div class="form-group-sm">
+                                                                                    <label class="control-label">Tracking History</label>
+                                                                                    <div class="row" style="float:right; margin-right:0px">
+                                                                                        <label class="switch">
+                                                                                            <input type="checkbox" ng-model="Customer.TrackingHistoryEnabled" ng-true-value="'Yes'" ng-false-value="'No'" name="TrackingHistoryEnabled" />
+                                                                                            <span class="slider round"></span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <!--DoNotTrack-->
+                                                                            <div class="col-lg-4">
+                                                                                <div class="form-group-sm">
+                                                                                    <label for="DoNotTrackSelector" class="control-label">Do Not Track</label>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="checkbox-custom checkbox-inline checkbox-success" style="padding-left:5%">
+                                                                                        <input type="checkbox" name="DoNotTrackSelectorRange" id="DoNotTrackSelectorRange"
+                                                                                               ng-model="DoNotTrackSelector.DoNotTrackSelectorRange"
+                                                                                               ng-true-value="'DoNotTrackSelectorRange'"
+                                                                                               ng-false-value="'DoNotTrackSelectorRangeNo'"
+                                                                                               ng-change="ChnageDoNotTrackSelectorRange()">
+                                                                                        <label class="check" for="DoNotTrackSelectorRange">Date Range</label>
+                                                                                    </div>
+                                                                                    <div class="checkbox-custom checkbox-inline checkbox-success" style="padding-left:5%">
+                                                                                        <input type="checkbox" name="DoNotTrackSelectorMultiple" id="DoNotTrackSelectorMultiple"
+                                                                                               ng-model="DoNotTrackSelector.DoNotTrackSelectorMultiple"
+                                                                                               ng-true-value="'DoNotTrackSelectorMultiple'"
+                                                                                               ng-false-value="'DoNotTrackSelectorMultipleNo'"
+                                                                                               ng-change="ChangeDoNotTrackSelectorMultiple()">
+                                                                                        <label class="check" for="DoNotTrackSelectorMultiple">Multiple Date</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group-sm" ng-show="DoNotTrackSelector.DoNotTrackSelectorRange=='DoNotTrackSelectorRange'">
+                                                                                    <label for="daterange1" class="control-label">Date Range</label>
+                                                                                    <input date-range-picker id="daterange1" name="daterange1" class="form-control date-picker" type="text" min="today|date:'yyyy-MM-dd'" max="maxDay|date:'yyyy-MM-dd'"
+                                                                                           ng-model="$parent.date" ng-readonly="true" options="opts" />
+                                                                                </div>
+                                                                                <!--<pre>{{date}}</pre>-->
+
+                                                                                <br />
+                                                                                /
+                                                                                <div class="form-group-sm" ng-show="DoNotTrackSelector.DoNotTrackSelectorMultiple=='DoNotTrackSelectorMultiple'">
+                                                                                    <div>
+                                                                                        <multiple-date-picker highlight-days="highlightDays" moment="moment" disable-days-before="today" ng-model="TrackingRestrictionsMultipleDates"></multiple-date-picker>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>

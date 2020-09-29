@@ -1,0 +1,5 @@
+https://localhost:44330/api/HallService/GetHallServiceList
+
+https://localhost:44330/api/HallCondition/GetHallConditionList
+
+https://localhost:44330/api/HallCondition/GetHallConditionList

@@ -1,0 +1,8 @@
+                                                                <!--<tr ng-if="TempVehicleFilter.Year && TempVehicleFilter.VehicleIdList.findIndex(x=>x.Id==TempVehicleFilter.Id)">
+                                                                    <td colspan="2">
+                                                                        <label class="control-label">Vehicle Fitment</label>
+                                                                        <p>
+                                                                            {{TempVehicleFilter.}}
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>-->

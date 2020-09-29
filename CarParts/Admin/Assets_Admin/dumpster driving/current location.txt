@@ -1,0 +1,157 @@
+﻿<!-- CONTENT -->
+<!-- ========================================================= -->
+<div class="content">
+    <!-- content HEADER -->
+    <!-- ========================================================= -->
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-index" aria-hidden="true"></i><a ui-sref="currentlocation">Current Location</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="animated fadeInUp">
+        <div class="panel-group" id="accordion">
+            <!--Adjust Settings-->
+            <div class="panel panel-default">
+                <div class="panel-header">
+                    <h3 class="panel-title"><a style="cursor:pointer" data-parent="#accordion" data-toggle="collapse" data-target="#_Adjust_Settings">Adjust Settings</a></h3>
+                    <div class="panel-actions">
+                        <ul>
+                            <li class="action">
+                                <a title="Adjust Settings" id="a_Adjust_Settings"  data-toggle="collapse" data-parent="#accordion" data-target="#_Adjust_Settings"><span class="glyphicon glyphicon-minus"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse in" id="_Adjust_Settings">
+                    <div class="panel-content">
+                        <div class="">
+                            <div class="row">
+                                <!--Panel For "FILTER BY LOCATION"-->
+                                <div class="col-lg-6">
+                                    <form name="FilterByLocationForm" novalidate>
+                                        <div class="panel panel-default">
+                                            <div class="panel-header">
+                                                <h3 class="panel-title">Filter By Location</h3>
+                                            </div>
+                                            <div class="panel-content">
+                                                <div class="form-group-sm">
+                                                    <label for="DivisionId" class="control-label">Division<span class="required">*</span></label>
+                                                    <select class="form-control" name="DivisionId" id="DivisionId"
+                                                            ng-model="Tracking.DivisionId"
+                                                            ng-required="true"
+                                                            ng-change="PropagateZoneListByDivisionId(Tracking.DivisionId)"
+                                                            ng-options="Division.Id as Division.DivisionName for Division in DivisionList">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                    <!--<div class="row custom-row">
+                                                        <ul class="list-unstyled errormessage pull-left" ng-show="FilterByLocationForm.DivisionId.$dirty && FilterByLocationForm.DivisionId.$invalid">
+                                                            <li><span class="pull-left" ng-show="FilterByLocationForm.DivisionId.$error.required">*Required</span></li>
+                                                        </ul>
+                                                    </div>-->
+                                                </div>
+                                                <div class="form-group-sm">
+                                                    <label for="ZoneId" class="control-label">Zone<span class="required">*</span></label>
+                                                    <select class="form-control" name="ZoneId" id="ZoneId"
+                                                            ng-model="Tracking.ZoneId"
+                                                            ng-change="PropagateAreaListByZoneId(Tracking.ZoneId)"
+                                                            ng-disabled="(Tracking.DivisionId==undefined || Tracking.DivisionId<1)"
+                                                            ng-options="Zone.Id as Zone.ZoneName for Zone in ZoneList">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group-sm">
+                                                    <label for="AreaId" class="control-label">Area<span class="required">*</span></label>
+                                                    <select class="form-control" name="AreaId" id="AreaId"
+                                                            ng-model="Tracking.AreaId"
+                                                            ng-disabled="(Tracking.ZoneId==undefined || Tracking.ZoneId<1)"
+                                                            ng-options="Area.Id as Area.AreaName for Area in AreaList">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                    <div class="row custom-row">
+                                                        <ul class="list-unstyled errormessage pull-left" ng-show="FilterByLocationForm.AreaId.$dirty && FilterByLocationForm.AreaId.$invalid">
+                                                            <li><span class="pull-left" ng-show="FilterByLocationForm.AreaId.$error.required">*Required</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--Panel For "FILTER BY EMPLOYEE"-->
+                                <div class="col-lg-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-header">
+                                            <h3 class="panel-title">Filter By Customer</h3>
+                                            <div class="panel-actions">
+                                                <input type="text" class="form-control" placeholder="Search Customer" />
+                                            </div>
+                                        </div>
+                                        <div class="panel-body" style="height:198px">
+                                            <div id="about" class="nano">
+                                                <div class="nano-content">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-striped table-condensed table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Name</th>
+                                                                    <th>Username</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                                <tr ng-repeat="x in CustomerList">
+                                                                    <td>{{x.FirstName}} {{x.LastName}}</td>
+                                                                    <td>{{x.Username}}</td>
+                                                                    <td>
+                                                                        <div class="checkbox-custom checkbox-success">
+                                                                            <input type="checkbox" name="{{x.Id}}SelectCustomer" id="{{x.Id}}SelectCustomer"
+                                                                                   ng-required="true"
+                                                                                   ng-model="x.SelectCustomer"
+                                                                                   ng-click="PushToCustomerListFilter(x.Id, x.Username)"
+                                                                                   ng-true-value="'Y'"
+                                                                                   ng-false-value="'N'">
+                                                                            <label class="check" for="{{x.Id}}SelectCustomer" style="padding-top:3px">Select</label>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button type="button"
+                            class="btn btn-wide btn-primary pull-right"
+                            ng-disabled="FilterByLocationForm.$invalid && CustomerListFilter.length==0"
+                            ng-click="FilterByLocation()">
+                        Apply &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                    </button>
+                    <button type="button"
+                            class="btn btn-wide btn-default pull-right"
+                            ng-disabled="Tracking.DivisionId==null"
+                            ng-click="FilterByLocationReset()"
+                            role="button">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-refresh fa-1x"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-content">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8683.058064416757!2d90.40075406839816!3d23.79098254976259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c1483d269999%3A0x62d6d33daba5c05c!2sTekno+Pole!5e0!3m2!1sen!2sbd!4v1527753774574" width="100%" height="550px" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+</div>

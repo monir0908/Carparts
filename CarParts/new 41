@@ -1,0 +1,2 @@
+var url = $state.href('myroute', {parameter: "parameter"});
+window.open(url,'_blank');

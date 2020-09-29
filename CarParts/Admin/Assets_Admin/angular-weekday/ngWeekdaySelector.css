@@ -1,0 +1,54 @@
+﻿.days-container{
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.day-circle{
+  border: 1px solid #1fbe9d;
+  border-radius: 25px;
+  display: inline-block;
+  height: 50px;
+  min-width: 50px;
+  text-align: center;
+  line-height: 50px;
+  float: left;
+  margin: 10px;
+  color: #808080;
+  cursor:pointer;
+}
+.day-circle:hover{
+  background-color: #126f5c;
+  border-color:#126f5c;
+  color: white;
+  cursor:pointer;
+}
+
+.day-circle.is-selected{
+  background-color: #126f5c;
+  border-color:#126f5c;
+  color: white;
+}
+
+.days-container.disabled .day-circle{
+  border-color: #9EAEB5;
+  cursor:not-allowed;
+  opacity:.5;
+}
+
+.days-container.disabled .day-circle.is-selected{
+  background-color: #9EAEB5;
+  color: #C3C2C2;
+  cursor:not-allowed;
+  opacity:.5;
+
+}
+
+/*.day-circle[ng-disabled="true"]{*/
+/*border-color: #9EAEB5;*/
+/*}*/
+/*.day-circle[ng-disabled="true"].is-selected{*/
+/*background-color: #9EAEB5;*/
+/*color: #C3C2C2*/
+
+/*}*/

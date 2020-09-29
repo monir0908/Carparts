@@ -1,0 +1,1013 @@
+﻿<!-- left-sidebar -->
+<div ng-include="'appTemplate/left-sidebar.html'"></div>
+<!-- page-header -->
+<div ng-include="'appTemplate/page-header.html'"></div>
+
+
+<div class="content">
+    <!-- content HEADER -->
+
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-user" aria-hidden="true"></i><a ui-sref="profile">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                Assemble Vehicle
+                            </h3>
+                            <div class="panel-actions">
+                                <ul>
+                                    <li class="action" style="height:35px; width:35px" uib-tooltip="Assemble Vehicle" tooltip-placement="left" ng-click="openCreateVehicleModal()"><span class="fa fa-cogs" style="vertical-align:bottom"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <!-- DataTable -->
+                                        <table class="data-table table table-striped nowrap table-bordered" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name & Model</th>
+                                                    <th>Sub-Model</th>
+                                                    <th>Engine</th>
+                                                    <th>Added On</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="x in VehicleList">
+                                                    <td>{{x.Year+' '+x.MakerName+' '+x.ModelName}}</td>
+                                                    <td>{{x.SubModelName}}</td>
+                                                    <td>{{x.EngineName}}</td>
+                                                    <td>{{x.AddedOn | date:'longDate'}} {{x.AddedOn | date:'shortTime'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                Year
+                            </h3>
+                            <div class="panel-actions">
+                                <ul>
+                                    <li class="action" style="height:30px; width:30px" uib-tooltip="Add Year" tooltip-placement="left" ng-click="openCreateMasterVehicleYearModal()"><span class="fa fa-plus" style="vertical-align:sub"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="webkitscroller-transparent" style="max-height:363px; min-height:363px; overflow-x:hidden">
+                                        <!-- DataTable -->
+                                        <table class="data-table table table-striped nowrap table-bordered" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Added On</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="x in MasterVehicleYearList">
+                                                    <td>
+                                                        <a href="#" uib-tooltip="Click to edit" tooltip-placement="top" editable-text="x.Year" onbeforesave="UpdateMasterVehicleYear(x.Id, $data)">{{ x.Year || "empty" }}</a>
+                                                    </td>
+                                                    <td>{{x.AddedOn | date:'longDate'}} {{x.AddedOn | date:'shortTime'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="panel">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                Maker
+                            </h3>
+                            <div class="panel-actions">
+                                <ul>
+                                    <li class="action" style="height:30px; width:30px"  uib-tooltip="Add Maker" tooltip-placement="left" ng-click="openCreateMasterVehicleMakerModal()"><span class="fa fa-plus" style="vertical-align:sub"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="webkitscroller-transparent" style="max-height:363px; min-height:363px; overflow-x:hidden">
+                                        <!-- DataTable -->
+                                        <table class="data-table table table-striped nowrap table-bordered table-condensed" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Added On</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="x in MasterVehicleMakerList">
+                                                    <td>
+                                                        <a href="#" uib-tooltip="Click to edit" tooltip-placement="top" editable-text="x.MakerName" onbeforesave="UpdateMasterVehicleMaker(x.Id, $data)">{{ x.MakerName || "empty" }}</a>
+                                                    </td>
+                                                    <td>{{x.AddedOn | date:'longDate'}} {{x.AddedOn | date:'shortTime'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="panel">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                Model
+                            </h3>
+                            <div class="panel-actions">
+                                <ul>
+                                    <li class="action"  style="height:30px; width:30px" uib-tooltip="Add Model" tooltip-placement="left" ng-click="openCreateMasterVehicleModelModal()"><span class="fa fa-plus" style="vertical-align:sub"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="webkitscroller-transparent" style="max-height:363px; min-height:363px; overflow-x:hidden">
+                                        <!-- DataTable -->
+                                        <table class="data-table table table-striped nowrap table-bordered table-condensed" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Added On</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="x in MasterVehicleModelList">
+                                                    <td>
+                                                        <a href="#" uib-tooltip="Click to edit" tooltip-placement="top" editable-text="x.ModelName" onbeforesave="UpdateMasterVehicleModel(x.Id, $data)">{{ x.ModelName || "empty" }}</a>
+                                                    </td>
+                                                    <td>{{x.AddedOn | date:'longDate'}} {{x.AddedOn | date:'shortTime'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="panel">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                Sub-Model
+                            </h3>
+                            <div class="panel-actions">
+                                <ul>
+                                    <li class="action" style="height:30px; width:30px"  uib-tooltip="Add Sub-Model" tooltip-placement="left" ng-click="openCreateMasterVehicleSubModelModal()"><span class="fa fa-plus" style="vertical-align:sub"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="webkitscroller-transparent" style="max-height:363px; min-height:363px; overflow-x:hidden">
+                                        <!-- DataTable -->
+                                        <table class="data-table table table-striped nowrap table-bordered table-condensed" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Added On</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="x in MasterVehicleSubModelList">
+                                                    <td>
+                                                        <a href="#" uib-tooltip="Click to edit" tooltip-placement="top" editable-text="x.SubModelName" onbeforesave="UpdateMasterVehicleSubModel(x.Id, $data)">{{ x.SubModelName || "empty" }}</a>
+                                                    </td>
+                                                    <td>{{x.AddedOn | date:'longDate'}} {{x.AddedOn | date:'shortTime'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                Engine
+                            </h3>
+                            <div class="panel-actions">
+                                <ul>
+                                    <li class="action" style="height:30px; width:30px"  uib-tooltip="Add Engine" tooltip-placement="left" ng-click="openCreateMasterVehicleEngineModal()"><span class="fa fa-plus" style="vertical-align:sub"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="webkitscroller-transparent" style="max-height:363px; min-height:363px; overflow-x:hidden">
+                                        <!-- DataTable -->
+                                        <table class="data-table table table-striped nowrap table-bordered table-condensed" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Added On</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="x in MasterVehicleEngineList">
+                                                    <td>
+                                                        <a href="#" uib-tooltip="Click to edit" tooltip-placement="top" editable-text="x.EngineName" onbeforesave="UpdateMasterVehicleEngine(x.Id, $data)">{{ x.EngineName || "empty" }}</a>
+                                                    </td>
+                                                    <td>{{x.AddedOn | date:'longDate'}} {{x.AddedOn | date:'shortTime'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+</div>
+
+<div class="modal fade" id="VehicleModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="custom-close" ng-click="cancelCreateVehicleModal()" style="margin-top:0px;" aria-label="Close" tooltip-placement="left" uib-tooltip="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="margin-top:1.6%">Add Vehicle</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row row-modal">
+                            <div class="panel panel-primary panel-bordered">
+                                <div class="panel-content">
+                                    <div class="row row-modal">
+                                        <form name="VehicleForm" novalidate>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!--Year-->
+                                                    <div class="form-group">
+                                                        <label for="MakerName" class="control-label">Year<span class="required">*</span></label>
+                                                        <a href="javascript:" class="pull-right" ng-click="openCreateMasterVehicleYearModal()"><i class="fa fa-plus" style="font-size:11px">&nbsp;<span style="font-size:12px;font-family: sans-serif;">Create New</span></i></a>
+                                                        <input type="text" id="Year" placeholder="Select Year" class="form-control" name="Year"
+                                                               ng-model="MasterVehicleYearId"
+                                                               ng-required="true"
+                                                               uib-typeahead="Year as Year.Year for Year in MasterVehicleYearList | filter:$viewValue" autocomplete="off"
+                                                               typeahead-template-url="customTemplateSelectYear.html"
+                                                               typeahead-show-hint="true"
+                                                               typeahead-on-select="ProcessMasterYear($item, $model, $label);"
+                                                               typeahead-min-length="0" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="VehicleForm.Year.$dirty && VehicleForm.Year.$invalid">
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Year.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Year.$error.minLength">Minimum required length is 1</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Year.$error.minLength">Maximum required length is 500</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!--Maker-->
+                                                    <div class="form-group">
+                                                        <label for="MakerName" class="control-label">Maker<span class="required">*</span></label>
+                                                        <a ng-if="Vehicle.MasterVehicleYearId" href="javascript:" class="pull-right" ng-click="openCreateMasterVehicleMakerModal()"><i class="fa fa-plus" style="font-size:11px">&nbsp;<span style="font-size:12px;font-family: sans-serif;">Create New</span></i></a>
+                                                        <input type="text" id="Maker" placeholder="Select Maker" class="form-control" name="Maker"
+                                                               ng-model="MasterVehicleMakerId"
+                                                               ng-disabled="!Vehicle.MasterVehicleYearId"
+                                                               ng-required="true"
+                                                               uib-typeahead="Maker as Maker.MakerName for Maker in MasterVehicleMakerList | filter:$viewValue" autocomplete="off"
+                                                               typeahead-template-url="customTemplateSelectMaker.html"
+                                                               typeahead-show-hint="true"
+                                                               typeahead-on-select="ProcessMasterMaker($item, $model, $label);"
+                                                               typeahead-min-length="0" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="VehicleForm.Maker.$dirty && VehicleForm.Maker.$invalid">
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Maker.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Maker.$error.minLength">Minimum required length is 1</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Maker.$error.minLength">Maximum required length is 500</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Model-->
+                                                    <div class="form-group">
+                                                        <label for="ModelName" class="control-label">Model<span class="required">*</span></label>
+                                                        <a ng-if="Vehicle.MasterVehicleMakerId" href="javascript:" class="pull-right" ng-click="openCreateMasterVehicleModelModal()"><i class="fa fa-plus" style="font-size:11px">&nbsp;<span style="font-size:12px;font-family: sans-serif;">Create New</span></i></a>
+                                                        <input type="text" id="Model" placeholder="Select Model" class="form-control" name="Model"
+                                                               ng-model="MasterVehicleModelId"
+                                                               ng-disabled="!Vehicle.MasterVehicleMakerId"
+                                                               ng-required="true"
+                                                               uib-typeahead="Model as Model.ModelName for Model in MasterVehicleModelList | filter:$viewValue" autocomplete="off"
+                                                               typeahead-template-url="customTemplateSelectModel.html"
+                                                               typeahead-show-hint="true"
+                                                               typeahead-on-select="ProcessMasterModel($item, $model, $label);"
+                                                               typeahead-min-length="0" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="VehicleForm.Model.$dirty && VehicleForm.Model.$invalid">
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Model.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Model.$error.minLength">Minimum required length is 1</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Model.$error.minLength">Maximum required length is 500</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--SubModel-->
+                                                    <div class="form-group">
+                                                        <label for="SubModelName" class="control-label">Sub Model<span class="required">*</span></label>
+                                                        <a ng-if="Vehicle.MasterVehicleModelId" href="javascript:" class="pull-right" ng-click="openCreateMasterVehicleSubModelModal()"><i class="fa fa-plus" style="font-size:11px">&nbsp;<span style="font-size:12px;font-family: sans-serif;">Create New</span></i></a>
+                                                        <input type="text" id="SubModel" placeholder="Select Sub-Model" class="form-control" name="SubModel"
+                                                               ng-model="MasterVehicleSubModelId"
+                                                               ng-required="true"
+                                                               ng-disabled="!Vehicle.MasterVehicleModelId"
+                                                               uib-typeahead="SubModel as SubModel.SubModelName for SubModel in MasterVehicleSubModelList | filter:$viewValue" autocomplete="off"
+                                                               typeahead-template-url="customTemplateSelectSubModel.html"
+                                                               typeahead-show-hint="true"
+                                                               typeahead-on-select="ProcessMasterSubModel($item, $model, $label);"
+                                                               typeahead-min-length="0" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="VehicleForm.SubModel.$dirty && VehicleForm.SubModel.$invalid">
+                                                                <li><span class="pull-left" ng-show="VehicleForm.SubModel.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.SubModel.$error.minLength">Minimum required length is 1</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.SubModel.$error.minLength">Maximum required length is 500</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Engine-->
+                                                    <div class="form-group">
+                                                        <label for="EngineName" class="control-label">Engine<span class="required">*</span></label>
+                                                        <a ng-if="Vehicle.MasterVehicleSubModelId" href="javascript:" class="pull-right" ng-click="openCreateMasterVehicleEngineModal()"><i class="fa fa-plus" style="font-size:11px">&nbsp;<span style="font-size:12px;font-family: sans-serif;">Create New</span></i></a>
+                                                        <input type="text" id="Engine" placeholder="Select Engine" class="form-control" name="Engine"
+                                                               ng-model="MasterVehicleEngineId"
+                                                               ng-required="true"
+                                                               ng-disabled="!Vehicle.MasterVehicleSubModelId"
+                                                               uib-typeahead="Engine as Engine.EngineName for Engine in VehicleEngineList | filter:$viewValue" autocomplete="off"
+                                                               typeahead-template-url="customTemplateSelectEngine.html"
+                                                               typeahead-show-hint="true"
+                                                               typeahead-on-select="ProcessMasterEngine($item, $model, $label);"
+                                                               typeahead-min-length="0" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="VehicleForm.Engine.$dirty && VehicleForm.Engine.$invalid">
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Engine.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Engine.$error.minLength">Minimum required length is 1</span></li>
+                                                                <li><span class="pull-left" ng-show="VehicleForm.Engine.$error.minLength">Maximum required length is 500</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Action Buttons-->
+            <div class="modal-footer">
+                <div class="row row-modal">
+                    <button type="button"
+                            class="btn  btn-primary btn-wide pull-right"
+                            ng-click="CreateVehicle()"
+                            ng-disabled="VehicleForm.$invalid"
+                            role="button">
+                        Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                    </button>
+                    <button type="button"
+                            class="btn  btn-default btn-wide pull-right"
+                            ng-click="cancelCreateVehicleModal()"
+                            role="button">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="MasterVehicleYearModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="custom-close" ng-click="cancelCreateMasterVehicleYearModal()" style="margin-top:0px;" aria-label="Close" tooltip-placement="left" uib-tooltip="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="margin-top:1.6%">Add Year</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row row-modal">
+                            <div class="panel panel-primary panel-bordered">
+                                <div class="panel-content">
+                                    <div class="row row-modal">
+                                        <form name="MasterVehicleYearForm" novalidate>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!--Year-->
+                                                    <div class="form-group">
+                                                        <label for="Year" class="control-label">Year<span class="required">*</span></label>
+                                                        <input type="number" class="form-control" name="Year" placeholder="Enter Year"
+                                                               ng-model="MasterVehicleYear.Year"
+                                                               min="1950"
+                                                               max="{{MaxYear}}"
+                                                               ng-required="true" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="MasterVehicleYearForm.Year.$dirty && MasterVehicleYearForm.Year.$invalid">
+                                                                <li><span class="pull-left" ng-show="MasterVehicleYearForm.Year.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleYearForm.Year.$error.min">Minimum required length is 1950</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleYearForm.Year.$error.max">Maximum required length is {{MaxYear}}</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Action Buttons-->
+            <div class="modal-footer">
+                <div class="row row-modal">
+                    <button type="button"
+                            class="btn  btn-primary btn-wide pull-right"
+                            ng-click="CreateMasterVehicleYear()"
+                            ng-disabled="MasterVehicleYearForm.$invalid"
+                            role="button">
+                        Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                    </button>
+                    <button type="button"
+                            class="btn  btn-default btn-wide pull-right"
+                            ng-click="cancelCreateMasterVehicleYearModal()"
+                            role="button">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="MasterVehicleMakerModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="custom-close" ng-click="cancelCreateMasterVehicleMakerModal()" style="margin-top:0px;" aria-label="Close" tooltip-placement="left" uib-tooltip="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="margin-top:1.6%">Add Maker</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row row-modal">
+                            <div class="panel panel-primary panel-bordered">
+                                <div class="panel-content">
+                                    <div class="row row-modal">
+                                        <form name="MasterVehicleMakerForm" novalidate>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!--Maker-->
+                                                    <div class="form-group">
+                                                        <label for="MakerName" class="control-label">Maker Name<span class="required">*</span></label>
+                                                        <input type="text" class="form-control" name="MakerName" placeholder="Enter Maker Name"
+                                                               ng-model="MasterVehicleMaker.MakerName"
+                                                               ng-minlength="1"
+                                                               ng-maxlength="500"
+                                                               ng-required="true" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="MasterVehicleMakerForm.MakerName.$dirty && MasterVehicleMakerForm.MakerName.$invalid">
+                                                                <li><span class="pull-left" ng-show="MasterVehicleMakerForm.MakerName.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleMakerForm.MakerName.$error.minLength">Minimum required length is 1</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleMakerForm.MakerName.$error.minLength">Maximum required length is 500</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Action Buttons-->
+            <div class="modal-footer">
+                <div class="row row-modal">
+                    <button type="button"
+                            class="btn  btn-primary btn-wide pull-right"
+                            ng-click="CreateMasterVehicleMaker()"
+                            ng-disabled="MasterVehicleMakerForm.$invalid"
+                            role="button">
+                        Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                    </button>
+                    <button type="button"
+                            class="btn  btn-default btn-wide pull-right"
+                            ng-click="cancelCreateMasterVehicleMakerModal()"
+                            role="button">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="MasterVehicleModelModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="custom-close" ng-click="cancelCreateMasterVehicleModelModal()" style="margin-top:0px;" aria-label="Close" tooltip-placement="left" uib-tooltip="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="margin-top:1.6%">Add Model</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row row-modal">
+                            <div class="panel panel-primary panel-bordered">
+                                <div class="panel-content">
+                                    <div class="row row-modal">
+                                        <form name="MasterVehicleModelForm" novalidate>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!--Model-->
+                                                    <div class="form-group">
+                                                        <label for="ModelName" class="control-label">Model Name<span class="required">*</span></label>
+                                                        <input type="text" class="form-control" name="ModelName" placeholder="Enter Model Name"
+                                                               ng-model="MasterVehicleModel.ModelName"
+                                                               ng-minlength="1"
+                                                               ng-maxlength="500"
+                                                               ng-required="true" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="MasterVehicleModelForm.ModelName.$dirty && MasterVehicleModelForm.ModelName.$invalid">
+                                                                <li><span class="pull-left" ng-show="MasterVehicleModelForm.ModelName.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleModelForm.ModelName.$error.minLength">Minimum required length is 1</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleModelForm.ModelName.$error.minLength">Maximum required length is 500</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Action Buttons-->
+            <div class="modal-footer">
+                <div class="row row-modal">
+                    <button type="button"
+                            class="btn  btn-primary btn-wide pull-right"
+                            ng-click="CreateMasterVehicleModel()"
+                            ng-disabled="MasterVehicleModelForm.$invalid"
+                            role="button">
+                        Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                    </button>
+                    <button type="button"
+                            class="btn  btn-default btn-wide pull-right"
+                            ng-click="cancelCreateMasterVehicleModelModal()"
+                            role="button">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="MasterVehicleSubModelModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="custom-close" ng-click="cancelCreateMasterVehicleSubModelModal()" style="margin-top:0px;" aria-label="Close" tooltip-placement="left" uib-tooltip="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="margin-top:1.6%">Add Sub Model</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row row-modal">
+                            <div class="panel panel-primary panel-bordered">
+                                <div class="panel-content">
+                                    <div class="row row-modal">
+                                        <form name="MasterVehicleSubModelForm" novalidate>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!--SubModel-->
+                                                    <div class="form-group">
+                                                        <label for="SubModelName" class="control-label">Sub-Model Name<span class="required">*</span></label>
+                                                        <input type="text" class="form-control" name="SubModelName" placeholder="Enter Sub-Model Name"
+                                                               ng-model="MasterVehicleSubModel.SubModelName"
+                                                               ng-minlength="1"
+                                                               ng-maxlength="500"
+                                                               ng-required="true" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="MasterVehicleSubModelForm.SubModelName.$dirty && MasterVehicleSubModelForm.SubModelName.$invalid">
+                                                                <li><span class="pull-left" ng-show="MasterVehicleSubModelForm.SubModelName.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleSubModelForm.SubModelName.$error.minLength">Minimum required length is 1</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleSubModelForm.SubModelName.$error.minLength">Maximum required length is 500</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Action Buttons-->
+            <div class="modal-footer">
+                <div class="row row-modal">
+                    <button type="button"
+                            class="btn  btn-primary btn-wide pull-right"
+                            ng-click="CreateMasterVehicleSubModel()"
+                            ng-disabled="MasterVehicleSubModelForm.$invalid"
+                            role="button">
+                        Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                    </button>
+                    <button type="button"
+                            class="btn  btn-default btn-wide pull-right"
+                            ng-click="cancelCreateMasterVehicleSubModelModal()"
+                            role="button">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="MasterVehicleEngineModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="custom-close" ng-click="cancelCreateMasterVehicleEngineModal()" style="margin-top:0px;" aria-label="Close" tooltip-placement="left" uib-tooltip="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="margin-top:1.6%">Add Engine</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row row-modal">
+                            <div class="panel panel-primary panel-bordered">
+                                <div class="panel-content">
+                                    <div class="row row-modal">
+                                        <form name="MasterVehicleEngineForm" novalidate>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!--Engine-->
+                                                    <div class="form-group">
+                                                        <label for="EngineName" class="control-label">Engine Name<span class="required">*</span></label>
+                                                        <input type="text" class="form-control" name="EngineName" placeholder="Enter Engine Name"
+                                                               ng-model="MasterVehicleEngine.EngineName"
+                                                               ng-minlength="1"
+                                                               ng-maxlength="500"
+                                                               ng-required="true" />
+                                                        <div class="row custom-row">
+                                                            <ul class="list-unstyled errormessage pull-left" ng-show="MasterVehicleEngineForm.EngineName.$dirty && MasterVehicleEngineForm.EngineName.$invalid">
+                                                                <li><span class="pull-left" ng-show="MasterVehicleEngineForm.EngineName.$error.required">*Required</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleEngineForm.EngineName.$error.minLength">Minimum required length is 1</span></li>
+                                                                <li><span class="pull-left" ng-show="MasterVehicleEngineForm.EngineName.$error.minLength">Maximum required length is 500</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Action Buttons-->
+            <div class="modal-footer">
+                <div class="row row-modal">
+                    <button type="button"
+                            class="btn  btn-primary btn-wide pull-right"
+                            ng-disabled="MasterVehicleEngineForm.$invalid"
+                            ng-click="CreateMasterVehicleEngine()"
+                            role="button">
+                        Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                    </button>
+                    <button type="button"
+                            class="btn  btn-default btn-wide pull-right"
+                            ng-click="cancelCreateMasterVehicleEngineModal()"
+                            role="button">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/ng-template" id="customTemplateSelectYear.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.Year | uibTypeaheadHighlight:query"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="customTemplateSelectMaker.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.MakerName | uibTypeaheadHighlight:query"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="customTemplateSelectModel.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.ModelName | uibTypeaheadHighlight:query"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="customTemplateSelectSubModel.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.SubModelName | uibTypeaheadHighlight:query"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="customTemplateSelectEngine.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.EngineName | uibTypeaheadHighlight:query"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<style>
+    .slider-success:before {
+        position: absolute;
+        content: "";
+        height: 13px;
+        width: 13px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .edit-modal {
+        width: 65%;
+    }
+
+    .add-modal {
+        width: 65%;
+    }
+
+    .normal-height {
+        height: auto;
+    }
+
+    .date-range-height {
+        height: 407px; /*Previous 350px*/
+    }
+    /*CSS For Accordion panel into a modal*/
+    .modal-panel {
+        -webkit-box-shadow: 1px 1px 1px #cccccc;
+        box-shadow: 0px 0px 1px #cccccc;
+    }
+
+    .modal-panel-header {
+        border-radius: 4px 4px 4px 4px;
+    }
+    /*CSS For Accordion panel into a modal*/
+
+    .less-opacity {
+        opacity: .5;
+    }
+
+    .TrackingRestrictionAll::-webkit-scrollbar {
+        background-color: #f1f1f1;
+        border-radius: 50px;
+        width: 8px;
+    }
+
+    .TrackingRestrictionAll::-webkit-scrollbar-thumb {
+        background-color: #189279;
+        border-radius: 50px;
+    }
+
+        .TrackingRestrictionAll::-webkit-scrollbar-thumb:hover {
+            background-color: #126f5c;
+            border-radius: 10px;
+        }
+</style>
+
+<style>
+    .hovereffect {
+        /*border-radius: 150px;*/
+        width: 100%;
+        height: 100%;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: default;
+    }
+
+        .hovereffect .overlay {
+            /*border-radius: 150px;*/
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color: rgba(0,0,0,0.5);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out
+        }
+
+        .hovereffect img {
+            display: block;
+            position: relative;
+            -webkit-transition: all .1s linear;
+            transition: all .1s linear;
+        }
+
+        .hovereffect h2 {
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            background: rgba(0,0,0,0.6);
+            -webkit-transform: translatey(-100px);
+            -ms-transform: translatey(-100px);
+            transform: translatey(-100px);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            padding: 10px;
+        }
+
+        .hovereffect button.info {
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid #fff;
+            background-color: transparent;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            margin: 110px 0 0;
+            padding: 7px 14px;
+        }
+
+            .hovereffect button.info:hover {
+                box-shadow: 0 0 5px #fff;
+            }
+
+        .hovereffect:hover img {
+            -ms-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+        .hovereffect:hover .overlay {
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+        .hovereffect:hover h2, .hovereffect:hover button.info {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -ms-transform: translatey(0);
+            -webkit-transform: translatey(0);
+            transform: translatey(0);
+        }
+
+        .hovereffect:hover button.info {
+            -webkit-transition-delay: .1s;
+            transition-delay: .1s;
+        }
+</style>

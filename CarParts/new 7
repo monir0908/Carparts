@@ -1,0 +1,40 @@
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12" ng-repeat="x in ImageList  | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
+                <div class="vendor-thumbnail">
+                    <!-- Vendor thumbnail -->
+                    <div class="vendor-img zoomimg">
+                        <!-- Vendor img -->
+                        <a class="animate zoomIn" href="javascript:;" ng-click="openFilePreviewModal(x.FileName)"><img src="{{'../../../Images/Floor_Thumbnail/'+x.ThumbnailName}}" style="height: 200px" alt="" class="img-fluid"></a>
+                    </div>
+                    <!-- /.Vendor img -->
+                    <div class="vendor-content">
+                        <!-- Vendor Content -->
+                        <!-- <h2 class="vendor-title"><a href="#" class="title">{{x.FileName}}</a></h2> -->
+                    </div>
+                    <!-- /.Vendor Content -->
+                </div>
+                <!-- /.Vendor thumbnail -->
+            </div>
+
+        </div>
+        <!-- paginations -->
+
+        <div class="row" ng-if="ImageList.length>0">
+            <div class="col-md-6 offset-md-4">
+                <div class="pagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item" ng-class="prevPageDisabled()"><a class="page-link" ng-click="prevPage()" href="javascript:;">Prev</a></li>
+                            <li class="page-item" ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)"><a class="page-link" href="javascript:;">{{n+1}}</a></li>
+                            <li class="page-item" ng-class="nextPageDisabled()"><a class="page-link" href="javascript:;" ng-click="nextPage()">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- /.paginations -->
+        </div>
+    </div>
+</div>

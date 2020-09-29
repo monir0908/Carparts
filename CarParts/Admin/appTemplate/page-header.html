@@ -1,0 +1,54 @@
+﻿<div class="page-header" ng-controller="appController">
+    <div ng-controller="SignalRController">
+
+    </div>
+    <!-- LEFTSIDE header -->
+    <div class="leftside-header">
+        <div class="logo">
+            <!--<a href="index.html" class="on-click">
+            </a>-->
+        </div>
+        <div id="menu-toggle" class="visible-xs toggle-left-sidebar" data-toggle-class="left-sidebar-open" data-target="html">
+            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+        </div>
+    </div>
+    <!-- RIGHTSIDE header -->
+    <div class="rightside-header">
+        <div class="header-middle"></div>
+        <!--USER HEADERBOX -->
+        <div class="header-section" id="user-headerbox">
+            <div class="user-header-wrap">
+                <div class="user-info">
+                    <span class="user-name">Admin</span>
+                    <span class="user-profile">Online</span>
+                </div>
+                <i class="fa fa-plus icon-open" aria-hidden="true"></i>
+                <i class="fa fa-minus icon-close" aria-hidden="true"></i>
+            </div>
+            <div class="user-options dropdown-box">
+                <div class="drop-content basic">
+                    <ul>
+                        <li> <a ui-sref="profile"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="header-separator"></div>
+        <!--Log out -->
+        <div class="header-section">
+            <a data-placement="left" title="Logout"><i class="fa fa-sign-out log-out" aria-hidden="true" ng-click="LogOut()"></i></a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!--TEMPLATE scripts-->
+<!-- ========================================================= -->
+<script src="Assets_Admin/javascripts/template-script.min.js"></script>
+<script src="Assets_Admin/javascripts/template-init.min.js"></script>

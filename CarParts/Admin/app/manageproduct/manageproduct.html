@@ -1,0 +1,1430 @@
+﻿<!-- left-sidebar -->
+<div ng-include="'appTemplate/left-sidebar.html'"></div>
+<!-- page-header -->
+<div ng-include="'appTemplate/page-header.html'"></div>
+
+
+<div class="content">
+    <!-- content HEADER -->
+
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-user" aria-hidden="true"></i><a ui-sref="profile">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="webkitscroller" style="height:800px">
+                    <ul class="list-group-custom">
+                        <li class="list-group-item-custom" ng-repeat="x in ProductHierarchy">
+                            <div class="form-group">
+                                <div class="checkbox-custom checkbox-success">
+                                    <input type="checkbox" id="{{x.ParentId}}"
+                                           ng-model="x.Model"
+                                           ng-true-value="true"
+                                           ng-false-value="false"
+                                           ng-click="FilterGrandParentProduct(x)">
+                                    <label class="check" for="{{x.ParentId}}"><b>{{x.Name}}</b></label>
+                                </div>
+                            </div>
+                            <ul class="list-group-custom">
+                                <li class="list-group-item-custom" ng-repeat="e in x.TempProductHierarchyList">
+                                    <div class="form-group">
+                                        <div class="checkbox-custom checkbox-success">
+                                            <input type="checkbox" id="{{e.ParentId}}"
+                                                   ng-model="e.Model"
+                                                   ng-true-value="true"
+                                                   ng-false-value="false"
+                                                   ng-click="FilterParentProduct(e, x)">
+                                            <label class="check" for="{{e.ParentId}}"><b>{{e.Name}}</b></label>
+                                        </div>
+                                    </div>
+                                    <ul class="list-group-custom">
+                                        <li class="list-group-item-custom" ng-repeat="a in e.TempProductHierarchyList">
+                                            <div class="form-group">
+                                                <div class="checkbox-custom checkbox-success">
+                                                    <input type="checkbox" id="{{a.ParentId}}"
+                                                           ng-model="a.Model"
+                                                           ng-true-value="true"
+                                                           ng-false-value="false"
+                                                           ng-click="FilterChildProduct(e, x)">
+                                                    <label class="check" for="{{a.ParentId}}"><b>{{a.Name}}</b></label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-lg-9">
+                <div class="panel">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <button type="button" class="btn btn-default btn-o pull-right btn-addon btn-o-addon" ng-click="openCreateProductModal()">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Add Product
+                            </button>
+                        </div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <!-- DataTable -->
+                                        <table class="data-table table table-striped nowrap table-bordered table-condensed" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>SKU</th>
+                                                    <th>Name</th>
+                                                    <th>Stock</th>
+                                                    <th>Sales Price</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Discount Status</th>\
+                                                    <th>Discount Percentage</th>
+                                                    <th>Added On</th>
+                                                    <th class="custom-datatabel-action-th">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="x in ProductList">
+                                                    <td>{{x.ProductSKU}}</td>
+                                                    <td>{{x.Name.length>=18?x.Name.substr(0,17)+'...':x.Name}}</td>
+                                                    <td>{{x.CurrentStock}}</td>
+                                                    <td>{{x.CurrentSalesPrice}}</td>
+                                                    <td>{{x.CurrentUnitPrice}}</td>
+                                                    <td>
+                                                        <div class="form-group-sm-sm">
+                                                            <label class="control-label"></label>
+                                                            <div class="row custom-row">
+                                                                <label class="switch" style="margin-top:-13px; height:19px; width:43px">
+                                                                    <input type="checkbox" ng-model="x.IsDiscountActive" ng-true-value="true" ng-false-value="false" name="ToggleStatus" ng-click="ToggleDiscountByProductId(x.Id, x.IsDiscountActive)" />
+                                                                    <span class="slider-success round"></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" uib-tooltip="Click to edit" tooltip-placement="top" editable-number="x.DiscountPercentage" onbeforesave="UpdateDiscountPercentageByProductId(x.Id, $data)">{{ x.DiscountPercentage || 0 }}</a>
+                                                    </td>
+                                                    <td>{{x.AddedOn | date:'longDate'}} {{x.AddedOn | date:'shortTime'}}</td>
+                                                    <td>
+                                                        <button style="border:1px solid #02715a; background-color:#ffffff" type="button" tooltip-placement="top" uib-tooltip="Edit Product" class="btn btn-default" ng-click="openEditProductModal(x.Id);"><img src="Assets_Admin/images/datatables/edit.png" width="20" /></button>
+                                                        <button style="border:1px solid #02715a; background-color:#ffffff" type="button" tooltip-placement="top" uib-tooltip="Update Product Stock" class="btn btn-default" ng-click="openProductStockAndPriceModal(x.Id);"><img src="Assets_Admin/images/datatables/stock.png" width="20" /></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+</div>
+<div class="modal fade" id="ProductModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document" style="width:95%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="custom-close" data-dismiss="modal" aria-label="Close" ng-click="cancelCreateProductModal()" tooltip-placement="left" uib-tooltip="Close" style="pointer-events:{{progressVisible==true?'none':''}}"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="margin-top:1.6%" ng-if="Product.Id === undefined">Add New Product</h4>
+                <h4 class="modal-title" style="margin-top:1.6%" ng-if="Product.Id != undefined || Product.Id >= 1">Update Product ({{Product.ProductSKU}})</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tabs">
+                            <!-- Tabs Header -->
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="active"><a data-target="#ProductDetails" data-toggle="tab" id="a_ProductDetails"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Product Details</a></li>
+                                <li><a data-target="#ProductImages" data-toggle="tab" id="a_ProductImages"><i class="fa fa-image" aria-hidden="true"></i>&nbsp;&nbsp;Product Image (s)</a></li>
+                            </ul>
+                            <!-- Tabs Content -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="ProductDetails">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-8">
+                                                <!--PRODUCT INFORMATION-->
+                                                <form name="ProductForm" novalidate>
+                                                    <div class="panel panel-primary panel-bordered">
+                                                        <div class="panel-header" style="padding: 5px 12px;height: 37px;">
+                                                            <h3 class="panel-title">
+                                                                Product Details
+                                                            </h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-borderless">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th style="line-height:2.3; width:25%">Category<span class="required">*</span></th>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <input type="text" id="Year" placeholder="Select Category" class="form-control" name="Year"
+                                                                                           ng-model="MasterMainCategoryId"
+                                                                                           ng-required="true"
+                                                                                           uib-typeahead="MasterMainCategory as MasterMainCategory.MasterMainCategoryName for MasterMainCategory in MasterMainCategoryList | filter:$viewValue" autocomplete="off"
+                                                                                           typeahead-template-url="customTemplateSelectCategory.html"
+                                                                                           typeahead-show-hint="true"
+                                                                                           typeahead-on-select="ProcessMasterMainCategory($item, $model, $label);"
+                                                                                           typeahead-min-length="0" />
+                                                                                    <div class="row custom-row">
+                                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="VehicleForm.MasterMainCategoryId.$dirty && VehicleForm.MasterMainCategoryId.$invalid">
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterMainCategoryId.$error.required">*Required</span></li>
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterMainCategoryId.$error.minLength">Minimum required length is 1</span></li>
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterMainCategoryId.$error.minLength">Maximum required length is 500</span></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th style="line-height:2.3; width:25%">Sub Category<span class="required">*</span></th>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <input type="text" id="Year" placeholder="Select Sub Category" class="form-control" name="Year"
+                                                                                           ng-model="MasterSubCategoryId"
+                                                                                           ng-disabled="!Product.MasterMainCategoryId"
+                                                                                           ng-required="true"
+                                                                                           uib-typeahead="MasterSubCategory as MasterSubCategory.MasterSubCategoryName for MasterSubCategory in MasterSubCategoryList | filter:$viewValue" autocomplete="off"
+                                                                                           typeahead-template-url="customTemplateSelectSubCategory.html"
+                                                                                           typeahead-show-hint="true"
+                                                                                           typeahead-on-select="ProcessMasterSubCategory($item, $model, $label);"
+                                                                                           typeahead-min-length="0" />
+                                                                                    <div class="row custom-row">
+                                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="VehicleForm.MasterSubCategoryId.$dirty && VehicleForm.MasterSubCategoryId.$invalid">
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterSubCategoryId.$error.required">*Required</span></li>
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterSubCategoryId.$error.minLength">Minimum required length is 1</span></li>
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterSubCategoryId.$error.minLength">Maximum required length is 500</span></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th style="line-height:2.3; width:25%">Product Category<span class="required">*</span></th>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <input type="text" id="Year" placeholder="Select Product Category" class="form-control" name="Year"
+                                                                                           ng-model="MasterProductCategoryId"
+                                                                                           ng-disabled="!Product.MasterSubCategoryId"
+                                                                                           ng-required="true"
+                                                                                           uib-typeahead="MasterProductCategory as MasterProductCategory.MasterProductCategoryName for MasterProductCategory in MasterProductCategoryList | filter:$viewValue" autocomplete="off"
+                                                                                           typeahead-template-url="customTemplateSelectProductCategory.html"
+                                                                                           typeahead-show-hint="true"
+                                                                                           typeahead-on-select="ProcessMasterProductCategory($item, $model, $label);"
+                                                                                           typeahead-min-length="0" />
+                                                                                    <div class="row custom-row">
+                                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="VehicleForm.MasterProductCategoryId.$dirty && VehicleForm.MasterProductCategoryId.$invalid">
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterProductCategoryId.$error.required">*Required</span></li>
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterProductCategoryId.$error.minLength">Minimum required length is 1</span></li>
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterProductCategoryId.$error.minLength">Maximum required length is 500</span></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <button type="button" role="button" class="btn btn-sm btn-primary"
+                                                                                        uib-tooltip="Click To Append/Remove this Value to/from Product Name"
+                                                                                        tooltip-placement="left"
+                                                                                        ng-disabled="!MasterProductCategoryId"
+                                                                                        ng-click="AppendToProductName(MasterProductCategoryId.MasterProductCategoryName)">
+                                                                                    <i class="fa fa-plug"></i>
+                                                                                </button>
+                                                                            </td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th style="line-height:2.3; width:25%">Brand<span class="required">*</span></th>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <input type="text" id="Year" placeholder="Select Brand" class="form-control" name="Year"
+                                                                                           ng-model="MasterProductBrandId"
+                                                                                           ng-disabled="!Product.MasterProductCategoryId"
+                                                                                           ng-required="true"
+                                                                                           uib-typeahead="MasterProductBrand as MasterProductBrand.MasterProductBrandName for MasterProductBrand in MasterProductBrandList | filter:$viewValue" autocomplete="off"
+                                                                                           typeahead-template-url="customTemplateSelectProductBrand.html"
+                                                                                           typeahead-show-hint="true"
+                                                                                           typeahead-on-select="ProcessMasterProductBrand($item, $model, $label);"
+                                                                                           typeahead-min-length="0" />
+                                                                                    <div class="row custom-row">
+                                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="VehicleForm.MasterProductBrandId.$dirty && VehicleForm.MasterProductBrandId.$invalid">
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterProductBrandId.$error.required">*Required</span></li>
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterProductBrandId.$error.minLength">Minimum required length is 1</span></li>
+                                                                                            <li><span class="pull-left" ng-show="VehicleForm.MasterProductBrandId.$error.minLength">Maximum required length is 500</span></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr ng-if="!Product.Id">
+                                                                            <th style="line-height:2.3; width:50%">Product SKU</th>
+                                                                            <td>
+                                                                                <div class="alert alert-textbox">
+                                                                                    <strong>Generated Automatically</strong>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr ng-if="Product.ProductSKU!=null && Product.Id">
+                                                                            <th style="line-height:2.3; width:50%">Product SKU</th>
+                                                                            <td>
+                                                                                <div class="alert alert-textbox">
+                                                                                    <p ng-bind="Product.ProductSKU"></p>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr ng-if="Product.AddedOn!=null && Product.Id">
+                                                                            <th style="line-height:2.3; width:25%">Product Added On</th>
+                                                                            <td>
+                                                                                <div class="alert alert-textbox">
+                                                                                    <p>{{Product.AddedOn | date:'longDate'}} {{Product.AddedOn | date:'shortTime'}}</p>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr ng-if="Product.ModifiedOn!=null && Product.Id">
+                                                                            <th style="line-height:2.3; width:25%">Last Modified On</th>
+                                                                            <td>
+                                                                                <div class="alert alert-textbox">
+                                                                                    <p>{{Product.ModifiedOn | date:'longDate'}} {{Product.ModifiedOn | date:'shortTime'}}</p>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th style="line-height:2.3; width:25%">Product Name<span class="required">*</span></th>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <input type="text" class="form-control" name="Name" placeholder="Product Name"
+                                                                                           ng-model="Product.Name"
+                                                                                           ng-required="true"
+                                                                                           ng-minlength="5"
+                                                                                           ng-maxlength="200" />
+                                                                                    <div class="row custom-row">
+                                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="ProductForm.Name.$dirty && ProductForm.Name.$invalid">
+                                                                                            <li><span class="pull-left" ng-show="ProductForm.Name.$error.required">*Required</span></li>
+                                                                                            <li><span class="pull-left" ng-show="ProductForm.Name.$error.minlength">Minimum required length is 5</span></li>
+                                                                                            <li><span class="pull-left" ng-show="ProductForm.Name.$error.maxlength">Maximum required length is 200</span></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th style="line-height:2.3; width:25%">Product Description<span class="required">*</span></th>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control" name="Name" placeholder="Product Description" style="resize:none; height:100px"
+                                                                                              ng-model="Product.Description"
+                                                                                              ng-required="true"
+                                                                                              ng-minlength="1"
+                                                                                              ng-maxlength="3500"></textarea>
+                                                                                    <div class="row custom-row">
+                                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="ProductForm.Name.$dirty && ProductForm.Name.$invalid">
+                                                                                            <li><span class="pull-left" ng-show="ProductForm.Name.$error.required">*Required</span></li>
+                                                                                            <li><span class="pull-left" ng-show="ProductForm.Name.$error.minlength">Minimum required length is 1</span></li>
+                                                                                            <li><span class="pull-left" ng-show="ProductForm.Name.$error.maxlength">Maximum required length is 3500</span></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <!--DYNAMIC CONTROLs-->
+                                                                        <tr ng-repeat="x in FilteredControls track by x.LabelName">
+                                                                            <th style="line-height:2.3; width:25%">
+                                                                                <label class="control-label">{{x.Label}}<span class="required">*</span></label>
+                                                                            </th>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group">
+                                                                                        <input type="text" class="form-control" name="{{x.LabelName}}" placeholder="{{x.Label}}"
+                                                                                               ng-model="x.Model"
+                                                                                               ng-required="true"
+                                                                                               ng-minlength="1"
+                                                                                               ng-maxlength="1000" />
+                                                                                        <span class="input-group-btn">
+                                                                                            <a style="border:1px solid #ccc; border-left:none;" class="btn btn-default"
+                                                                                               tooltip-placement="left" uib-tooltip="Remove Label"
+                                                                                               ng-click="removeControl(x);x.Model=undefined;">
+                                                                                                <i class="fa fa-close"></i>
+                                                                                            </a>
+                                                                                        </span>
+                                                                                    </div>
+
+                                                                                    <div class="row custom-row">
+                                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="ProductForm.{{x.LabelName}}.$dirty && ProductForm.{{x.LabelName}}.$invalid">
+                                                                                            <li><span class="pull-left" ng-show="ProductForm.{{x.LabelName}}.$error.required">This field is required</span></li>
+                                                                                            <li><span class="pull-left" ng-show="ProductForm.{{x.LabelName}}.$error.minlength">Minimum required length is 1</span></li>
+                                                                                            <li><span class="pull-left" ng-show="ProductForm.{{x.LabelName}}.$error.maxlength">Max required length is 1000</span></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <button type="button" role="button" class="btn btn-sm btn-primary"
+                                                                                        uib-tooltip="Click To Append/Remove this Value to/from Product Name"
+                                                                                        tooltip-placement="left"
+                                                                                        ng-disabled="!x.Model"
+                                                                                        ng-click="AppendToProductName(x.Model)">
+                                                                                    <i class="fa fa-plug"></i>
+                                                                                </button>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <div class="checkbox-custom checkbox-primary">
+                                                                                        <input type="checkbox" id="{{x.IsHighlightedFeatureId}}"
+                                                                                               ng-true-value="true"
+                                                                                               ng-false-value="false"
+                                                                                               ng-disabled="!x.Model"
+                                                                                               ng-model="x.IsHighlightedFeature" />
+                                                                                        <label class="check" for="{{x.IsHighlightedFeatureId}}">Highlighted Feature</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+
+
+                                                <!--PRODUCT FITMENT INFORMATION-->
+                                                <form name="FitmentInfoForm" novalidate>
+                                                    <div class="panel panel-primary panel-bordered" ng-show="FilteredFitmentInfo.length>0">
+                                                        <div class="panel-header" style="padding: 5px 12px;height: 37px;">
+                                                            <h3 class="panel-title">
+                                                                Product Fitment Information
+                                                            </h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-borderless">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Vehicle Detials</th>
+                                                                            <th></th>
+                                                                            <th>Enter Fitment Info<span class="required">*</span></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <!--DYNAMIC CONTROLs-->
+                                                                        <tr ng-repeat="x in FilteredFitmentInfo track by x.LabelName">
+                                                                            <th style="line-height:2.3; width:50%">
+                                                                                <label class="control-label">{{x.VehicleName+' | '+x.Engine+' | '+x.SubModel}}</label>
+                                                                            </th>
+                                                                            <td>
+                                                                                <button type="button" role="button" class="btn btn-sm btn-primary"
+                                                                                        uib-tooltip="Click To Append/Remove this Value to/from Product Name"
+                                                                                        tooltip-placement="left"
+                                                                                        ng-click="AppendToProductName(x.VehicleName+' '+x.Engine+' '+x.SubModel)">
+                                                                                    <i class="fa fa-plug"></i>
+                                                                                </button>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group">
+                                                                                        <input type="text" class="form-control" name="{{x.LabelName}}" placeholder="{{x.Label}}"
+                                                                                               ng-model="x.FitmentInfo"
+                                                                                               ng-required="true"
+                                                                                               ng-minlength="1"
+                                                                                               ng-maxlength="500" />
+                                                                                        <span class="input-group-btn">
+                                                                                            <a style="border:1px solid #ccc; border-left:none;" class="btn btn-default"
+                                                                                               tooltip-placement="left" uib-tooltip="Remove Label"
+                                                                                               ng-click="removeFitmentControl(x);x.FitmentInfo=undefined;">
+                                                                                                <i class="fa fa-close"></i>
+                                                                                            </a>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <div class="row custom-row">
+                                                                                        <ul class="list-unstyled errormessage pull-left" ng-show="FitmentInfoForm.{{x.LabelName}}.$dirty && FitmentInfoForm.{{x.LabelName}}.$invalid">
+                                                                                            <li><span class="pull-left" ng-show="FitmentInfoForm.{{x.LabelName}}.$error.required">Required</span></li>
+                                                                                            <li><span class="pull-left" ng-show="FitmentInfoForm.{{x.LabelName}}.$error.minlength">Minimum required length is 1</span></li>
+                                                                                            <li><span class="pull-left" ng-show="FitmentInfoForm.{{x.LabelName}}.$error.maxlength">Maximum required length is 500</span></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="panel panel-primary panel-bordered">
+                                                    <div class="panel-header" style="padding:5px 12px; height:37px">
+                                                        <h3 class="panel-title">
+                                                            Add More Specification (s)
+                                                        </h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input type="text" id="AddControl" placeholder="Select Label" class="form-control"
+                                                                       ng-model="AddControl"
+                                                                       uib-typeahead="Control as Control.Label for Control in AllControls | filter:$viewValue" autocomplete="off"
+                                                                       typeahead-template-url="customTemplateSelectControl.html"
+                                                                       typeahead-show-hint="true"
+                                                                       typeahead-min-length="0">
+                                                                <span class="input-group-btn">
+                                                                    <button type="button" style="border:1px solid #ccc; border-left:none" class="btn btn-default"
+                                                                            tooltip-placement="top"
+                                                                            uib-tooltip="Add Label"
+                                                                            ng-click="addControl(AddControl); AddControl='';"
+                                                                            ng-disabled="AddControl.Id==undefined || AddControl.Id==null">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="panel panel-primary panel-bordered">
+                                                    <div class="panel-header" style="padding:5px 12px; height:37px">
+                                                        <h3 class="panel-title">
+                                                            Add Vehicle Fitment Information
+                                                        </h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input type="text" id="AddVehicleFitmentControl" placeholder="Select Label" class="form-control"
+                                                                       ng-model="AddVehicleFitmentControl"
+                                                                       uib-typeahead="FitmentInfo as FitmentInfo.VehicleName for FitmentInfo in AllFitmentInfo | filter:$viewValue" autocomplete="off"
+                                                                       typeahead-template-url="customTemplateSelectVehicle.html"
+                                                                       typeahead-show-hint="true"
+                                                                       typeahead-min-length="0">
+                                                                <span class="input-group-btn">
+                                                                    <button type="button" style="border:1px solid #ccc; border-left:none" class="btn btn-default"
+                                                                            tooltip-placement="top"
+                                                                            uib-tooltip="Add Fitment"
+                                                                            ng-click="addFitmentControl(AddVehicleFitmentControl); AddVehicleFitmentControl='';"
+                                                                            ng-disabled="AddVehicleFitmentControl.VehicleId==undefined || AddVehicleFitmentControl.VehicleId==null">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer" style="background-color:transparent">
+                                        <div class="row row-modal">
+                                            <div>
+                                                <button type="button"
+                                                        ng-if="Product.Id"
+                                                        ng-disabled="ProductForm.$invalid || FitmentInfoForm.$invalid"
+                                                        ng-click="UpdateProduct()"
+                                                        class="btn btn-wide btn-primary pull-right btn-right-border-radius">
+                                                    Update &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                                                </button>
+                                                <button type="button"
+                                                        ng-if="Product.Id === undefined"
+                                                        ng-disabled="ProductForm.$invalid || FitmentInfoForm.$invalid"
+                                                        ng-click="CreateProduct()"
+                                                        class="btn btn-wide btn-primary pull-right btn-right-border-radius">
+                                                    Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="ProductImages">
+                                    <div class="panel panel-primary panel-bordered">
+                                        <div class="panel-header">
+                                            <h3 class="panel-title">Upload Product Image (s)</h3>
+                                        </div>
+                                        <div class="panel-content" ng-show="!Product.Id">
+                                            <div class="row">
+                                                <div class="col-lg-12 text-center">
+                                                    <div class="alert text-center" style="color: #004085;background: #cce5ff;border-color: #b8daff;">
+                                                        <p>Please <strong>SAVE</strong> product before you can <strong>UPLOAD PRODUCT IMAGE</strong></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-content" ng-show="Product.Id">
+                                            <div class="row row-modal">
+                                                <form name="ProductImageUploadForm" novalidate>
+                                                    <div class="panel panel-default panel-bordered">
+                                                        <div class="panel-content">
+                                                            <div class="row">
+                                                                <div class="col-lg-12 text-center">
+                                                                    <button type="button"
+                                                                            style="margin-top:19px"
+                                                                            class="btn btn-primary btn-lg"
+                                                                            ng-disabled="files.length>=10"
+                                                                            tooltip-placement="left"
+                                                                            uib-tooltip="{{files.length>=10?'Can not upload more that 10 files at same time':''}}"
+                                                                            ngf-select="addFilesIntoFileStack($files, $invalidFiles)"
+                                                                            ngf-keep="'distinct'"
+                                                                            ngf-multiple="true"
+                                                                            ngf-max-size="{{MaxUploadSize}}"
+                                                                            accept="image/jpeg"
+                                                                            ngf-pattern="'image/jpeg'">
+                                                                        Select files from your device
+                                                                    </button>
+                                                                    <hr style="margin-top:10px; margin-bottom:10px" />
+                                                                    <div class="webkitscroller">
+                                                                        <table class="atble table-borderless table-condensed">
+                                                                            <tbody>
+                                                                                <tr ng-if="files.length>10" class="text-danger">
+                                                                                    <td>You've uploaded total {{files.length}} valid files. Please remove {{files.length-10}} files to upload</td>
+                                                                                </tr>
+                                                                                <tr ng-if="errFiles.length>0" class="text-danger">
+                                                                                    <td>You've uploaded total {{errFiles.length}} invalid files. These files won't be uploaded</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div class="row row-modal" ng-show="files.length>0">
+                                                <div class="row row-modal" ng-show="progressVisible==true">
+                                                    <uib-progressbar class="progress-striped {{progress<100?'active':''}}" max="100" value="progress" type="{{progress>70 && progress<=100?'success':progress>30 && progress<=70?'warning':'danger'}}">
+                                                        <i style="font-style:italic">
+                                                            {{progress+' / 100'}}
+                                                        </i>
+                                                    </uib-progressbar>
+                                                </div>
+                                                <div style="max-height:300px; height:auto">
+                                                    <div class="webkitscroller" style="max-height:300px; height:auto">
+                                                        <ul class="list-unstyled" ng-if="files.length>=1 || errFiles.length>=1">
+                                                            <li ng-repeat="f in files">
+                                                                <div class="col-lg-2">
+                                                                    <div class="hovereffect">
+                                                                        <div>
+                                                                            <img ngf-thumbnail="f" class="img-responsive animated zoomIn" style="object-fit:cover; width:100%; height:150px" />
+                                                                            <div class="overlay">
+                                                                                <div>
+                                                                                    <button class="dangers"
+                                                                                            ng-click="removeFile(f)"
+                                                                                            uib-tooltip="Remove"
+                                                                                            tooltip-placement="Top"
+                                                                                            role="button">
+                                                                                        <i class="fa fa-close"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li ng-repeat="f in errFiles">
+                                                                <div class="col-lg-2">
+                                                                    <div class="hovereffect-danger" uib-tooltip="     Unsupported file. Will not be uploaded     " tooltip-placement="top">
+                                                                        <div>
+                                                                            <img ngf-thumbnail="f" class="img-responsive animated zoomIn" style="object-fit:cover; width:100%; height:150px" />
+                                                                            <div class="overlay">
+                                                                                <div>
+                                                                                    <button class="dangers"
+                                                                                            ng-click="removeFile(f)"
+                                                                                            uib-tooltip="Remove"
+                                                                                            tooltip-placement="Top"
+                                                                                            role="button">
+                                                                                        <i class="fa fa-close"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row row-modal" style="padding-left: 20px;padding-right: 24px;padding-top: 15px;">
+                                                <div>
+                                                    <button type="button" class="btn btn-wide btn-primary pull-right btn-right-border-radius"
+                                                            ng-disabled="files==undefined || files.length==0 || Loader==true || files.length>10"
+                                                            ng-click="uploadFiles()">
+                                                        Upload &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-upload fa-1x"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row row-modal">
+                                                <h5>
+                                                    <b ng-show="ImageList.length>0">
+                                                        Total
+                                                        <span class="badge x-primary" style="margin-bottom:4px">{{ImageList.length}}</span>
+                                                        images uploaded
+                                                    </b>
+                                                    <b ng-show="ImageList.length==0 && files.length==0">
+                                                        No Image Uploaded!
+                                                    </b>
+                                                </h5>
+                                                <div class="row" id="gallery-with-zoom">
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="x in ImageList track by x.Id">
+                                                            <div class="col-xs-6 col-md-2 col-lg-2 animated zoomIn">
+                                                                <div class="hovereffect">
+                                                                    <img ng-src="{{x.FileURL}}" class="img-responsive img-rounded" style="object-fit:cover; height:170px; max-height:170px; padding:10px" />
+                                                                    <div class="overlay">
+                                                                        <button type="button"
+                                                                                class="info"
+                                                                                uib-tooltip="Click to Preview"
+                                                                                tooltip-placement="Top"
+                                                                                ng-click="openFilePreviewModal(x.FileURL, x.FileName)">
+                                                                            <i class="fa fa-image"></i>
+                                                                        </button>
+                                                                        <button type="button"
+                                                                                uib-tooltip="Click To Delete"
+                                                                                tooltip-placement="Top"
+                                                                                ng-click="DeleteImageByImageId(x.Id, x.ProductId)"
+                                                                                class="dangers">
+                                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                                        </button>
+                                                                        <button type="button"
+                                                                                ng-if="x.IsHeader==false"
+                                                                                class="info"
+                                                                                uib-tooltip="Set As Product Cover Photo"
+                                                                                tooltip-placement="Top"
+                                                                                ng-click="SetAsProductHeaderImage(x.Id, x.ProductId)">
+                                                                            <i class="glyphicon glyphicon-bookmark"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer" style="background-color:transparent;" ng-show="Product.Id">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="FilePreviewModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false" style="padding-top:20px">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="height:65px">
+                <button type="button" class="custom-close" ng-click="cancelFilePreviewModal()" style="margin-top:0px;" aria-label="Close" tooltip-placement="left" uib-tooltip="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-primary panel-bordered">
+                    <div class="panel-body">
+                        <!--File Preview For Images-->
+                        <div class="webkitscroller" style="max-height:265px">
+                            <img class="img-responsive img-rounded animated fadeIn" style="width:50%; margin:auto auto" src="" id="imageAsync" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row row-modal">
+                    <button type="button" class="btn btn-wide btn-primary pull-right btn-right-border-radius"
+                            ng-click="downloadFile(filePreview.FileName)">
+                        Download &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download fa-1x"></i>
+                    </button>
+                    <button type="button"
+                            class="btn  btn-default btn-wide pull-right btn-left-border-radius"
+                            ng-click="cancelFilePreviewModal()"
+                            role="button">
+                        Close
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ProductStockAndPriceModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="custom-close" data-dismiss="modal" aria-label="Close" ng-click="cancelProductStockAndPriceModal()" tooltip-placement="left" uib-tooltip="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="margin-top:1.6%">Update Product Stock And Price ({{ProductPrice.ProductSKU}})</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tabs">
+                            <!-- Tabs Header -->
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="active"><a data-target="#ProductPrice" data-toggle="tab" id="a_ProductPrice"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;&nbsp;Product Price</a></li>
+                                <li><a data-target="#ProductStock" data-toggle="tab" id="a_ProductStock"><i class="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp;&nbsp;Product Stock</a></li>
+                            </ul>
+                            <!-- Tabs Content -->
+                            <div class="tab-content">
+                                <!--Product Unit Price-->
+                                <div class="tab-pane fade in active" id="ProductPrice">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <form name="ProductPriceForm" novalidate>
+                                                <div class="panel panel-primary panel-bordered">
+                                                    <div class="panel-header" style="padding:5px 12px; height:37px">
+                                                        <h3 class="panel-title">
+                                                            Product Price
+                                                        </h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <!--Current Unit Price-->
+                                                        <div class="form-group">
+                                                            <label class="control-label">Current Unit Price</label>
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control" name="CurrentUnitPrice" placeholder="Current Unit Price"
+                                                                       ng-model="ProductPrice.CurrentUnitPrice"
+                                                                       ng-required="true"
+                                                                       min="0" />
+                                                                <span class="input-group-addon">
+                                                                    BDT
+                                                                </span>
+                                                            </div>
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left" ng-show="ProductPriceForm.CurrentUnitPrice.$dirty && ProductPriceForm.CurrentUnitPrice.$invalid">
+                                                                    <li><span class="pull-left" ng-show="ProductPriceForm.CurrentUnitPrice.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="ProductPriceForm.CurrentUnitPrice.$error.min">Price can't be less than zero</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <!--Current Sales Price-->
+                                                        <div class="form-group">
+                                                            <label class="control-label">Current Sales Price</label>
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control" name="CurrentSalesPrice" placeholder="Current Sales Price"
+                                                                       ng-model="ProductPrice.CurrentSalesPrice"
+                                                                       ng-required="true"
+                                                                       min="0" />
+                                                                <span class="input-group-addon">
+                                                                    BDT
+                                                                </span>
+                                                            </div>
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left" ng-show="ProductSalesPriceForm.CurrentSalesPrice.$dirty && ProductSalesPriceForm.CurrentSalesPrice.$invalid">
+                                                                    <li><span class="pull-left" ng-show="ProductSalesPriceForm.CurrentSalesPrice.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="ProductSalesPriceForm.CurrentSalesPrice.$error.min">Price can't be less than zero</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer" style="background-color:transparent">
+                                                        <div class="row" style="padding-left:20px; padding-right:20px">
+                                                            <div>
+                                                                <button type="button"
+                                                                        ng-disabled="ProductPriceForm.$invalid"
+                                                                        ng-click="UpdateProductPrice()"
+                                                                        class="btn btn-wide btn-primary pull-right btn-right-border-radius">
+                                                                    Update &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-6 animated zoomIn faster">
+                                            <div class="panel">
+                                                <div class="panel-header" style="height:45px">
+                                                    <h3 class="panel-title">Unit Price Chart Per Date</h3>
+                                                    <div class="panel-actions">
+                                                        <ul>
+                                                            <li class="action" style="height:30px; width:30px">
+                                                                <span ng-click="RefreshProductUnitPriceByDateByProductId()" tooltip-placement="left" uib-tooltip="Click To Refresh">
+                                                                    <i class="fa fa-refresh" style="vertical-align:sub"></i>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-content">
+                                                    <canvas id="base" class="chart-horizontal-bar"
+                                                            chart-data="ProductUnitPriceByDateByProductIdData" chart-labels="ProductUnitPriceByDateByProductIdDates"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-6 animated zoomIn faster">
+                                            <div class="panel">
+                                                <div class="panel-header" style="height:45px">
+                                                    <h3 class="panel-title">Sales Price Chart Per Date</h3>
+                                                    <div class="panel-actions">
+                                                        <ul>
+                                                            <li class="action" style="height:30px; width:30px">
+                                                                <span ng-click="RefreshProductSalesPriceByDateByProductId()" tooltip-placement="left" uib-tooltip="Click To Refresh">
+                                                                    <i class="fa fa-refresh" style="vertical-align:sub"></i>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-content">
+                                                    <canvas id="base" class="chart-horizontal-bar"
+                                                            chart-data="ProductSalesPriceByDateByProductIdData" chart-labels="ProductSalesPriceByDateByProductIdDates"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <!--Product Stock Quantity-->
+                                <div class="tab-pane fade" id="ProductStock">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <form name="ProductStockForm" novalidate>
+                                                <div class="panel panel-primary panel-bordered">
+                                                    <div class="panel-header" style="padding:5px 12px; height:37px">
+                                                        <h3 class="panel-title">
+                                                            Product Stock
+                                                        </h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <!--Current Stock-->
+                                                        <div class="form-group">
+                                                            <label class="control-label">Current Stock</label>
+                                                            <div class="input-group">
+                                                                <div class="alert alert-textbox" style="border-top-right-radius: 0px;border-bottom-right-radius: 0px;">
+                                                                    {{ProductStock.CurrentStock}}
+                                                                </div>
+                                                                <span class="input-group-addon">
+                                                                    Unit
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <!--New Stock-->
+                                                        <div class="form-group">
+                                                            <label class="control-label">New Stock</label>
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control" name="NewStock" placeholder="New Stock"
+                                                                       ng-model="NewStock"
+                                                                       ng-required="true"
+                                                                       min="0" />
+                                                                <span class="input-group-addon">
+                                                                    Unit
+                                                                </span>
+                                                            </div>
+                                                            <div class="row custom-row">
+                                                                <ul class="list-unstyled errormessage pull-left" ng-show="ProductStockForm.NewStock.$dirty && ProductStockForm.NewStock.$invalid">
+                                                                    <li><span class="pull-left" ng-show="ProductStockForm.NewStock.$error.required">*Required</span></li>
+                                                                    <li><span class="pull-left" ng-show="ProductStockForm.NewStock.$error.min">Price can't be less than zero</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <!--Total Stock-->
+                                                        <div class="form-group">
+                                                            <label class="control-label">Total Stock</label>
+                                                            <div class="input-group">
+                                                                <div class="alert alert-textbox" style="border-top-right-radius: 0px;border-bottom-right-radius: 0px;">
+                                                                    {{ProductStock.CurrentStock+NewStock}}
+                                                                </div>
+                                                                <span class="input-group-addon">
+                                                                    Unit
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer" style="background-color:transparent">
+                                                        <div class="row" style="padding-left:20px; padding-right:20px">
+                                                            <div>
+                                                                <button type="button"
+                                                                        ng-disabled="ProductStockForm.$invalid"
+                                                                        ng-click="UpdateProductStock()"
+                                                                        class="btn btn-wide btn-primary pull-right btn-right-border-radius">
+                                                                    Add &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="row row-modal">
+                    <button type="button"
+                            class="btn btn-wide btn-primary pull-right btn-left-border-radius"
+                            ng-disabled="ProductPriceForm.$invalid==true || ProductStockForm.$invalid==true"
+                            ng-click="UpdateProductStockAndPrice()"
+                            role="button">
+                        Update All &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="customTemplateSelectControl.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.Label | uibTypeaheadHighlight:query"></span>
+                                <br />
+                                <span class="k-p" style="font-weight:bold; font-size:.7em" ng-if="match.model.IsCategorical">This is a Categorical Label</span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="customTemplateSelectVehicle.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.VehicleName | uibTypeaheadHighlight:query"></span>
+                                <br />
+                                <span class="k-p" style="font-weight:bold; font-size:.7em">{{match.model.SubModel}}</span>
+                                <b>|</b>
+                                <span class="k-p" style="font-weight:bold; font-size:.7em">{{match.model.Engine}}</span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="customTemplateSelectCategory.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.MasterMainCategoryName | uibTypeaheadHighlight:query"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="customTemplateSelectSubCategory.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.MasterSubCategoryName | uibTypeaheadHighlight:query"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="customTemplateSelectProductCategory.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.MasterProductCategoryName | uibTypeaheadHighlight:query"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="customTemplateSelectProductBrand.html">
+    <a style="padding:0px 20px;">
+        <div class="table-responsive">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="k-state-default">
+                                <span class="k-h3" ng-bind-html="match.model.MasterProductBrandName | uibTypeaheadHighlight:query"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </a>
+</script>
+
+<style>
+    .slider-success:before {
+        position: absolute;
+        content: "";
+        height: 13px;
+        width: 13px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .edit-modal {
+        width: 65%;
+    }
+
+    .add-modal {
+        width: 65%;
+    }
+
+    .normal-height {
+        height: auto;
+    }
+
+    .date-range-height {
+        height: 407px; /*Previous 350px*/
+    }
+    /*CSS For Accordion panel into a modal*/
+    .modal-panel {
+        -webkit-box-shadow: 1px 1px 1px #cccccc;
+        box-shadow: 0px 0px 1px #cccccc;
+    }
+
+    .modal-panel-header {
+        border-radius: 4px 4px 4px 4px;
+    }
+    /*CSS For Accordion panel into a modal*/
+
+    .less-opacity {
+        opacity: .5;
+    }
+
+    .TrackingRestrictionAll::-webkit-scrollbar {
+        background-color: #f1f1f1;
+        border-radius: 50px;
+        width: 8px;
+    }
+
+    .TrackingRestrictionAll::-webkit-scrollbar-thumb {
+        background-color: #189279;
+        border-radius: 50px;
+    }
+
+        .TrackingRestrictionAll::-webkit-scrollbar-thumb:hover {
+            background-color: #126f5c;
+            border-radius: 10px;
+        }
+</style>
+
+<style>
+    .hovereffect {
+        width: 100%;
+        height: 100%;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: default;
+    }
+
+        .hovereffect .overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color: rgba(0,0,0,0.5);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out
+        }
+
+        /*.hovereffect .overlay-danger {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color: rgba(255, 0, 0, 0.5);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out
+        }*/
+
+        .hovereffect img {
+            display: block;
+            position: relative;
+            -webkit-transition: all .1s linear;
+            transition: all .1s linear;
+        }
+
+        .hovereffect h2 {
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            background: rgba(0,0,0,0.6);
+            -webkit-transform: translatey(-100px);
+            -ms-transform: translatey(-100px);
+            transform: translatey(-100px);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            padding: 10px;
+        }
+
+        .hovereffect button.info {
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid #189279;
+            background-color: transparent;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            margin: 50px 0 0;
+            padding: 7px 14px;
+        }
+
+            .hovereffect button.info:hover {
+                box-shadow: 0 0 5px #189279;
+                color: #189279;
+            }
+
+        .hovereffect button.dangers {
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid #f00;
+            background-color: transparent;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            margin: 50px 0 0;
+            padding: 7px 14px;
+        }
+
+            .hovereffect button.dangers:hover {
+                box-shadow: 0 0 5px #f00;
+                color: #f00;
+            }
+
+        .hovereffect:hover img {
+            -ms-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+        .hovereffect:hover .overlay {
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+        .hovereffect:hover h2, .hovereffect:hover button.info, .hovereffect:hover button.dangers {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -ms-transform: translatey(0);
+            -webkit-transform: translatey(0);
+            transform: translatey(0);
+        }
+
+        .hovereffect:hover button.info {
+            -webkit-transition-delay: .1s;
+            transition-delay: .1s;
+        }
+
+        .hovereffect:hover button.dangers {
+            -webkit-transition-delay: .1s;
+            transition-delay: .1s;
+        }
+</style>
+
+
+
+<style>
+    .hovereffect-danger {
+        width: 100%;
+        height: 100%;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: default;
+    }
+
+
+        .hovereffect-danger .overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color: rgba(255, 0, 0, 0.5);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out
+        }
+
+        .hovereffect-danger img {
+            display: block;
+            position: relative;
+            -webkit-transition: all .1s linear;
+            transition: all .1s linear;
+        }
+
+        .hovereffect-danger h2 {
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            background: rgba(0,0,0,0.6);
+            -webkit-transform: translatey(-100px);
+            -ms-transform: translatey(-100px);
+            transform: translatey(-100px);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            padding: 10px;
+        }
+
+        .hovereffect-danger button.info {
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid #189279;
+            background-color: transparent;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            margin: 50px 0 0;
+            padding: 7px 14px;
+        }
+
+            .hovereffect-danger button.info:hover {
+                box-shadow: 0 0 5px #189279;
+                color: #189279;
+            }
+
+        .hovereffect-danger button.dangers {
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid #f00;
+            background-color: transparent;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+            margin: 50px 0 0;
+            padding: 7px 14px;
+        }
+
+            .hovereffect-danger button.dangers:hover {
+                box-shadow: 0 0 5px #f00;
+                color: #f00;
+            }
+
+        .hovereffect-danger:hover img {
+            -ms-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+        .hovereffect-danger:hover .overlay {
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+        .hovereffect-danger:hover h2, .hovereffect-danger:hover button.info, .hovereffect-danger:hover button.dangers {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -ms-transform: translatey(0);
+            -webkit-transform: translatey(0);
+            transform: translatey(0);
+        }
+
+        .hovereffect-danger:hover button.info {
+            -webkit-transition-delay: .1s;
+            transition-delay: .1s;
+        }
+
+        .hovereffect-danger:hover button.dangers {
+            -webkit-transition-delay: .1s;
+            transition-delay: .1s;
+        }
+</style>

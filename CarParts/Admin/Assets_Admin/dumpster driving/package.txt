@@ -1,0 +1,2151 @@
+﻿<!-- CONTENT -->
+<!-- ========================================================= -->
+<div class="content">
+    <!-- content HEADER -->
+    <!-- ========================================================= -->
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-index" aria-hidden="true"></i><a href="#">Package</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="animated fadeInUp">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-8">
+                <div class="panel panel-default">
+                    <div class="panel-header">
+                        <h3 class="panel-title">
+                            Your Current Package Details
+                        </h3>
+                    </div>
+                    <div class="panel-content">
+                        <div class="widgetbox wbox-2 bg-light color-darker-2">
+                            <div class="row">
+                                <div class="col-xs-1">
+                                    <span class="icon fa fa-globe color-darker-2"></span>
+                                    <h1 class="title text-left"><span>{{CompnayCurrentPriviliges.PckgName}}</span><span style="font-size:15px">{{CompnayCurrentPriviliges.PckgName=='Trial'?'':'('+CompnayCurrentPriviliges.BillingScheme+')'}}</span></h1>
+                                </div>
+                                <div class="col-xs-11">
+                                    <h1 class="subtitle color-darker-2"><span>Your {{CompnayCurrentPriviliges.PckgName=='Trial'?'Trial Period':'Subscription'}} Will Expire In {{CompnayCurrentPriviliges.PckgName=='Trial'?CompnayCurrentPriviliges.AdjPeriod:CompnayCurrentPriviliges.ExpiredIn}} Day (s)</span></h1>
+                                    <h1 class="subtitle color-darker-2"><span>Price ${{CompnayCurrentPriviliges.AdjPrice}}</span></h1>
+                                    <h1 class="subtitle color-darker-2"><span>One-Off Price ${{CompnayCurrentPriviliges.AdjOneOffPrice}}</span></h1>
+                                    <h1 class="subtitle color-darker-2"><span>{{CompnayCurrentPriviliges.AdjTrackingAllowance}} Customer (s)</span></h1>
+                                    <h1 class="subtitle color-darker-2"><span>Activated On {{CompnayCurrentPriviliges.AdjTrackingAllowance}}</span></h1>
+                                    <h1 class="subtitle color-darker-2"><span>2 Reports</span></h1>
+                                    <h1 class="subtitle color-darker-2"><span>No Task Management</span></h1>
+                                    <h1 class="subtitle color-darker-2"><span>Customer Support 24/7</span></h1>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+
+        <div class="row">
+            <!--SEARCH-->
+            <div class="col-sm-12">
+                <div class="panel">
+                    <div class="panel-content">
+                        <div class="row" style="margin-left:0px; margin-right:0px;">
+                            <div style="text-align:right;">
+                                <div>
+                                    <a class="btn btn-darker-1 btn-wide pull-right" data-target="#yearly" data-toggle="tab" style="border-radius:2px 0px 0px 2px">Yearly</a>
+                                    <a class="btn btn-darker-1 btn-wide pull-right" data-target="#monthly" data-toggle="tab" style="border-radius:0px 2px 2px 0px">Monthly</a>
+                                    
+                                </div>
+                            </div>
+                            <!--<div class="content-header-custom">
+                                <div style="margin-left: 2.6%;padding-top: 2%;">
+                                    <div class="btn-group">
+                                        <a class="btn btn-darker-1" data-target="#monthly" data-toggle="tab">Monthly</a>
+                                        <a class="btn btn-darker-1" data-target="#yearly" data-toggle="tab">Yearly</a>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="tab-content">
+
+
+                            <!--Tab For Month-->
+                            <div class="tab-pane fade in active" id="monthly">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="panel widgetbox wbox-4 custom-color">
+                                            <div>
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                        <div class="col-md-2" style="margin-top:4px">
+                                                            <span class="icon fa fa-globe color-lighter-1"></span>
+                                                            <h1 class="title"><span style="color:#9ffbe8;">{{FreePakcage.PckgName}}</span></h1>
+                                                        </div>
+                                                        <div class="col-md-10 text-right">
+                                                            <h1 class="title" style="color:#9ffbe8">${{FreePakcageD.Price}} <span style="font-size:15px">{{FreePakcageD.Period}} Day (s)</span></h1>
+                                                            <h1 class="subtitle color-lighter-2">One-Off Price ${{FreePakcageD.OneOffPrice}}</h1>
+                                                            <h1 class="subtitle color-lighter-2">{{FreePakcageD.TrackingAllowance}} Customer (s)</h1>
+                                                            <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                            <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                            <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                            <br />
+                                                            <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(FreePakcage.Id)" style="margin-bottom: -5px;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="panel widgetbox wbox-4 custom-color">
+                                            <div>
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                        <div class="col-md-2" style="margin-top:4px">
+                                                            <span class="icon fa fa-globe color-lighter-1"></span>
+                                                            <h1 class="title"><span style="color:#9ffbe8;">{{PackageOne.PckgName}}</span></h1>
+                                                        </div>
+                                                        <div class="col-md-10 text-right">
+                                                            <h1 class="title" style="color:#9ffbe8">${{PackageOneM.Price}} <span style="font-size:15px">{{PackageOneM.BillingScheme}}</span></h1>
+                                                            <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageOneM.OneOffPrice}}</h1>
+                                                            <h1 class="subtitle color-lighter-2">{{PackageOneM.TrackingAllowance}} Customer (s)</h1>
+                                                            <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                            <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                            <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                            <br />
+                                                            <input type="button" class="btn btn-darker-1" value="Choose" style="margin-bottom: -5px;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--For Showing Two Boxes (Silver Premium)-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="panel widgetbox wbox-4 custom-color">
+                                            <div>
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                        <div class="col-md-2" style="margin-top:4px">
+                                                            <span class="icon fa fa-globe color-lighter-1"></span>
+                                                            <h1 class="title"><span style="color:#9ffbe8;">{{PackageTwo.PckgName}}</span></h1>
+                                                        </div>
+                                                        <div class="col-md-10 text-right">
+                                                            <h1 class="title" style="color:#9ffbe8">${{PackageTwoM.Price}} <span style="font-size:15px">{{PackageTwoM.BillingScheme}}</span></h1>
+                                                            <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageTwoM.OneOffPrice}}</h1>
+                                                            <h1 class="subtitle color-lighter-2">{{PackageTwoM.TrackingAllowance}} Customer (s)</h1>
+                                                            <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                            <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                            <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                            <br />
+                                                            <input type="button" class="btn btn-darker-1" value="Choose" style="margin-bottom: -5px;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="panel widgetbox wbox-4 custom-color">
+                                            <div>
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                        <div class="col-md-2" style="margin-top:4px">
+                                                            <span class="icon fa fa-globe color-lighter-1"></span>
+                                                            <h1 class="title"><span style="color:#9ffbe8;">{{PackageThree.PckgName}}</span></h1>
+                                                        </div>
+                                                        <div class="col-md-10 text-right">
+                                                            <h1 class="title" style="color:#9ffbe8">${{PackageThreeM.Price}} <span style="font-size:15px">{{PackageThreeM.BillingScheme}}</span></h1>
+                                                            <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageThreeM.OneOffPrice}}</h1>
+                                                            <h1 class="subtitle color-lighter-2">{{PackageThreeM.TrackingAllowance}} Customer (s)</h1>
+                                                            <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                            <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                            <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                            <br />
+                                                            <input type="button" class="btn btn-darker-1" value="Choose" style="margin-bottom: -5px;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--Tab For Year-->
+                            <div class="tab-pane fade" id="yearly">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="panel widgetbox wbox-4 custom-color">
+                                            <div>
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                        <div class="col-md-2" style="margin-top:4px">
+                                                            <span class="icon fa fa-globe color-lighter-1"></span>
+                                                            <h1 class="title"><span style="color:#9ffbe8;">{{FreePakcage.PckgName}}</span></h1>
+                                                        </div>
+                                                        <div class="col-md-10 text-right">
+                                                            <h1 class="title" style="color:#9ffbe8">${{FreePakcageD.Price}} <span style="font-size:15px">{{FreePakcageD.Period}} Day (s)</span></h1>
+                                                            <h1 class="subtitle color-lighter-2">One-Off Price ${{FreePakcageD.OneOffPrice}}</h1>
+                                                            <h1 class="subtitle color-lighter-2">{{FreePakcageD.TrackingAllowance}} Customer (s)</h1>
+                                                            <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                            <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                            <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                            <br />
+                                                            <input type="button" class="btn btn-darker-1" value="Choose" style="margin-bottom: -5px;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="panel widgetbox wbox-4 custom-color">
+                                            <div>
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                        <div class="col-md-2" style="margin-top:4px">
+                                                            <span class="icon fa fa-globe color-lighter-1"></span>
+                                                            <h1 class="title"><span style="color:#9ffbe8;">{{PackageOne.PckgName}}</span></h1>
+                                                        </div>
+                                                        <div class="col-md-10 text-right">
+                                                            <h1 class="title" style="color:#9ffbe8">${{PackageOneY.Price}} <span style="font-size:15px">{{PackageOneY.BillingScheme}}</span></h1>
+                                                            <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageOneY.OneOffPrice}}</h1>
+                                                            <h1 class="subtitle color-lighter-2">{{PackageOneY.TrackingAllowance}} Customer (s)</h1>
+                                                            <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                            <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                            <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                            <br />
+                                                            <input type="button" class="btn btn-darker-1" value="Choose" style="margin-bottom: -5px;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--For Showing Two Boxes (Silver Premium)-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="panel widgetbox wbox-4 custom-color">
+                                            <div>
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                        <div class="col-md-2" style="margin-top:4px">
+                                                            <span class="icon fa fa-globe color-lighter-1"></span>
+                                                            <h1 class="title"><span style="color:#9ffbe8;">{{PackageTwo.PckgName}}</span></h1>
+                                                        </div>
+                                                        <div class="col-md-10 text-right">
+                                                            <h1 class="title" style="color:#9ffbe8">${{PackageTwoY.Price}} <span style="font-size:15px">{{PackageTwoY.BillingScheme}}</span></h1>
+                                                            <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageTwoY.OneOffPrice}}</h1>
+                                                            <h1 class="subtitle color-lighter-2">{{PackageTwoY.TrackingAllowance}} Customer (s)</h1>
+                                                            <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                            <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                            <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                            <br />
+                                                            <input type="button" class="btn btn-darker-1" value="Choose" style="margin-bottom: -5px;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="panel widgetbox wbox-4 custom-color">
+                                            <div>
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                        <div class="col-md-2" style="margin-top:4px">
+                                                            <span class="icon fa fa-globe color-lighter-1"></span>
+                                                            <h1 class="title"><span style="color:#9ffbe8;">{{PackageThree.PckgName}}</span></h1>
+                                                        </div>
+                                                        <div class="col-md-10 text-right">
+                                                            <h1 class="title" style="color:#9ffbe8">${{PackageThreeY.Price}} <span style="font-size:15px">{{PackageThreeY.BillingScheme}}</span></h1>
+                                                            <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageThreeY.OneOffPrice}}</h1>
+                                                            <h1 class="subtitle color-lighter-2">{{PackageThreeY.TrackingAllowance}} Customer (s)</h1>
+                                                            <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                            <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                            <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                            <br />
+                                                            <input type="button" class="btn btn-darker-1" value="Choose" style="margin-bottom: -5px;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!--For Showing 2 Boxes (Free Basic)-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+</div>
+
+<div class="modal fade" id="CompanyPackageModalFree" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="custom-close" data-dismiss="modal" id="Package-btn-top-close" ng-click="cancelRequestPackage()">&times;</button>
+                <h4 class="modal-title" style="margin-top:1.6%">You are about to avail {{FreePackage.PckgName}} Package</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel widgetbox wbox-2 bg-light color-darker-2">
+                    <div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-md-2" style="margin-top:4px">
+                                    <span class="icon fa fa-globe color-darker-2" style="margin-left:20%"></span>
+                                    <h1 class="title"><span>{{FreePakcage.PckgName}}</span></h1>
+                                </div>
+                                <div class="col-md-10 text-right">
+                                    <h1 class="title color-darker-2">${{FreePakcageD.Price}} <span style="font-size:15px">{{FreePakcageD.Period}} Day (s)</span></h1>
+                                    <h1 class="subtitle color-darker-2">One-Off Price ${{FreePakcageD.OneOffPrice}}</h1>
+                                    <h1 class="subtitle color-darker-2">{{FreePakcageD.TrackingAllowance}} Customer (s)</h1>
+                                    <h1 class="subtitle color-darker-2">2 Reports</h1>
+                                    <h1 class="subtitle color-darker-2">No Task Management</h1>
+                                    <h1 class="subtitle color-darker-2">Customer Support 24/7</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row" style="margin-left:0px; margin-right:0px">
+                    <div>
+                        <button type="button"
+                                class="btn btn-wide btn-primary pull-right"
+                                ng-click="RequestPackage()">
+                            Save &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                        </button>
+                        <button type="button"
+                                class="btn btn-wide btn-default pull-right"
+                                ng-click="cancelRequestPackage()"
+                                role="button">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .content-header-custom {
+        background: #f7f7f7;
+        color: black;
+        -webkit-box-shadow: 0 2px 8px #cccccc;
+        box-shadow: 0 2px 8px #cccccc;
+        border-bottom: none;
+        height: 100%;
+        width: 11%;
+        padding: 0;
+        margin-left: 87.9%;
+        margin-right: 1.1%;
+        border-radius: 4px 4px 0px 0px;
+        margin-bottom: -0.5%;
+    }
+
+    .custom-color {
+        background-color: #202020;
+    }
+</style>
+
+
+
+
+
+
+
+
+----Package Next Style 2-----------
+
+<!-- CONTENT -->
+<!-- ========================================================= -->
+<div class="content">
+    <!-- content HEADER -->
+    <!-- ========================================================= -->
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-index" aria-hidden="true"></i><a href="#">Package</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="animated fadeInUp">
+        <br />
+
+
+        <div class="row">
+            <!--SEARCH-->
+            <div class="col-sm-12">
+                <div class="panel">
+                    <div class="panel-content">
+                        <div class="row" style="margin-left:0px; margin-right:0px;">
+                            <div style="text-align:right;">
+                                <div>
+                                    <a class="btn btn-darker-1 btn-wide pull-right" data-target="#yearly" data-toggle="tab" style="border-radius:0px 2px 2px 0px">Yearly</a>
+                                    <a class="btn btn-darker-1 btn-wide pull-right" data-target="#monthly" data-toggle="tab" style="border-radius:2px 0px 0px 2px">Monthly</a>
+
+                                </div>
+                            </div>
+                            <!--<div class="content-header-custom">
+                                <div style="margin-left: 2.6%;padding-top: 2%;">
+                                    <div class="btn-group">
+                                        <a class="btn btn-darker-1" data-target="#monthly" data-toggle="tab">Monthly</a>
+                                        <a class="btn btn-darker-1" data-target="#yearly" data-toggle="tab">Yearly</a>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="tab-content">
+
+
+                            <!--Tab For Month-->
+                            <div class="tab-pane fade in active" id="monthly">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="panel panel-default">
+                                            <div class="panel-header">
+                                                <h3 class="panel-title">
+                                                    Your Current Package Details
+                                                </h3>
+                                            </div>
+                                            <div class="panel-content">
+                                                <div class="widgetbox wbox-2 bg-light color-darker-2">
+                                                    <div class="row">
+                                                        <div class="col-xs-1">
+                                                            <span class="icon fa fa-globe color-darker-2"></span>
+                                                            <h1 class="title text-left"><span>{{CompnayCurrentPriviliges.PckgName}}</span><span style="font-size:15px">{{CompnayCurrentPriviliges.PckgName=='Trial'?'':'('+CompnayCurrentPriviliges.BillingScheme+')'}}</span></h1>
+                                                        </div>
+                                                        <div class="col-xs-11">
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">Your {{CompnayCurrentPriviliges.PckgName=='Trial'?'Trial Period':'Subscription'}} Will Expire In {{CompnayCurrentPriviliges.PckgName=='Trial'?CompnayCurrentPriviliges.AdjPeriod:CompnayCurrentPriviliges.ExpiredIn}} Day (s)</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">Price ${{CompnayCurrentPriviliges.AdjPrice}}</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">One-Off Price ${{CompnayCurrentPriviliges.AdjOneOffPrice}}</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">{{CompnayCurrentPriviliges.AdjTrackingAllowance}} Customer (s)</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">Activated On {{CompnayCurrentPriviliges.AdjTrackingAllowance}}</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">2 Reports</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">No Task Management</span></h1>
+                                                            <h1 class="title color-darker-2" style="margin-bottom:11.8%"><span style="font-size:15px">Customer Support 24/7</span></h1>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                    <div>
+                                                        <div class="panel-content">
+                                                            <div class="row">
+                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{FreePakcage.PckgName}}</span></h1>
+                                                                </div>
+                                                                <div class="col-md-10 text-right">
+                                                                    <h1 class="title" style="color:#9ffbe8">${{FreePakcageD.Price}} <span style="font-size:15px">{{FreePakcageD.Period}} Day (s)</span></h1>
+                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{FreePakcageD.OneOffPrice}}</h1>
+                                                                    <h1 class="subtitle color-lighter-2">{{FreePakcageD.TrackingAllowance}} Customer (s)</h1>
+                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                    <br />
+                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(FreePakcage.Id)" style="margin-bottom: -5px;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                    <div>
+                                                        <div class="panel-content">
+                                                            <div class="row">
+                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageOne.PckgName}}</span></h1>
+                                                                </div>
+                                                                <div class="col-md-10 text-right">
+                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageOneM.Price}} <span style="font-size:15px">{{PackageOneM.BillingScheme}}</span></h1>
+                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageOneM.OneOffPrice}}</h1>
+                                                                    <h1 class="subtitle color-lighter-2">{{PackageOneM.TrackingAllowance}} Customer (s)</h1>
+                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                    <br />
+                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageOne.Id)" style="margin-bottom: -5px;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                    <div>
+                                                        <div class="panel-content">
+                                                            <div class="row">
+                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageTwo.PckgName}}</span></h1>
+                                                                </div>
+                                                                <div class="col-md-10 text-right">
+                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageTwoM.Price}} <span style="font-size:15px">{{PackageTwoM.BillingScheme}}</span></h1>
+                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageTwoM.OneOffPrice}}</h1>
+                                                                    <h1 class="subtitle color-lighter-2">{{PackageTwoM.TrackingAllowance}} Customer (s)</h1>
+                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                    <br />
+                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageTwo.Id)" style="margin-bottom: -5px;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                    <div>
+                                                        <div class="panel-content">
+                                                            <div class="row">
+                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageThree.PckgName}}</span></h1>
+                                                                </div>
+                                                                <div class="col-md-10 text-right">
+                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageThreeM.Price}} <span style="font-size:15px">{{PackageThreeM.BillingScheme}}</span></h1>
+                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageThreeM.OneOffPrice}}</h1>
+                                                                    <h1 class="subtitle color-lighter-2">{{PackageThreeM.TrackingAllowance}} Customer (s)</h1>
+                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                    <br />
+                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageThree.Id)" style="margin-bottom: -5px;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--For Showing Two Boxes (Silver Premium)-->
+                                </div>
+                            </div>
+
+
+                            <!--Tab For Year-->
+                            <div class="tab-pane fade" id="yearly">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="panel panel-default">
+                                            <div class="panel-header">
+                                                <h3 class="panel-title">
+                                                    Your Current Package Details
+                                                </h3>
+                                            </div>
+                                            <div class="panel-content">
+                                                <div class="widgetbox wbox-2 bg-light color-darker-2">
+                                                    <div class="row">
+                                                        <div class="col-xs-1">
+                                                            <span class="icon fa fa-globe color-darker-2"></span>
+                                                            <h1 class="title text-left"><span>{{CompnayCurrentPriviliges.PckgName}}</span><span style="font-size:15px">{{CompnayCurrentPriviliges.PckgName=='Trial'?'':'('+CompnayCurrentPriviliges.BillingScheme+')'}}</span></h1>
+                                                        </div>
+                                                        <div class="col-xs-11">
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">Your {{CompnayCurrentPriviliges.PckgName=='Trial'?'Trial Period':'Subscription'}} Will Expire In {{CompnayCurrentPriviliges.PckgName=='Trial'?CompnayCurrentPriviliges.AdjPeriod:CompnayCurrentPriviliges.ExpiredIn}} Day (s)</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">Price ${{CompnayCurrentPriviliges.AdjPrice}}</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">One-Off Price ${{CompnayCurrentPriviliges.AdjOneOffPrice}}</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">{{CompnayCurrentPriviliges.AdjTrackingAllowance}} Customer (s)</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">Activated On {{CompnayCurrentPriviliges.AdjTrackingAllowance}}</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">2 Reports</span></h1>
+                                                            <h1 class="title color-darker-2"><span style="font-size:15px">No Task Management</span></h1>
+                                                            <h1 class="title color-darker-2" style="margin-bottom:11.8%"><span style="font-size:15px">Customer Support 24/7</span></h1>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                    <div>
+                                                        <div class="panel-content">
+                                                            <div class="row">
+                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{FreePakcage.PckgName}}</span></h1>
+                                                                </div>
+                                                                <div class="col-md-10 text-right">
+                                                                    <h1 class="title" style="color:#9ffbe8">${{FreePakcageD.Price}} <span style="font-size:15px">{{FreePakcageD.Period}} Day (s)</span></h1>
+                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{FreePakcageD.OneOffPrice}}</h1>
+                                                                    <h1 class="subtitle color-lighter-2">{{FreePakcageD.TrackingAllowance}} Customer (s)</h1>
+                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                    <br />
+                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(FreePakcage.Id)" style="margin-bottom: -5px;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                    <div>
+                                                        <div class="panel-content">
+                                                            <div class="row">
+                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageOne.PckgName}}</span></h1>
+                                                                </div>
+                                                                <div class="col-md-10 text-right">
+                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageOneY.Price}} <span style="font-size:15px">{{PackageOneY.BillingScheme}}</span></h1>
+                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageOneY.OneOffPrice}}</h1>
+                                                                    <h1 class="subtitle color-lighter-2">{{PackageOneY.TrackingAllowance}} Customer (s)</h1>
+                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                    <br />
+                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageOne.Id)" style="margin-bottom: -5px;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                    <div>
+                                                        <div class="panel-content">
+                                                            <div class="row">
+                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageTwo.PckgName}}</span></h1>
+                                                                </div>
+                                                                <div class="col-md-10 text-right">
+                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageTwoY.Price}} <span style="font-size:15px">{{PackageTwoY.BillingScheme}}</span></h1>
+                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageTwoY.OneOffPrice}}</h1>
+                                                                    <h1 class="subtitle color-lighter-2">{{PackageTwoY.TrackingAllowance}} Customer (s)</h1>
+                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                    <br />
+                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageTwo.Id)" style="margin-bottom: -5px;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                    <div>
+                                                        <div class="panel-content">
+                                                            <div class="row">
+                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageThree.PckgName}}</span></h1>
+                                                                </div>
+                                                                <div class="col-md-10 text-right">
+                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageThreeY.Price}} <span style="font-size:15px">{{PackageThreeY.BillingScheme}}</span></h1>
+                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageThreeY.OneOffPrice}}</h1>
+                                                                    <h1 class="subtitle color-lighter-2">{{PackageThreeY.TrackingAllowance}} Customer (s)</h1>
+                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                    <br />
+                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageThree.Id)" style="margin-bottom: -5px;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--For Showing 2 Boxes (Free Basic)-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+</div>
+
+<div class="modal fade" id="CompanyPackageModalFree" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="custom-close" data-dismiss="modal" id="Package-btn-top-close" ng-click="cancelRequestPackage()">&times;</button>
+                <h4 class="modal-title" style="margin-top:1.6%">You are about to avail {{PackageBeforeRequest.PckgName}} Package</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel widgetbox wbox-2 bg-light color-darker-2">
+                    <div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-md-2" style="margin-top:4px">
+                                    <span class="icon fa fa-globe color-darker-2" style="margin-left:20%"></span>
+                                    <h1 class="title"><span>{{PackageBeforeRequest.PckgName}}</span></h1>
+                                </div>
+                                <div class="col-md-10 text-right">
+                                    <h1 class="title color-darker-2">${{PackageBeforeRequest.packageObjs[0].Price}} <span style="font-size:15px">{{PackageBeforeRequest.PckgType=='Free'?PackageBeforeRequest.packageObjs[0].Period+' Day (s)':'/Month'}}</span></h1>
+                                    <h1 class="subtitle color-darker-2">One-Off Price ${{PackageBeforeRequest.packageObjs[0].OneOffPrice}}</h1>
+                                    <h1 class="subtitle color-darker-2">{{PackageBeforeRequest.packageObjs[0].TrackingAllowance}} Customer (s)</h1>
+                                    <h1 class="subtitle color-darker-2">2 Reports</h1>
+                                    <h1 class="subtitle color-darker-2">No Task Management</h1>
+                                    <h1 class="subtitle color-darker-2">Customer Support 24/7</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row" style="margin-left:0px; margin-right:0px">
+                    <div ng-if="PackageBeforeRequest.PckgType=='Free'">
+                        <button type="button"
+                                class="btn btn-wide btn-primary pull-right"
+                                ng-click="RequestPackage()">
+                            Activate &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                        </button>
+                        <button type="button"
+                                class="btn btn-wide btn-default pull-right"
+                                ng-click="cancelRequestPackage()"
+                                role="button">
+                            Close
+                        </button>
+                    </div>
+                    <div ng-if="PackageBeforeRequest.PckgType!='Free'">
+                        <button type="button"
+                                class="btn btn-wide btn-primary pull-right"
+                                ng-click="RequestPackage()">
+                            Request &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                        </button>
+                        <button type="button"
+                                class="btn btn-wide btn-default pull-right"
+                                ng-click="cancelRequestPackage()"
+                                role="button">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .content-header-custom {
+        background: #f7f7f7;
+        color: black;
+        -webkit-box-shadow: 0 2px 8px #cccccc;
+        box-shadow: 0 2px 8px #cccccc;
+        border-bottom: none;
+        height: 100%;
+        width: 11%;
+        padding: 0;
+        margin-left: 87.9%;
+        margin-right: 1.1%;
+        border-radius: 4px 4px 0px 0px;
+        margin-bottom: -0.5%;
+    }
+
+    .custom-color {
+        background-color: #202020;
+    }
+</style>
+
+
+--Design 3---
+
+<!-- CONTENT -->
+<!-- ========================================================= -->
+<div class="content">
+    <!-- content HEADER -->
+    <!-- ========================================================= -->
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-index" aria-hidden="true"></i><a href="#">Package</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="animated fadeInUp">
+        <br />
+
+
+        <div class="row">
+            <!--SEARCH-->
+            <div class="col-sm-12">
+                <div class="panel">
+                    <div class="panel-content">
+                        <div class="row" style="margin-left:0px; margin-right:0px;">
+                            <div style="text-align:right;">
+                                <div>
+                                    <a class="btn btn-darker-1 btn-wide pull-right" data-target="#yearly" data-toggle="tab" style="border-radius:0px 2px 2px 0px" ng-click="SwitchYear()">Yearly</a>
+                                    <a class="btn btn-darker-1 btn-wide pull-right" data-target="#monthly" data-toggle="tab" style="border-radius:2px 0px 0px 2px" ng-click="SwitchMonth()">Monthly</a>
+
+                                </div>
+                            </div>
+                            <!--<div class="content-header-custom">
+                                <div style="margin-left: 2.6%;padding-top: 2%;">
+                                    <div class="btn-group">
+                                        <a class="btn btn-darker-1" data-target="#monthly" data-toggle="tab">Monthly</a>
+                                        <a class="btn btn-darker-1" data-target="#yearly" data-toggle="tab">Yearly</a>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-4">
+                                    <div class="panel panel-default" style="box-shadow: 5px 5px 20px #cccccc;">
+                                        <div class="panel-header">
+                                            <h3 class="panel-title">
+                                                Your Current Package Details
+                                            </h3>
+                                        </div>
+                                        <div class="panel-content">
+                                            <div class="widgetbox wbox-2 bg-light color-darker-2">
+                                                <div class="row">
+                                                    <div class="col-xs-1">
+                                                        <span class="icon fa fa-globe color-darker-2"></span>
+                                                        <h1 class="title text-left"><span>{{CompnayCurrentPriviliges.PckgName}}</span><span style="font-size:14px">{{CompnayCurrentPriviliges.PckgName=='Trial'?'':'('+CompnayCurrentPriviliges.BillingScheme+')'}}</span></h1>
+                                                    </div>
+                                                    <div class="col-xs-11">
+                                                        <h1 class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">Your {{CompnayCurrentPriviliges.PckgName=='Trial'?'Trial Period':'Subscription'}} Will Expire In {{CompnayCurrentPriviliges.PckgName=='Trial'?CompnayCurrentPriviliges.AdjPeriod:CompnayCurrentPriviliges.ExpiredIn}} Day (s)</span></h1>
+                                                        <h1 class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">Price ${{CompnayCurrentPriviliges.AdjPrice}}</span></h1>
+                                                        <h1 class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">One-Off Price ${{CompnayCurrentPriviliges.AdjOneOffPrice}}</span></h1>
+                                                        <h1 class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">{{CompnayCurrentPriviliges.AdjTrackingAllowance}} Customer (s)</span></h1>
+                                                        <h1 class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">Activated On {{CompnayCurrentPriviliges.AdjTrackingAllowance}}</span></h1>
+                                                        <h1 class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">2 Reports</span></h1>
+                                                        <h1 class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">No Task Management</span></h1>
+                                                        <h1 class="title color-darker-2" style="margin-bottom:16.4%; line-height:1.153846rem"><span style="font-size:14px">Customer Support 24/7</span></h1>
+                                                        <!--Previous Margin Bottom Was 11.8%-->
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="row">
+
+
+                                        <div class="tab-content">
+
+
+                                            <!--Tab For Month-->
+                                            <div class="tab-pane fade in active" id="monthly">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                                    <div>
+                                                                        <div class="panel-content">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{FreePakcage.PckgName}}</span></h1>
+                                                                                </div>
+                                                                                <div class="col-md-10 text-right">
+                                                                                    <h1 class="title" style="color:#9ffbe8">${{FreePakcageD.Price}} <span style="font-size:15px">{{FreePakcageD.Period}} Day (s)</span></h1>
+                                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{FreePakcageD.OneOffPrice}}</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">{{FreePakcageD.TrackingAllowance}} Customer (s)</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                                    <br />
+                                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(FreePakcage.Id)" style="margin-bottom: -5px;" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                                    <div>
+                                                                        <div class="panel-content">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageOne.PckgName}}</span></h1>
+                                                                                </div>
+                                                                                <div class="col-md-10 text-right">
+                                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageOneM.Price}} <span style="font-size:15px">{{PackageOneM.BillingScheme}}</span></h1>
+                                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageOneM.OneOffPrice}}</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">{{PackageOneM.TrackingAllowance}} Customer (s)</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                                    <br />
+                                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageOne.Id)" style="margin-bottom: -5px;" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                                    <div>
+                                                                        <div class="panel-content">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageTwo.PckgName}}</span></h1>
+                                                                                </div>
+                                                                                <div class="col-md-10 text-right">
+                                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageTwoM.Price}} <span style="font-size:15px">{{PackageTwoM.BillingScheme}}</span></h1>
+                                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageTwoM.OneOffPrice}}</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">{{PackageTwoM.TrackingAllowance}} Customer (s)</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                                    <br />
+                                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageTwo.Id)" style="margin-bottom: -5px;" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                                    <div>
+                                                                        <div class="panel-content">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageThree.PckgName}}</span></h1>
+                                                                                </div>
+                                                                                <div class="col-md-10 text-right">
+                                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageThreeM.Price}} <span style="font-size:15px">{{PackageThreeM.BillingScheme}}</span></h1>
+                                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageThreeM.OneOffPrice}}</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">{{PackageThreeM.TrackingAllowance}} Customer (s)</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                                    <br />
+                                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageThree.Id)" style="margin-bottom: -5px;" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--For Showing Two Boxes (Silver Premium)-->
+                                                </div>
+                                            </div>
+
+
+                                            <!--Tab For Year-->
+                                            <div class="tab-pane fade" id="yearly">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                                    <div>
+                                                                        <div class="panel-content">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{FreePakcage.PckgName}}</span></h1>
+                                                                                </div>
+                                                                                <div class="col-md-10 text-right">
+                                                                                    <h1 class="title" style="color:#9ffbe8">${{FreePakcageD.Price}} <span style="font-size:15px">{{FreePakcageD.Period}} Day (s)</span></h1>
+                                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{FreePakcageD.OneOffPrice}}</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">{{FreePakcageD.TrackingAllowance}} Customer (s)</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                                    <br />
+                                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(FreePakcage.Id)" style="margin-bottom: -5px;" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                                    <div>
+                                                                        <div class="panel-content">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageOne.PckgName}}</span></h1>
+                                                                                </div>
+                                                                                <div class="col-md-10 text-right">
+                                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageOneY.Price}} <span style="font-size:15px">{{PackageOneY.BillingScheme}}</span></h1>
+                                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageOneY.OneOffPrice}}</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">{{PackageOneY.TrackingAllowance}} Customer (s)</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                                    <br />
+                                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageOne.Id)" style="margin-bottom: -5px;" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                                    <div>
+                                                                        <div class="panel-content">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageTwo.PckgName}}</span></h1>
+                                                                                </div>
+                                                                                <div class="col-md-10 text-right">
+                                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageTwoY.Price}} <span style="font-size:15px">{{PackageTwoY.BillingScheme}}</span></h1>
+                                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageTwoY.OneOffPrice}}</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">{{PackageTwoY.TrackingAllowance}} Customer (s)</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                                    <br />
+                                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageTwo.Id)" style="margin-bottom: -5px;" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="panel widgetbox wbox-4 custom-color">
+                                                                    <div>
+                                                                        <div class="panel-content">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2" style="margin-top:4px">
+                                                                                    <span class="icon fa fa-globe color-lighter-1"></span>
+                                                                                    <h1 class="title"><span style="color:#9ffbe8;">{{PackageThree.PckgName}}</span></h1>
+                                                                                </div>
+                                                                                <div class="col-md-10 text-right">
+                                                                                    <h1 class="title" style="color:#9ffbe8">${{PackageThreeY.Price}} <span style="font-size:15px">{{PackageThreeY.BillingScheme}}</span></h1>
+                                                                                    <h1 class="subtitle color-lighter-2">One-Off Price ${{PackageThreeY.OneOffPrice}}</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">{{PackageThreeY.TrackingAllowance}} Customer (s)</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">2 Reports</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">No Task Management</h1>
+                                                                                    <h1 class="subtitle color-lighter-2">Customer Support 24/7</h1>
+                                                                                    <br />
+                                                                                    <input type="button" class="btn btn-darker-1" value="Choose" ng-click="ChoosePackage(PackageThree.Id)" style="margin-bottom: -5px;" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <!--For Showing 2 Boxes (Free Basic)-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+</div>
+
+<div class="modal fade" id="CompanyPackagePreviewModal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="custom-close" data-dismiss="modal" id="Package-btn-top-close" ng-click="cancelRequestPackage()">&times;</button>
+                <h4 class="modal-title" style="margin-top:1.6%">You are about to avail {{PackageBeforeRequest.PckgName}} Package</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel widgetbox wbox-2 bg-light color-darker-2">
+                    <div>
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-md-2" style="margin-top:4px">
+                                    <span class="icon fa fa-globe color-darker-2" style="margin-left:20%"></span>
+                                    <h1 class="title"><span>{{PackageBeforeRequest.PckgName}}</span></h1>
+                                </div>
+                                <div class="col-md-10 text-right">
+                                    <h1 class="title color-darker-2">${{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].Price:PackageBeforeRequest.packageObjs[1].Price}} <span style="font-size:15px">{{PackageBeforeRequest.PckgType=='Free'?PackageBeforeRequest.packageObjs[0].Period+' Day (s)':Monthly==true?'/Month':'/Year'}}</span></h1>
+                                    <h1 class="subtitle color-darker-2">One-Off Price ${{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].OneOffPrice:PackageBeforeRequest.packageObjs[1].OneOffPrice}}</h1>
+                                    <h1 class="subtitle color-darker-2">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].TrackingAllowance:PackageBeforeRequest.packageObjs[1].TrackingAllowance}} Customer (s)</h1>
+                                    <h1 class="subtitle color-darker-2">2 Reports</h1>
+                                    <h1 class="subtitle color-darker-2">No Task Management</h1>
+                                    <h1 class="subtitle color-darker-2">Customer Support 24/7</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row" style="margin-left:0px; margin-right:0px">
+                    <div ng-if="PackageBeforeRequest.PckgType=='Free'">
+                        <button type="button"
+                                class="btn btn-wide btn-primary pull-right"
+                                ng-click="RequestPackage()">
+                            Activate &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                        </button>
+                        <button type="button"
+                                class="btn btn-wide btn-default pull-right"
+                                ng-click="cancelRequestPackage()"
+                                role="button">
+                            Close
+                        </button>
+                    </div>
+                    <div ng-if="PackageBeforeRequest.PckgType!='Free'">
+                        <button type="button"
+                                class="btn btn-wide btn-primary pull-right"
+                                ng-click="RequestPackage()">
+                            Request &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                        </button>
+                        <button type="button"
+                                class="btn btn-wide btn-default pull-right"
+                                ng-click="cancelRequestPackage()"
+                                role="button">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .content-header-custom {
+        background: #f7f7f7;
+        color: black;
+        -webkit-box-shadow: 0 2px 8px #cccccc;
+        box-shadow: 0 2px 8px #cccccc;
+        border-bottom: none;
+        height: 100%;
+        width: 11%;
+        padding: 0;
+        margin-left: 87.9%;
+        margin-right: 1.1%;
+        border-radius: 4px 4px 0px 0px;
+        margin-bottom: -0.5%;
+    }
+
+    .custom-color {
+        background-color: #202020;
+    }
+</style>
+
+
+
+
+
+
+
+
+///////////////////////////////////////
+<!-- CONTENT -->
+<!-- ========================================================= -->
+<div class="content">
+    <!-- content HEADER -->
+    <!-- ========================================================= -->
+    <div class="content-header">
+        <!-- leftside content header -->
+        <div class="leftside-content-header">
+            <ul class="breadcrumbs">
+                <li><i class="fa fa-index" aria-hidden="true"></i><a href="#">Package</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <div class="animated fadeInUp">
+        <br />
+        <div class="row">
+            <!--SEARCH-->
+            <div class="col-sm-12">
+                <div class="panel">
+                    <div class="panel-content">
+                        <div class="row">
+                            <div class="col-md-5" style="margin-top:44.5px">
+                                <div class="panel panel-default" style="box-shadow: 5px 5px 20px #cccccc;">
+                                    <div class="panel-header" style="height:40px">
+                                        <h3 class="panel-title">
+                                            Your Current Package Details
+                                        </h3>
+                                    </div>
+                                    <div class="panel-content height-for-free-package" ng-class="{'height-for-chargeable-package':CompnayCurrentPriviliges.PckgType=='Chargeable'}">
+                                        <div class="widgetbox wbox-2 bg-light color-darker-2">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover table-condensed table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td ng-if="CompnayCurrentPriviliges.PckgName==undefined" class="text-left">
+                                                                        <label class="control-label text-left">{{CompnayCurrentPriviliges.PckgName==undefined?'Currently you are not using any package. Please select a package to get started.':''}}</label>
+                                                                    </td>
+                                                                    <td class="text-right" ng-if="CompnayCurrentPriviliges.PckgName!=undefined">
+                                                                        <span class="icon fa fa-globe color-darker-2" style="margin-top:-7px;margin-left:6px"></span>
+                                                                        <h1 class="title text-left"><span>{{CompnayCurrentPriviliges.PckgName!=undefined?CompnayCurrentPriviliges.PckgName:''}}</span><span style="font-size:14px">{{CompnayCurrentPriviliges.PckgType=='Chargeable'?' ('+CompnayCurrentPriviliges.BillingScheme+')':''}}</span></h1>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-if="CompnayCurrentPriviliges.PckgName!=undefined && CompnayCurrentPriviliges.PckgType=='Free'">
+                                                                    <td><label class="control-label">Expire In</label></td>
+                                                                    <td><label class="control-label">{{CompnayCurrentPriviliges.ExpiredInDay}} Day(s)</label></td>
+                                                                </tr>
+                                                                <tr ng-if="CompnayCurrentPriviliges.PckgName!=undefined">
+                                                                    <td><label class="control-label">Price</label></td>
+                                                                    <td><label class="control-label">{{CompnayCurrentPriviliges.AdjPrice}} BDT</label></td>
+                                                                </tr>
+                                                                <tr ng-if="CompnayCurrentPriviliges.PckgName!=undefined">
+                                                                    <td><label class="control-label">One-Off Price</label></td>
+                                                                    <td><label class="control-label">{{CompnayCurrentPriviliges.AdjOneOffPrice}} BDT</label></td>
+                                                                </tr>
+                                                                <tr ng-if="CompnayCurrentPriviliges.PckgName!=undefined">
+                                                                    <td><label class="control-label">Tracking Allowance</label></td>
+                                                                    <td><label class="control-label">{{CompnayCurrentPriviliges.AdjTrackingAllowance}} Customer (s)</label></td>
+                                                                </tr>
+                                                                <tr ng-if="CompnayCurrentPriviliges.PckgName!=undefined">
+                                                                    <td><label class="control-label">Activated On</label></td>
+                                                                    <td><label class="control-label">{{CompnayCurrentPriviliges.ComPckgActivationDate | date: "fullDate"}} {{CompnayCurrentPriviliges.ComPckgActivationDate | date: "shortTime"}}</label></td>
+                                                                </tr>
+                                                                <tr ng-if="CompnayCurrentPriviliges.PckgName!=undefined">
+                                                                    <td><label class="control-label">No. Of Reports</label></td>
+                                                                    <td><label class="control-label">2 Report (s)</label></td>
+                                                                </tr>
+                                                                <tr ng-if="CompnayCurrentPriviliges.PckgName!=undefined">
+                                                                    <td><label class="control-label">Task Management</label></td>
+                                                                    <td><label class="control-label">N/A</label></td>
+                                                                </tr>
+                                                                <tr ng-if="CompnayCurrentPriviliges.PckgName!=undefined">
+                                                                    <td><label class="control-label">Customer Support</label></td>
+                                                                    <td><label class="control-label">24/7</label></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!--<span style="color:#42be9d">{{CompnayCurrentPriviliges.PckgName==undefined?'Currently you are not using any package. Please select a package to get started.':''}}</span>
+                                                    <h1 ng-if="CompnayCurrentPriviliges.PckgName!=undefined" class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">{{CompnayCurrentPriviliges.PckgName=='Trial'?'Your Trial Period Will Expire In '+CompnayCurrentPriviliges.ExpiredInDay+' Day (s)':''}}</span></h1>
+                                                    <h1 ng-if="CompnayCurrentPriviliges.PckgName!=undefined" class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">Price ${{CompnayCurrentPriviliges.AdjPrice}}</span></h1>
+                                                    <h1 ng-if="CompnayCurrentPriviliges.PckgName!=undefined" class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">One-Off Price ${{CompnayCurrentPriviliges.AdjOneOffPrice}}</span></h1>
+                                                    <h1 ng-if="CompnayCurrentPriviliges.PckgName!=undefined" class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">{{CompnayCurrentPriviliges.AdjTrackingAllowance}} Customer (s)</span></h1>
+                                                    <h1 ng-if="CompnayCurrentPriviliges.PckgName!=undefined" class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">Activated On {{CompnayCurrentPriviliges.ComPckgActivationDate | date: "fullDate"}} {{CompnayCurrentPriviliges.ComPckgActivationDate | date: "shortTime"}}</span></h1>
+                                                    <h1 ng-if="CompnayCurrentPriviliges.PckgName!=undefined" class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">2 Reports</span></h1>
+                                                    <h1 ng-if="CompnayCurrentPriviliges.PckgName!=undefined" class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">No Task Management</span></h1>
+                                                    <h1 ng-if="CompnayCurrentPriviliges.PckgName!=undefined" class="title color-darker-2" style="line-height:1.153846rem"><span style="font-size:14px">Customer Support 24/7</span></h1>-->
+                                                    <!--Previous Margin Bottom Was 11.8%-->
+                                                    <!--Next Previous Was 16.4%-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row" style="margin-left:0px; margin-right:0px;">
+                                    <div style="text-align:right;">
+                                        <div>
+                                            <a class="btn btn-lighter-1-blue btn-wide pull-right" ng-class="{'btn-get-focused-blue':Yearly==true}" data-target="#yearly" data-toggle="tab" style="border-radius:0px 2px 2px 0px" ng-click="SwitchYear()">Yearly</a>
+                                            <a class="btn btn-darker-1-purple btn-wide pull-right" ng-class="{'btn-get-focused':Monthly==true}" data-target="#monthly" data-toggle="tab" style="border-radius:2px 0px 0px 2px" ng-click="SwitchMonth()">Monthly</a>
+
+                                        </div>
+                                    </div>
+                                    <!--<div class="content-header-custom">
+                                        <div style="margin-left: 2.6%;padding-top: 2%;">
+                                            <div class="btn-group">
+                                                <a class="btn btn-darker-1" data-target="#monthly" data-toggle="tab">Monthly</a>
+                                                <a class="btn btn-darker-1" data-target="#yearly" data-toggle="tab">Yearly</a>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <div class="tab-content">
+                                    <!--Tab For Month-->
+                                    <div class="tab-pane fade in active" id="monthly">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="panel widgetbox wbox-4 custom-color" ng-if="CompnayCurrentPriviliges.PckgType == FreePakcage.PckgType || CompnayCurrentPriviliges.PckgName == FreePakcage.PckgName?false:CompnayCurrentPriviliges.PckgType == 'Chargeable'?false:true">
+                                                            <div class="panel-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" style="margin-top:4px">
+                                                                        <span class="icon fa fa-globe color-lighter-1-purple"></span>
+                                                                        <h1 class="title"><span style="color:#bbbff9;">{{FreePakcage.PckgName}}</span></h1>
+
+                                                                    </div>
+                                                                    <div class="col-md-10 text-right">
+                                                                        <h1 class="title" style="color:#bbbff9">${{FreePakcageD.Price}} <span style="font-size:13px" class="control-label">{{FreePakcageD.Period}} Day (s)</span></h1>
+                                                                        <label class="control-label color-lighter-2-purple">One-Off Price ${{FreePakcageD.OneOffPrice}}</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">{{FreePakcageD.TrackingAllowance}} Customer (s)</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">2 Reports</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">No Task Management</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">Customer Support 24/7</label>
+                                                                        <br />
+                                                                        <input type="button" class="btn btn-darker-1-purple-choose" value="Choose" ng-click="ChoosePackageFree(FreePakcage.Id)" style="margin-bottom: -5px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="panel widgetbox wbox-4 custom-color" ng-if="CompnayCurrentPriviliges.PckgName == PackageOne.PckgName && CompnayCurrentPriviliges.BillingScheme == PackageOneM.BillingScheme && CompnayCurrentPriviliges.AdjPrice == PackageOneM.Price?false:true">
+                                                            <div class="panel-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" style="margin-top:4px">
+                                                                        <span class="icon fa fa-globe color-lighter-1-purple"></span>
+                                                                        <h1 class="title"><span style="color:#bbbff9;">{{PackageOne.PckgName}}</span></h1>
+                                                                        <div class="banner-container" ng-if="RequestedPackage.BillingScheme==PackageOneM.BillingScheme && RequestedPackage.PckgName==PackageOne.PckgName">
+                                                                            <img src="Assets_Company/images/banner.png" style="width:110px; height:93px">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-10 text-right">
+                                                                        <h1 class="title" style="color:#bbbff9">${{PackageOneM.Price}} <span class="control-label" style="font-size:13px">{{PackageOneM.BillingScheme}}</span></h1>
+                                                                        <label class="control-label color-lighter-2-purple">One-Off Price ${{PackageOneM.OneOffPrice}}</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">{{PackageOneM.TrackingAllowance}} Customer (s)</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">2 Reports</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">No Task Management</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">Customer Support 24/7</label>
+                                                                        <br />
+                                                                        <input type="button" class="btn btn-darker-1-purple-choose" value="Choose" ng-if="RequestedPackage.BillingScheme!=PackageOneM.BillingScheme || RequestedPackage.PckgName!=PackageOne.PckgName" ng-click="ChoosePackage(PackageOne.Id)" style="margin-bottom: -5px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="panel widgetbox wbox-4 custom-color" ng-if="CompnayCurrentPriviliges.PckgName == PackageTwo.PckgName && CompnayCurrentPriviliges.BillingScheme == PackageTwoM.BillingScheme && CompnayCurrentPriviliges.AdjPrice == PackageTwoM.Price?false:true">
+                                                            <div class="panel-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" style="margin-top:4px">
+                                                                        <span class="icon fa fa-globe color-lighter-1-purple"></span>
+                                                                        <h1 class="title"><span style="color:#bbbff9;">{{PackageTwo.PckgName}}</span></h1>
+                                                                        <div class="banner-container" ng-if="RequestedPackage.BillingScheme==PackageTwoM.BillingScheme && RequestedPackage.PckgName==PackageTwo.PckgName">
+                                                                            <img src="Assets_Company/images/banner.png" style="width:110px; height:93px">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-10 text-right">
+                                                                        <h1 class="title" style="color:#bbbff9">${{PackageTwoM.Price}} <span style="font-size:13px" class="control-label">{{PackageTwoM.BillingScheme}}</span></h1>
+                                                                        <label class="control-label color-lighter-2-purple">One-Off Price ${{PackageTwoM.OneOffPrice}}</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">{{PackageTwoM.TrackingAllowance}} Customer (s)</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">2 Reports</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">No Task Management</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">Customer Support 24/7</label>
+                                                                        <br />
+                                                                        <input type="button" class="btn btn-darker-1-purple-choose" value="Choose" ng-if="RequestedPackage.BillingScheme!=PackageTwoM.BillingScheme || RequestedPackage.PckgName!=PackageTwo.PckgName" ng-click="ChoosePackage(PackageTwo.Id)" style="margin-bottom: -5px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="panel widgetbox wbox-4 custom-color" ng-if="CompnayCurrentPriviliges.PckgName == PackageThree.PckgName && CompnayCurrentPriviliges.BillingScheme == PackageThreeM.BillingScheme && CompnayCurrentPriviliges.AdjPrice == PackageThreeM.Price?false:true">
+                                                            <div class="panel-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" style="margin-top:4px">
+                                                                        <span class="icon fa fa-globe color-lighter-1-purple"></span>
+                                                                        <h1 class="title"><span style="color:#bbbff9;">{{PackageThree.PckgName}}</span></h1>
+                                                                        <div class="banner-container" ng-if="RequestedPackage.BillingScheme==PackageThreeM.BillingScheme && RequestedPackage.PckgName==PackageThree.PckgName">
+                                                                            <img src="Assets_Company/images/banner.png" style="width:110px; height:93px">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-10 text-right">
+                                                                        <h1 class="title" style="color:#bbbff9">${{PackageThreeM.Price}} <span style="font-size:13px" class="control-label">{{PackageThreeM.BillingScheme}}</span></h1>
+                                                                        <label class="control-label color-lighter-2-purple">One-Off Price ${{PackageThreeM.OneOffPrice}}</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">{{PackageThreeM.TrackingAllowance}} Customer (s)</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">2 Reports</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">No Task Management</label><br />
+                                                                        <label class="control-label color-lighter-2-purple">Customer Support 24/7</label>
+                                                                        <br />
+                                                                        <input type="button" class="btn btn-darker-1-purple-choose" value="Choose" ng-if="RequestedPackage.BillingScheme!=PackageThreeM.BillingScheme || RequestedPackage.PckgName!=PackageThree.PckgName" ng-click="ChoosePackage(PackageThree.Id)" style="margin-bottom: -5px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--For Showing Two Boxes (Silver Premium)-->
+                                        </div>
+                                    </div>
+
+
+                                    <!--Tab For Year-->
+                                    <div class="tab-pane fade" id="yearly">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="panel widgetbox wbox-4 custom-color-blue" ng-if="CompnayCurrentPriviliges.PckgType == FreePakcage.PckgType || CompnayCurrentPriviliges.PckgName == FreePakcage.PckgName?false:CompnayCurrentPriviliges.PckgType == 'Chargeable'?false:true">
+                                                            <div class="panel-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" style="margin-top:4px">
+                                                                        <span class="icon fa fa-globe color-lighter-1-blue"></span>
+                                                                        <h1 class="title"><span style="color:#9fd1fb;">{{FreePakcage.PckgName}}</span></h1>
+                                                                    </div>
+                                                                    <div class="col-md-10 text-right">
+                                                                        <h1 class="title" style="color:#9fd1fb">${{FreePakcageD.Price}} <span style="font-size:13px" class="control-label">{{FreePakcageD.Period}} Day (s)</span></h1>
+                                                                        <label class="control-label color-lighter-2-blue">One-Off Price ${{FreePakcageD.OneOffPrice}}</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">{{FreePakcageD.TrackingAllowance}} Customer (s)</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">2 Reports</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">No Task Management</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">Customer Support 24/7</label>
+                                                                        <br />
+                                                                        <input type="button" class="btn btn-lighter-1-blue" value="Choose" ng-click="ChoosePackageFree(FreePakcage.Id)" style="margin-bottom: -5px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="panel widgetbox wbox-4 custom-color-blue" ng-if="CompnayCurrentPriviliges.PckgName == PackageOne.PckgName && CompnayCurrentPriviliges.BillingScheme == PackageOneY.BillingScheme && CompnayCurrentPriviliges.AdjPrice == PackageOneY.Price?false:true">
+                                                            <div class="panel-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" style="margin-top:4px">
+                                                                        <span class="icon fa fa-globe color-lighter-1-blue"></span>
+                                                                        <h1 class="title"><span style="color:#9fd1fb;">{{PackageOne.PckgName}}</span></h1>
+                                                                        <div class="banner-container" ng-if="RequestedPackage.BillingScheme==PackageOneY.BillingScheme && RequestedPackage.PckgName==PackageOne.PckgName">
+                                                                            <img src="Assets_Company/images/banner.png" style="width:110px; height:93px">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-10 text-right">
+                                                                        <h1 class="title" style="color:#9fd1fb">${{PackageOneY.Price}} <span style="font-size:13px" class="control-label">{{PackageOneY.BillingScheme}}</span></h1>
+                                                                        <label class="control-label color-lighter-2-blue">One-Off Price ${{PackageOneY.OneOffPrice}}</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">{{PackageOneY.TrackingAllowance}} Customer (s)</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">2 Reports</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">No Task Management</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">Customer Support 24/7</label>
+                                                                        <br />
+                                                                        <input type="button" class="btn btn-lighter-1-blue" value="Choose" ng-if="RequestedPackage.BillingScheme!=PackageOneY.BillingScheme || RequestedPackage.PckgName!=PackageOne.PckgName" ng-click="ChoosePackage(PackageOne.Id)" style="margin-bottom: -5px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="panel widgetbox wbox-4 custom-color-blue" ng-if="CompnayCurrentPriviliges.PckgName == PackageTwo.PckgName && CompnayCurrentPriviliges.BillingScheme == PackageTwoY.BillingScheme && CompnayCurrentPriviliges.AdjPrice == PackageTwoY.Price?false:true">
+                                                            <div class="panel-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" style="margin-top:4px">
+                                                                        <span class="icon fa fa-globe color-lighter-1-blue"></span>
+                                                                        <h1 class="title"><span style="color:#9fd1fb;">{{PackageTwo.PckgName}}</span></h1>
+                                                                        <div class="banner-container" ng-if="RequestedPackage.BillingScheme==PackageTwoY.BillingScheme && RequestedPackage.PckgName==PackageTwo.PckgName">
+                                                                            <img src="Assets_Company/images/banner.png" style="width:110px; height:93px">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-10 text-right">
+                                                                        <h1 class="title" style="color:#9fd1fb">${{PackageTwoY.Price}} <span style="font-size:13px" class="control-label">{{PackageTwoY.BillingScheme}}</span></h1>
+                                                                        <label class="control-label color-lighter-2-blue">One-Off Price ${{PackageTwoY.OneOffPrice}}</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">{{PackageTwoY.TrackingAllowance}} Customer (s)</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">2 Reports</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">No Task Management</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">Customer Support 24/7</label>
+                                                                        <br />
+                                                                        <input type="button" class="btn btn-lighter-1-blue" value="Choose" ng-if="RequestedPackage.BillingScheme!=PackageTwoY.BillingScheme || RequestedPackage.PckgName!=PackageTwo.PckgName" ng-click="ChoosePackage(PackageTwo.Id)" style="margin-bottom: -5px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="panel widgetbox wbox-4 custom-color-blue" ng-if="CompnayCurrentPriviliges.PckgName == PackageThree.PckgName && CompnayCurrentPriviliges.BillingScheme == PackageThreeY.BillingScheme && CompnayCurrentPriviliges.AdjPrice == PackageThreeY.Price?false:true">
+                                                            <div class="panel-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-2" style="margin-top:4px">
+                                                                        <span class="icon fa fa-globe color-lighter-1-blue"></span>
+                                                                        <h1 class="title"><span style="color:#9fd1fb;">{{PackageThree.PckgName}}</span></h1>
+                                                                        <div class="banner-container" ng-if="RequestedPackage.BillingScheme==PackageThreeY.BillingScheme && RequestedPackage.PckgName==PackageThree.PckgName">
+                                                                            <img src="Assets_Company/images/banner.png" style="width:110px; height:93px">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-10 text-right">
+                                                                        <h1 class="title" style="color:#9fd1fb">${{PackageThreeY.Price}} <span style="font-size:13px" class="control-label">{{PackageThreeY.BillingScheme}}</span></h1>
+                                                                        <label class="control-label color-lighter-2-blue">One-Off Price ${{PackageThreeY.OneOffPrice}}</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">{{PackageThreeY.TrackingAllowance}} Customer (s)</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">2 Reports</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">No Task Management</label><br />
+                                                                        <label class="control-label color-lighter-2-blue">Customer Support 24/7</label>
+                                                                        <br />
+                                                                        <input type="button" class="btn btn-lighter-1-blue" value="Choose" ng-if="RequestedPackage.BillingScheme!=PackageThreeY.BillingScheme || RequestedPackage.PckgName!=PackageThree.PckgName" ng-click="ChoosePackage(PackageThree.Id)" style="margin-bottom: -5px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+</div>
+
+<div class="modal fade" id="CompanyPackagePreviewModal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:65%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="custom-close" data-dismiss="modal" id="Package-btn-top-close" ng-click="cancelRequestPackage()">&times;</button>
+                <h4 class="modal-title" style="margin-top:1.6%">You are about to request for {{PackageBeforeRequest.PckgName}} Package</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wizard wizard-block wizard-icons">
+                    <div id="wizard-5">
+                        <div class="tab-steps">
+                            <ul class="steps">
+                                <li ng-class="{'active':Step==1}">
+                                    <a id="tab1" ng-click="SwitchTab1()">
+                                        <span class="tab-icon"> <i class="fa fa-user"></i></span>
+                                        <span class="tab-text">Package Details</span>
+                                    </a>
+                                </li>
+                                <li ng-class="{'active':Step==2}">
+                                    <a id="tab2" ng-click="SwitchTab2()">
+                                        <span class="tab-icon"><i class="fa fa-building"></i></span>
+                                        <span class="tab-text">Payment</span>
+                                    </a>
+                                </li>
+                                <li ng-class="{'active':Step==3}">
+                                    <a id="tab3" ng-click="SwitchTab3()" ng-class="{'disabled':PackageForm.$invalid}">
+                                        <span class="tab-icon"><i class="fa fa-credit-card"></i></span>
+                                        <span class="tab-text">Terms & Conditions</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane" ng-class="{'active':Step==1}" id="w5-tab1">
+                                <!--Company Information-->
+                                <div class="panel" style="border-top:1px solid #cccccc; border-left:1px solid #cccccc">
+                                    <div class="panel-header">
+                                        <h3 class="panel-title">Package Information</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="panel-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-striped table-condensed">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><label class="control-label">Package Name</label></td>
+                                                            <td><label class="control-label">{{PackageBeforeRequest.PckgName}}</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Price</label></td>
+                                                            <td><label class="control-label">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].Price:PackageBeforeRequest.packageObjs[1].Price}} BDT{{PackageBeforeRequest.PckgType=='Free'?PackageBeforeRequest.packageObjs[0].Period+' Day (s)':Monthly==true?'/Month':'/Year'}}</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">One-Off Price</label></td>
+                                                            <td><label class="control-label">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].OneOffPrice:PackageBeforeRequest.packageObjs[1].OneOffPrice}} BDT</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Traking Allowance</label></td>
+                                                            <td><label class="control-label">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].TrackingAllowance:PackageBeforeRequest.packageObjs[1].TrackingAllowance}} Customer (s)</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Report</label></td>
+                                                            <td><label class="control-label">2 Report (s)</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Task Management</label></td>
+                                                            <td><label class="control-label">N/A</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Customer Support</label></td>
+                                                            <td><label class="control-label">24/7</label></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!--<div class="col-md-2" style="margin-top:4px">
+                                                <span class="icon fa fa-globe color-darker-2" style="margin-left:13%"></span>
+                                                <h1 class="title"><span></span></h1>
+                                            </div>
+                                            <div class="col-md-10 text-right">
+                                                <h1 class="title color-darker-2"><span style="font-size:15px"></span></h1>
+                                                <h1 class="subtitle color-darker-2">One-Off Price </h1>
+                                                <h1 class="subtitle color-darker-2"></h1>
+                                                <h1 class="subtitle color-darker-2">2 Reports</h1>
+                                                <h1 class="subtitle color-darker-2">No Task Management</h1>
+                                                <h1 class="subtitle color-darker-2">Customer Support 24/7</h1>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="w5-tab2" ng-class="{'active':Step==2}">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <div class="panel" style="border-top:1px solid #cccccc; border-left:1px solid #cccccc">
+                                                    <div class="panel-header">
+                                                        <h3 class="panel-title">Confirm Payment</h3>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <form name="PaymentForm" novalidate>
+                                                            <table class="table table-striped table-hover table-condensed">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><label for="PaymentMethod" class="control-label">Pay Using<span class="required">*</span></label></td>
+                                                                        <td>
+                                                                            <div class="radio radio-custom radio-primary">
+                                                                                <input type="radio" id="radioCustom1" name="PaymentMethod" value="Bkash"
+                                                                                       ng-required="true"
+                                                                                       ng-model="paymentObj.PaymentMethod">
+                                                                                <label for="radioCustom1">Bkash</label>
+                                                                            </div>
+                                                                            <div class="radio radio-custom radio-primary">
+                                                                                <input type="radio" id="radioCustom2" name="PaymentMethod" value="Bank Deposite"
+                                                                                       ng-required="true"
+                                                                                       ng-model="paymentObj.PaymentMethod">
+                                                                                <label for="radioCustom2">Bank Deposite</label>
+                                                                            </div>
+                                                                            <div class="radio radio-custom radio-primary">
+                                                                                <input type="radio" id="radioCustom3" name="PaymentMethod" value="PayLater"
+                                                                                       ng-required="true"
+                                                                                       ng-model="paymentObj.PaymentMethod">
+                                                                                <label for="radioCustom3">I Will Pay Later</label>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><label class="control-label">Price</label></td>
+                                                                        <td><label class="control-label">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].Price:PackageBeforeRequest.packageObjs[1].Price}} BDT</label></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><label class="control-label">One-Off Price</label></td>
+                                                                        <td><label class="control-label">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].OneOffPrice:PackageBeforeRequest.packageObjs[1].OneOffPrice}} BDT</label></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><label class="control-label">Total</label></td>
+                                                                        <td><label class="control-label">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].Price+PackageBeforeRequest.packageObjs[0].OneOffPrice:PackageBeforeRequest.packageObjs[1].Price+PackageBeforeRequest.packageObjs[1].OneOffPrice}}</label></td>
+                                                                    </tr>
+                                                                    <tr ng-if="paymentObj.PaymentMethod=='Bkash'">
+                                                                        <td><label for="PaymentMethod" class="control-label">BKash Trx ID.<span class="required">*</span></label></td>
+                                                                        <td>
+                                                                            <input type="text" name="BkashTrxId" class="form-control"
+                                                                                   ng-required="true"
+                                                                                   ng-model="paymentObj.BkashTrxId" />
+                                                                            <div class="row custom-row">
+                                                                                <ul class="list-unstyled errormessage pull-left" ng-show="PaymentForm.BkashTrxId.$dirty && PaymentForm.BkashTrxId.$invalid">
+                                                                                    <li><span class="pull-left" ng-show="PaymentForm.BkashTrxId.$error.required">*Required</span></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr ng-if="paymentObj.PaymentMethod=='Bank Deposit'">
+                                                                        <td><label for="PaymentMethod" class="control-label">Cheque Ref. No<span class="required">*</span></label></td>
+                                                                        <td>
+                                                                            <input type="text" name="ChequeRefNo" class="form-control"
+                                                                                   ng-required="true"
+                                                                                   ng-model="paymentObj.ChequeRefNo" />
+                                                                            <div class="row custom-row">
+                                                                                <ul class="list-unstyled errormessage pull-left" ng-show="PaymentForm.ChequeRefNo.$dirty && PaymentForm.ChequeRefNo.$invalid">
+                                                                                    <li><span class="pull-left" ng-show="PaymentForm.ChequeRefNo.$error.required">*Required</span></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr ng-if="paymentObj.PaymentMethod=='Bank Deposit'">
+                                                                        <td><label for="PaymentMethod" class="control-label">Cheque Image</label></td>
+                                                                        <td>
+                                                                            <div class="text-center">
+                                                                                <div class="fileinput fileinput-new" data-provides="fileinput" style="margin-left:0px;">
+                                                                                    <div class="fileinput-preview thumbnail img img-responsive" data-trigger="fileinput" style="width: 100%; height: 119px;"></div>
+                                                                                    <div class="btn-group" role="group" aria-label="group button">
+                                                                                        <div class="btn-group" role="group">
+                                                                                            <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" id="file1" name="file" multiple></span>
+                                                                                        </div>
+                                                                                        <div class="btn-group" role="group">
+                                                                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="panel" style="border-top:1px solid #cccccc; border-left:1px solid #cccccc">
+                                                    <div class="panel-header">
+                                                        <h3 class="panel-title">
+                                                            How to pay
+                                                        </h3>
+                                                    </div>
+                                                    <div class="panel-content" style="padding:0px">
+                                                        <p>
+                                                            <ul>
+                                                                <li>Go to your bKash Mobile Menu by dialing <span class="badge x-primary">*247#</span></li>
+                                                                <li>Choose <span class="badge x-primary">Payment</span></li>
+                                                                <li>Enter the Merchant bKash Account Number as <span class="badge x-primary">01748982091</span></li>
+                                                                <li>Enter the amount as <span class="badge x-primary">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].Price+PackageBeforeRequest.packageObjs[0].OneOffPrice:PackageBeforeRequest.packageObjs[1].Price+PackageBeforeRequest.packageObjs[1].OneOffPrice}}</span> </li>
+                                                                <li>Enter reference as <span class="badge x-primary">Teknopole</span></li>
+                                                                <li>Enter the Counter Number as <span class="badge x-primary">8</span></li>
+                                                                <li>Now enter your bKash Mobile Menu PIN to confirm</li>
+                                                            </ul>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="w5-tab3" ng-class="{'active':Step==3}">
+                                <div class="panel" style="border-top:1px solid #cccccc; border-left:1px solid #cccccc">
+                                    <div class="panel-body" style="height:200px">
+                                        <div id="about" class="nano">
+                                            <div class="nano-content">
+                                                <div class="row">
+                                                    <h1 class="text-center">Terms of Service</h1>
+                                                </div>
+                                                <div class="container-fluid">
+                                                    <div class="col-md-12">
+                                                        <ol>
+                                                            <li style="font-size:24px">
+                                                                <h3>ACCEPTANCE</h3>
+                                                                <p style="font-size:16px">
+                                                                    Time Doctor shall provide its software and website merely as a service ("Service") to you, subject to the Time Doctor Terms of Service ("TDTOS") and shall not be construed in any way as a contract for any other purpose. Time Doctor reserves the right to amend the TDTOS at any time. Should there be such amendments, these shall become effective only upon the posting of the TDTOS, as amended, on our website.
+                                                                </p>
+                                                            </li>
+                                                            <li style="font-size:24px">
+                                                                <h3>REGISTERING FOR THE SERVICE</h3>
+                                                                <p style="font-size:16px">
+                                                                    Membership registration is required before you can access the Service. You agree to provide complete, true and accurate information, as may be required, when registering for the Service and to promptly update these should there be any subsequent changes thereto.
+
+                                                                    Time Doctor reserves the right to suspend or terminate your membership and/or access to the Service should it be found that any of the information you provided in your membership registration is untrue, inaccurate, or incomplete, or should reasonable grounds arise for Time Doctor to suspect that the information you provided are untrue, inaccurate, or incomplete.
+
+                                                                    Time Doctor does not assume any obligation to provide any third party facilities for access to the Service. You are responsible for obtaining access to the Service, which responsibility may include providing the necessary equipment and payments for fees and charges to third parties for data, Internet, and other services.
+
+                                                                    Every time you access the Service shall be possible only upon entering your login name and password which you initially set during the registration process. You shall be responsible for maintaining the confidentiality of your password and login name, and shall likewise be responsible for all your activities and transactions, including payment of purchases and fees incurred, arising from the use of your login name and password.
+
+                                                                    Time Doctor does not assume any liability whatsoever for the use of your login name, password or credit card information. Any and all purchases and fees incurred arising from your membership shall be for your account.
+
+                                                                    You undertake to immediately notify Time Doctor of any unauthorized use of your membership or any other breach of security upon discovery thereof. Time Doctor shall assume no liability whatsoever for any unauthorized access to the Service using your login name and password prior to such notice.
+                                                                </p>
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="checkbox-custom checkbox-success">
+                                            <input type="checkbox" name="DisplayStatus" id="DisplayStatus"
+                                                   ng-model="paymentObj.TCStatus"
+                                                   ng-true-value="'Agreed'"
+                                                   ng-false-value="'Disagreed'">
+                                            <label class="check" for="DisplayStatus">I accept the terms and condition</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default pull-left" style="margin-left:5px" role="button"
+                        ng-disabled="Step==1"
+                        ng-click="StepBack()">
+                    <i class="fa fa-arrow-circle-left fa-1x"></i>  &nbsp;&nbsp;&nbsp;&nbsp;Previous
+                </button>
+                <button style="margin-right:5px" type="button"
+                        ng-if="Step<3"
+                        ng-disabled="Step==2 && PaymentForm.$invalid"
+                        ng-click="StepUp()" class="btn btn-sm pull-right">
+                    Next &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right fa-1x"></i>
+                </button>
+                <button type="button"
+                        class="btn btn-sm btn-primary pull-right"
+                        ng-if="PackageBeforeRequest.PckgType=='Free' && Step==3"
+                        ng-click="RequestPackage()">
+                    Activate &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                </button>
+                <button type="button"
+                        class="btn btn-sm btn-primary pull-right"
+                        ng-if="PackageBeforeRequest.PckgType!='Free'&& Step==3"
+                        ng-disabled="paymentObj.TCStatus!='Agreed'"
+                        ng-click="RequestPackage()">
+                    Request &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="CompanyPackagePreviewModalFree" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:65%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="custom-close" data-dismiss="modal" id="Package-btn-top-close" ng-click="cancelRequestPackageFree()">&times;</button>
+                <h4 class="modal-title" style="margin-top:1.6%">You are about to request for {{PackageBeforeRequest.PckgName}} Package</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wizard wizard-block wizard-icons">
+                    <div id="wizard-5">
+                        <div class="tab-steps">
+                            <ul class="steps">
+                                <li ng-class="{'active':Step==1}">
+                                    <a id="tab1" ng-click="SwitchTab1()">
+                                        <span class="tab-icon"> <i class="fa fa-user"></i></span>
+                                        <span class="tab-text">Package Details</span>
+                                    </a>
+                                </li>
+                                <li ng-class="{'active':Step==2}">
+                                    <a id="tab2" ng-click="SwitchTab2()" ng-class="{'disabled':PackageForm.$invalid}">
+                                        <span class="tab-icon"><i class="fa fa-credit-card"></i></span>
+                                        <span class="tab-text">Terms & Conditions</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+                            <div class="tab-pane" ng-class="{'active':Step==1}" id="w5-tab1">
+                                <!--Company Information-->
+                                <div class="panel" style="border-top:1px solid #cccccc; border-left:1px solid #cccccc">
+                                    <div class="panel-header">
+                                        <h3 class="panel-title">Package Information</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="panel-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-striped table-condensed">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><label class="control-label">Package Name</label></td>
+                                                            <td><label class="control-label">{{PackageBeforeRequest.PckgName}}</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Price</label></td>
+                                                            <td><label class="control-label">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].Price:PackageBeforeRequest.packageObjs[1].Price}} BDT{{PackageBeforeRequest.PckgType=='Free'?PackageBeforeRequest.packageObjs[0].Period+' Day (s)':Monthly==true?'/Month':'/Year'}}</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">One-Off Price</label></td>
+                                                            <td><label class="control-label">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].OneOffPrice:PackageBeforeRequest.packageObjs[1].OneOffPrice}} BDT</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Traking Allowance</label></td>
+                                                            <td><label class="control-label">{{Monthly==true && Yearly==false?PackageBeforeRequest.packageObjs[0].TrackingAllowance:PackageBeforeRequest.packageObjs[1].TrackingAllowance}} Customer (s)</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Report</label></td>
+                                                            <td><label class="control-label">2 Report (s)</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Task Management</label></td>
+                                                            <td><label class="control-label">N/A</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><label class="control-label">Customer Support</label></td>
+                                                            <td><label class="control-label">24/7</label></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="w5-tab3" ng-class="{'active':Step==2}">
+                                <div class="panel" style="border-top:1px solid #cccccc; border-left:1px solid #cccccc">
+                                    <div class="panel-body" style="height:200px">
+                                        <div id="about" class="nano">
+                                            <div class="nano-content">
+                                                <div class="row">
+                                                    <h1 class="text-center">Terms of Service</h1>
+                                                </div>
+                                                <div class="container-fluid">
+                                                    <div class="col-md-12">
+                                                        <ol>
+                                                            <li style="font-size:24px">
+                                                                <h3>ACCEPTANCE</h3>
+                                                                <p style="font-size:16px">
+                                                                    Time Doctor shall provide its software and website merely as a service ("Service") to you, subject to the Time Doctor Terms of Service ("TDTOS") and shall not be construed in any way as a contract for any other purpose. Time Doctor reserves the right to amend the TDTOS at any time. Should there be such amendments, these shall become effective only upon the posting of the TDTOS, as amended, on our website.
+                                                                </p>
+                                                            </li>
+                                                            <li style="font-size:24px">
+                                                                <h3>REGISTERING FOR THE SERVICE</h3>
+                                                                <p style="font-size:16px">
+                                                                    Membership registration is required before you can access the Service. You agree to provide complete, true and accurate information, as may be required, when registering for the Service and to promptly update these should there be any subsequent changes thereto.
+
+                                                                    Time Doctor reserves the right to suspend or terminate your membership and/or access to the Service should it be found that any of the information you provided in your membership registration is untrue, inaccurate, or incomplete, or should reasonable grounds arise for Time Doctor to suspect that the information you provided are untrue, inaccurate, or incomplete.
+
+                                                                    Time Doctor does not assume any obligation to provide any third party facilities for access to the Service. You are responsible for obtaining access to the Service, which responsibility may include providing the necessary equipment and payments for fees and charges to third parties for data, Internet, and other services.
+
+                                                                    Every time you access the Service shall be possible only upon entering your login name and password which you initially set during the registration process. You shall be responsible for maintaining the confidentiality of your password and login name, and shall likewise be responsible for all your activities and transactions, including payment of purchases and fees incurred, arising from the use of your login name and password.
+
+                                                                    Time Doctor does not assume any liability whatsoever for the use of your login name, password or credit card information. Any and all purchases and fees incurred arising from your membership shall be for your account.
+
+                                                                    You undertake to immediately notify Time Doctor of any unauthorized use of your membership or any other breach of security upon discovery thereof. Time Doctor shall assume no liability whatsoever for any unauthorized access to the Service using your login name and password prior to such notice.
+                                                                </p>
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="checkbox-custom checkbox-success">
+                                            <input type="checkbox" name="DisplayStatus" id="DisplayStatus"
+                                                   ng-model="paymentObj.TCStatus"
+                                                   ng-true-value="'Agreed'"
+                                                   ng-false-value="'Disagreed'">
+                                            <label class="check" for="DisplayStatus">I accept the terms and condition</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default pull-left" style="margin-left:5px" role="button"
+                        ng-disabled="Step==1"
+                        ng-click="StepBack()">
+                    <i class="fa fa-arrow-circle-left fa-1x"></i>  &nbsp;&nbsp;&nbsp;&nbsp;Previous
+                </button>
+                <button style="margin-right:5px" type="button"
+                        ng-if="Step<2"
+                        ng-click="StepUp()" class="btn btn-sm pull-right">
+                    Next &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right fa-1x"></i>
+                </button>
+                <button type="button"
+                        class="btn btn-sm btn-primary pull-right"
+                        ng-if="PackageBeforeRequest.PckgType=='Free' && Step==2"
+                        ng-disabled="paymentObj.TCStatus!='Agreed'"
+                        ng-click="RequestPackage()">
+                    Activate &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check fa-1x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .content-header-custom {
+        background: #f7f7f7;
+        color: black;
+        -webkit-box-shadow: 0 2px 8px #cccccc;
+        box-shadow: 0 2px 8px #cccccc;
+        border-bottom: none;
+        height: 100%;
+        width: 11%;
+        padding: 0;
+        margin-left: 87.9%;
+        margin-right: 1.1%;
+        border-radius: 4px 4px 0px 0px;
+        margin-bottom: -0.5%;
+    }
+
+    .custom-color {
+        background-color: #1f256b;
+    }
+
+    .custom-color-blue {
+        background-color: #002d53;
+    }
+
+    .custom-typography {
+        font-size: 16px;
+        font-size: 1.2307692308rem;
+        line-height: 16px;
+        line-height: 1.730769rem;
+    }
+
+
+
+    .height-for-free-package {
+        height: 437px;
+        min-height: 437px;
+        max-height: 437px;
+        /*Previous 400px*/
+    }
+
+    .height-for-chargeable-package {
+        height: 437px;
+        min-height: 437px;
+        max-height: 437px;
+        /*Previous 385px*/
+    }
+
+
+    /*Everything For Month*/
+    .color-lighter-2-purple {
+        color: #abb1ff !important;
+    }
+
+        .color-lighter-2-purple a {
+            color: #abb1ff !important;
+        }
+
+    .color-lighter-2-blue a:hover, .color-lighter-2-blue a:active, .color-lighter-2-blue a:focus {
+        color: #abb1ff !important;
+    }
+
+    .color-lighter-1-purple {
+        color: #9ba2fb !important;
+    }
+
+
+
+    .btn-darker-1-purple {
+        background: #1f256b !important;
+        border-color: #1f256b !important;
+        color: #ffffff;
+    }
+
+        .btn-darker-1-purple:hover, .btn-darker-1-purple:focus, .btn-darker-1-purple:active {
+            background: #060d5d !important;
+            border-color: #060d5d !important;
+            color: #ffffff;
+        }
+
+    .btn-darker-1-purple-choose {
+        background: #3741a7 !important;
+        border-color: #3741a7 !important;
+        color: #ffffff;
+    }
+
+        .btn-darker-1-purple-choose:hover, .btn-darker-1-purple-choose:focus, .btn-darker-1-purple-choose:active {
+            background: #283086 !important;
+            border-color: #283086 !important;
+            color: #ffffff;
+        }
+
+    .btn-get-focused {
+        background: #1f256b !important;
+        border-color: #1f256b !important;
+        color: #ffffff;
+    }
+    /*Everything For Month*/
+
+    /*Everything For Year*/
+    .color-lighter-2-blue {
+        color: #8dcbff !important;
+    }
+
+        .color-lighter-2-blue a {
+            color: #8dcbff !important;
+        }
+
+            .color-lighter-2-blue a:hover, .color-lighter-2-blue a:active, .color-lighter-2-blue a:focus {
+                color: #8dcbff !important;
+            }
+
+    .color-lighter-1-blue {
+        color: #4fa6ef !important;
+    }
+
+    .btn-lighter-1-blue {
+        background: #00549a !important;
+        border-color: #00549a !important;
+        color: #ffffff;
+    }
+
+        .btn-lighter-1-blue:hover, .btn-lighter-1-blue:focus, .btn-lighter-1-blue:active {
+            background: #043c6b !important;
+            border-color: #043c6b !important;
+            color: #ffffff;
+        }
+
+    .btn-get-focused-blue {
+        background: #043c6b !important;
+        border-color: #043c6b !important;
+        color: #ffffff;
+    }
+
+    /*Everything For Year*/
+</style>

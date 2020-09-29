@@ -1,0 +1,3 @@
+﻿ ng-class="{'text-danger':CompnayCurrentPriviliges.PckgName==undefined}"
+
+ {{CompnayCurrentPriviliges.PckgName!=undefined?CompnayCurrentPriviliges.PckgName:'No Package'}}

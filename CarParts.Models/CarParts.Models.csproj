@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1949E4AB-0B49-4037-B3FD-2428016299CA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarParts.Models</RootNamespace>
+    <AssemblyName>CarParts.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="JWT, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CarParts\Core Library\JWT.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AuditableEntity.cs" />
+    <Compile Include="Common\Entity.cs" />
+    <Compile Include="CarPartsDbContext.cs" />
+    <Compile Include="Migrations\201910210710287_DB_Init.cs" />
+    <Compile Include="Migrations\201910210710287_DB_Init.Designer.cs">
+      <DependentUpon>201910210710287_DB_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910211105401_DB_naming_convention_fixed.cs" />
+    <Compile Include="Migrations\201910211105401_DB_naming_convention_fixed.Designer.cs">
+      <DependentUpon>201910211105401_DB_naming_convention_fixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910221038412_is_categorical_column_added.cs" />
+    <Compile Include="Migrations\201910221038412_is_categorical_column_added.Designer.cs">
+      <DependentUpon>201910221038412_is_categorical_column_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910230506298_product_table_updated.cs" />
+    <Compile Include="Migrations\201910230506298_product_table_updated.Designer.cs">
+      <DependentUpon>201910230506298_product_table_updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910230514339_product_price_information_updated.cs" />
+    <Compile Include="Migrations\201910230514339_product_price_information_updated.Designer.cs">
+      <DependentUpon>201910230514339_product_price_information_updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910281019107_company_master_settings_added.cs" />
+    <Compile Include="Migrations\201910281019107_company_master_settings_added.Designer.cs">
+      <DependentUpon>201910281019107_company_master_settings_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910281046518_product_image_header_updated.cs" />
+    <Compile Include="Migrations\201910281046518_product_image_header_updated.Designer.cs">
+      <DependentUpon>201910281046518_product_image_header_updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910290425249_product_desc_added.cs" />
+    <Compile Include="Migrations\201910290425249_product_desc_added.Designer.cs">
+      <DependentUpon>201910290425249_product_desc_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910301906451_product_is_highlighted_feature_propert_added.cs" />
+    <Compile Include="Migrations\201910301906451_product_is_highlighted_feature_propert_added.Designer.cs">
+      <DependentUpon>201910301906451_product_is_highlighted_feature_propert_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910311001549_product_table_updated1.cs" />
+    <Compile Include="Migrations\201910311001549_product_table_updated1.Designer.cs">
+      <DependentUpon>201910311001549_product_table_updated1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models_Admin\Admin.cs" />
+    <Compile Include="Models_Admin\Admin_Token.cs" />
+    <Compile Include="Models_Customer\Customer.cs" />
+    <Compile Include="Models_Customer\Customer_Token.cs" />
+    <Compile Include="Models_Shared\Company.cs" />
+    <Compile Include="Models_Shared\MailSettings.cs" />
+    <Compile Include="Models_Shared\MasterCompany.cs" />
+    <Compile Include="Models_Shared\MasterMainCategory.cs" />
+    <Compile Include="Models_Shared\MasterProductBrand.cs" />
+    <Compile Include="Models_Shared\MasterProductCategory.cs" />
+    <Compile Include="Models_Shared\MasterProductSpecificationLabel.cs" />
+    <Compile Include="Models_Shared\MasterSubCategory.cs" />
+    <Compile Include="Models_Shared\MasterVehicleEngine.cs" />
+    <Compile Include="Models_Shared\MasterVehicleMaker.cs" />
+    <Compile Include="Models_Shared\MasterVehicleModel.cs" />
+    <Compile Include="Models_Shared\MasterVehicleSubModel.cs" />
+    <Compile Include="Models_Shared\MasterVehicleYear.cs" />
+    <Compile Include="Models_Shared\Product.cs" />
+    <Compile Include="Models_Shared\ProductImage.cs" />
+    <Compile Include="Models_Shared\ProductPrice.cs" />
+    <Compile Include="Models_Shared\ProductPriceLog.cs" />
+    <Compile Include="Models_Shared\ProductSpecificationLabelDetails.cs" />
+    <Compile Include="Models_Shared\ProductStock.cs" />
+    <Compile Include="Models_Shared\ProductStockLog.cs" />
+    <Compile Include="Models_Shared\Vehicle.cs" />
+    <Compile Include="Models_Shared\VehicleFitment.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempModels\Admin_PayLoad.cs" />
+    <Compile Include="TempModels\CP_HttpHelper.cs" />
+    <Compile Include="TempModels\Employee_PayLoad.cs" />
+    <Compile Include="TempModels\EncryptionHelper.cs" />
+    <Compile Include="TempModels\TempMasterProductSpecificationLabel.cs" />
+    <Compile Include="TempModels\TemporaryAuthentication.cs" />
+    <Compile Include="TempModels\TempProductHierarchy.cs" />
+    <Compile Include="TempModels\TempVehicleFilter.cs" />
+    <Compile Include="TempModels\TempVehicleFitment.cs" />
+    <Compile Include="TempModels\TempVehicleOnlyCookieModel.cs" />
+    <Compile Include="TempModels\TempVehiclePlusCookieModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarParts.Common\CarParts.Common.csproj">
+      <Project>{13a7caf6-dbbb-44b5-994f-fbdb6f53af7a}</Project>
+      <Name>CarParts.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910210710287_DB_Init.resx">
+      <DependentUpon>201910210710287_DB_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910211105401_DB_naming_convention_fixed.resx">
+      <DependentUpon>201910211105401_DB_naming_convention_fixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910221038412_is_categorical_column_added.resx">
+      <DependentUpon>201910221038412_is_categorical_column_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910230506298_product_table_updated.resx">
+      <DependentUpon>201910230506298_product_table_updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910230514339_product_price_information_updated.resx">
+      <DependentUpon>201910230514339_product_price_information_updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910281019107_company_master_settings_added.resx">
+      <DependentUpon>201910281019107_company_master_settings_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910281046518_product_image_header_updated.resx">
+      <DependentUpon>201910281046518_product_image_header_updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910290425249_product_desc_added.resx">
+      <DependentUpon>201910290425249_product_desc_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301906451_product_is_highlighted_feature_propert_added.resx">
+      <DependentUpon>201910301906451_product_is_highlighted_feature_propert_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910311001549_product_table_updated1.resx">
+      <DependentUpon>201910311001549_product_table_updated1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

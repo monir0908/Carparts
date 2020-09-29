@@ -1,0 +1,75 @@
+<div class="middel_right">
+                        <div class="search-container">
+                            <form action="#">
+                                <div class="search_box">
+                                    <input placeholder="Search entire store here ..." type="text">
+                                    <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="middel_right_info">
+
+                            <div class="header_wishlist">
+                                <a href="wishlist.html"><span class="lnr lnr-heart"></span> Wish list </a>
+                                <span class="wishlist_quantity">3</span>
+                            </div>
+                            <div class="mini_cart_wrapper">
+                                <a href="javascript:void(0)"><span class="lnr lnr-cart"></span>My Cart </a>
+                                <span class="cart_quantity">2</span>
+                                <!--mini cart-->
+                                <div class="mini_cart">
+                                    <div class="cart_item">
+                                        <div class="cart_img">
+                                            <a href="javascript:"><img src="/Customer/assets/img/s-product/product.jpg" alt=""></a>
+                                        </div>
+                                        <div class="cart_info">
+                                            <a href="javascript:">JBL Flip 3 Splasroof  Portable Bluetooth 2</a>
+
+                                            <span class="quantity">Qty: 1</span>
+                                            <span class="price_cart">$60.00</span>
+
+                                        </div>
+                                        <div class="cart_remove">
+                                            <a href="javascript:"><i class="ion-android-close"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="cart_item">
+                                        <div class="cart_img">
+                                            <a href="javascript:"><img src="/Customer/assets/img/s-product/product2.jpg" alt=""></a>
+                                        </div>
+                                        <div class="cart_info">
+                                            <a href="javascript:">Koss Porta Pro On Ear  Headphones </a>
+                                            <span class="quantity">Qty: 1</span>
+                                            <span class="price_cart">$69.00</span>
+                                        </div>
+                                        <div class="cart_remove">
+                                            <a href="javascript:"><i class="ion-android-close"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="mini_cart_table">
+                                        <div class="cart_total">
+                                            <span>Sub total:</span>
+                                            <span class="price">$138.00</span>
+                                        </div>
+                                        <div class="cart_total mt-10">
+                                            <span>total:</span>
+                                            <span class="price">$138.00</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mini_cart_footer">
+                                        <div class="cart_button">
+                                            <a href="cart.html">View cart</a>
+                                        </div>
+                                        <div class="cart_button">
+                                            <a href="checkout.html">Checkout</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!--mini cart end-->
+                            </div>
+                        </div>
+
+                    </div>

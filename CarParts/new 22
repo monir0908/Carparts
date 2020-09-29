@@ -1,0 +1,38 @@
+[
+    {
+        "Hall_BookingId": "d7a6f5c1-0b08-4d03-8161-5f8d151ad99f",
+        "CustomerId": "af68b313-e77e-41c0-9a44-1d3e1412f631",
+        "AddedOn": "2019-09-12T10:43:28.5",
+        "TotalAmount": 202.0,
+        "BookingCode": "B9000006",
+        "Hall_BookingDetailsId": "77621fae-643b-485b-8f6b-3eb9249448f4",
+        "FloorDetailsId": "e61d8277-e5a2-4a16-a032-227555df98b6",
+        "BookingDate": "2019-09-19T19:09:34.847",
+        "BookedOn": "2019-09-12T10:43:28.58",
+        "Price": 101.0
+    },
+    {
+        "Hall_BookingId": "70467cc0-db57-4528-8275-c1cc25ddb010",
+        "CustomerId": "af68b313-e77e-41c0-9a44-1d3e1412f631",
+        "AddedOn": "2019-09-07T08:30:56.99",
+        "TotalAmount": 401.0,
+        "BookingCode": "B9000004",
+        "Hall_BookingDetailsId": "b62e5c02-2e41-4f1d-975c-cd427dcc2d86",
+        "FloorDetailsId": "dedce8c6-f1c3-4c2b-98c1-cb90f659d73e",
+        "BookingDate": "2019-10-07T19:09:34.847",
+        "BookedOn": "2019-09-07T14:31:06.57",
+        "Price": 200.0
+    },
+    {
+        "Hall_BookingId": "d1ac246b-f69a-456f-8b85-e4c861b90b43",
+        "CustomerId": "af68b313-e77e-41c0-9a44-1d3e1412f631",
+        "AddedOn": "2019-09-11T12:11:57.597",
+        "TotalAmount": 401.0,
+        "BookingCode": "B9000005",
+        "Hall_BookingDetailsId": "62aed4ba-882e-4642-85f4-a3954fa5aa45",
+        "FloorDetailsId": "dedce8c6-f1c3-4c2b-98c1-cb90f659d73e",
+        "BookingDate": "2019-10-12T19:09:34.847",
+        "BookedOn": "2019-09-11T12:11:57.84",
+        "Price": 200.0
+    }
+]
